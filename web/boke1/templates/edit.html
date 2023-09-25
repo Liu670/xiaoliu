@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+    博客编辑页
+{% endblock %}
+
+{% block body %}
+
+    <form action="write" method="post">
+    <!-- 版心 -->
+    <div class="blog-edit-container">
+        <!-- 标题编辑区 -->
+        <div class="title">
+            <input type="text" placeholder="在这里写下文章标题" id="title" name="title">
+            <input type="submit" value="发布文章" id="submit">
+        </div>
+        <!-- 内容编辑区 -->
+        <div id="editor" style="border">
+            <textarea id="content" name="content" placeholder="在这里写下博客文章内容"></textarea>
+        </div>
+    </div>
+    </form>
+
+{% endblock %}

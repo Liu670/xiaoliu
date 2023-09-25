@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+    博客编辑页
+{% endblock %}
+
+{% block body %}
+
+    <!-- 版心 -->
+    <div class="blog-edit-container">
+        <!-- 标题编辑区 -->
+        <div class="title">
+            <input type="text" placeholder="在这里写下文章标题" id="title">
+            <input type="button" value="发布文章" id="submit">
+        </div>
+        <!-- 内容编辑区 -->
+        <div id="editor">
+
+        </div>
+    </div>
+
+    <script>
+        // 初始化 editor.md
+        let editor = editormd("editor", {
+            // 这里的尺寸必须在这里设置，设置样式会被 editormd 自动覆盖
+            width: "100%",
+            // 设定编辑高度
+            height: "500px",
+            // 编辑页中的初始化内容
+            markdown: "# 在这里写下一篇博客",
+            //指定 editor.md 依赖的插件路径
+            path: "editor.md-master/lib/"
+        });
+    </script>
+{% endblock %}

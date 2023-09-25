@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课后作业</title>
+    <style>
+        input{
+            display: inline-block;
+            margin-top: 1%;
+            width: 200px;
+            height: 50px;
+        }
+        input:hover{
+            background-color: antiquewhite;
+            color: brown;
+            font-size: 20px;
+            cursor: wait;
+        }
+        .h1{
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        编写函数，实现使用prompt()输入两个数和运算符号，并计算两个数的操作结果
+    -->
+    <input type="button" value="计算两数结果" onclick="getResult()"><br />
+
+    <input type="button" value="计算总分" onclick="getSum()">
+    <span id="box" class="box"></span>
+    <script>
+
+        function fn(n1, n2, operator) {
+            str = `${n1} ${operator} ${n2} = `;
+            switch (operator) {
+                case "+":
+                    return str + (n1 + n2);
+                case "-":
+                    return str + (n1 - n2);
+                case "*":
+                    return str + (n1 * n2);
+                case "/":
+                    return str + (n1 / n2);
+                case "%":
+                    return str + (n1 % n2);
+                default:
+                    
+                    return str + "计算错误";
+            }
+        }
+
+        function getResult(){
+            var num1 = parseFloat(prompt("请输入第一个数："));
+            var num2 = parseFloat(prompt("请输入第二个数："));
+            var operator = prompt("请输入符号：");
+            alert("两数运算结果为：" + fn(num1, num2, operator));
+        }
+        // 计算总分
+        function getSum(){
+            var count = parseFloat(prompt("请输入考试科目的数量："));
+            var box=document.getElementsByClassName("box")[0];
+
+            if(count <= 0){
+                alert("请输入大于0的有效考试科目数量");
+            }else{
+                var sum = 0;
+                for (var i = 1;i <= count; i++) {
+                    var score = parseFloat(prompt(`请输入第${i}门考试课程的成绩：`));
+                    sum += score;
+                }
+                div = `<h1 class="h1">总成绩为：${sum}</h1>`
+                box.innerHTML = div;
+                
+            }
+        }
+        strs = 'abc'
+        strs.upper();
+    </script>
+</body>
+
+</html>
