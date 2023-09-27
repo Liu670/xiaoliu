@@ -1,11 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<!doctype html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+<title>追加和移除样式</title>
+<style type="text/css" >
+*{
+	margin:0px;
+	padding:0px;
+	font-size:14px;
+	font-family:"微软雅黑";
+	line-height: 28px;;
+}
+.title {font-size:14px; color:#03F; text-align: center; }
+.text{ padding:10px;}
+.content {background-color:#FFFF00; }
+.border {border:1px dashed #333; }
+</style>
+<script src="http://www.ihong.love:81/file/html/js/jquery-3.7.1.js"></script>
 </head>
 <body>
-    
+ <h2 class="title" >jQuery操作CSS</h2>
+ <p class="text">
+	 css()设置或返回样式属性<br>
+	 addClass()增加一个或多个类<br>
+	 removeClass()移除一个或多个类
+ </p>
+ <script>
+	$(function(){
+		// 鼠标移入标题,追加content border样式
+		// $("h2").mousemove(function(){
+		// 	$("p").addClass("content border");
+		// });
+		// // 鼠标移出标题,移除content text样式
+		// $("h2").mouseout(function(){
+		// 	$("p").removeClass("content text");
+		// });
+		// 鼠标点击标题 第一次点追加content border样式,第二次点移除content border样式
+		$("h2").click(function(){
+			$("p").toggle("content border");
+		})
+		
+		// 鼠标点击标题 第一次点追加content border样式,第二次点移除content border样式
+		$("h2").click(function(){
+			if($("p").hasClass("content border")){
+				$("p").removeClass("content border");
+			}else{
+				$("p").addClass("content text");
+			}
+		})
+		
+
+
+})
+ </script>
 </body>
 </html>
