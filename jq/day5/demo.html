@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="contain">
+        <h2>热门动画排行</h2>
+        <div class="aniamtionList">
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    // end():结束当前链条中最近的筛选操作,并且将匹配的元素集还原为之前的状态
+    $(function(){
+        $(".contain :header").css({"background":"#2a65ba","color":"#fff"})
+        $(".contain :li").first().css({"background":"#b8e7f9"}).last().css("background","#d3f4b5");
+    })
+</script>
+</html>
