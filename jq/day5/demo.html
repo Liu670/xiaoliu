@@ -6,26 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .nav,from{
+            width: 100vw;
+        }
+        
+        fieldset {
+            width: 20%;
+            height: 30vh;
+            margin: 0px auto;
+        }
+        fieldset h2{
+            text-align: center;
+        }
+
+        fieldset>label{
+            display: block;
+            height: 20%;
+            text-align: center;
+        }
+
+        .content{
+            display: none;
+            width: 200px;
+            border: 1px solid #000;
+        }
+
+    
+    </style>
 </head>
 
 <body>
-    <div class="contain">
-        <h2>热门动画排行</h2>
-        <div class="aniamtionList">
-            <ul>
+    <div class="nav">
+        <form action="">
+            <fieldset>
+                <h2>登录</h2>
+                
+                <label for="id">账号:
+                    <input type="text" name="id" id="id">
+                </label>
+
+                <label for="pwd">密码:
+                    <input type="password" name="pwd" id="pwd">
+                </label>
+                
+                <label for="sub">
+                    <input type="submit" class="sub">
+                </label>
+            </fieldset>
+        </form>
+        <hr>
+
+        <div class="box2">
+            <button class="off">关闭</button>
+            <button class="open">打开</button>
+            <div class="content">
                 <li>1</li>
                 <li>2</li>
                 <li>3</li>
                 <li>4</li>
-            </ul>
+            </div>
         </div>
     </div>
 </body>
 <script>
-    // end():结束当前链条中最近的筛选操作,并且将匹配的元素集还原为之前的状态
     $(function(){
-        $(".contain :header").css({"background":"#2a65ba","color":"#fff"})
-        $(".contain :li").first().css({"background":"#b8e7f9"}).last().css("background","#d3f4b5");
+        $(".sub").mousemove(function(){
+            $(this).css("background-color","red")
+        })
+        $(".sub").mouseout(function(){
+            $(this).css("background-color","#fff")
+        })
+        
+
+        $(".off").mousemove(function(){
+            $(".content").hide()
+        }
+        )
+
+        $(".open").mouseenter(function(){
+            $(".content").show()
+        }
+        )
+
+
+        $(".content").mouseenter(function(){
+            $(".content").show()
+        })
+
+        $(".content").blur(function(){
+            $(".content").hide()})
+        $(".content").mouseout(function(){
+            $(".content").hide()
+        })
     })
 </script>
+
 </html>
