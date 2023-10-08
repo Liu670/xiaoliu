@@ -1,11 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .box {
+            background-color: #3a4674;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .box:hover {
+            animation: move 15s;
+        }
+
+        /* from 表示最开始的那一帧，to 表示结束时的那一帧 */
+        @keyframes rotate1 {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(720deg);
+            }
+        }
+
+        @keyframes move {
+            from {
+                transform: translateX(0px);
+            }
+
+            to {
+                transform: translateX(1000px);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="box"></div>
+    <p>
+        <label for="width">设置宽度:</label>
+        <input class="width" id="width" value="0" type="number">
+    </p>
+    <p>
+        <label for="heigh">设置高度:</label>
+        <input class="heigh" id="heigh" value="0" type="number">
+    </p>
+    <p>
+        <label for="slide1">左右平移:</label>
+        <input class="slide1" id="slide1" type="range" min="-100" max="100" value="0">
+    </p>
+    <p>
+        <label for="slide2">上下平移:</label>
+        <input class="slide2" id="slide2" type="range" min="-100" max="100" value="0">
+    </p>
+    <script>
+        var slider1 = document.querySelector("#slide1");
+        var slider2 = document.querySelector("#slide2");
+        slider1.addEventListener("input", fn1);
+        slider2.addEventListener("input", fn2);
+        function fn1() {
+            value1 = this.value;
+            document.querySelector(".box").style.transform = "translateX(" + value1 + "%)";
+        };
+        function fn2() {
+            value2 = this.value;
+            document.querySelector(".box").style.transform = "translateY(" + value2 + "%)";
+        }
+        // 自定义宽高
+        var width = document.querySelector("#width");
+        var heigh = document.querySelector("#heigh");
+        width.addEventListener("input", fn3);
+        function fn3() {
+            value3 = this.value;
+            document.querySelector(".box").style.width = value3 + "px";
+        };
+        heigh.addEventListener("input", fn4);
+        function fn4() {
+            value4 = this.value;
+            document.querySelector(".box").style.height = value4 + "px";
+        };
+        // 设置初始值
+        var value1 = 0;
+    </script>
 </body>
+
 </html>
