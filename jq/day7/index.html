@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>test1</li>
+            <li>test2</li>
+            <li>test3</li>
+            <li>test4</li>
+        </ul>
+    </div>
+    <script>
+        $(".box>ul>li:first").bind("click",function(){
+            $("li").css("background","red");
+        }).bind("click",function(){
+            $("li:nth-child(n+2)").hide();
+        })
+    </script>
+</body>
+</html>

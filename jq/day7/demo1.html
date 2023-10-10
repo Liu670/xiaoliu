@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      p {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="button" value="点击" />
+    <p>显示,隐藏</p>
+    <h3>123</h3>
+  </body>
+  <script>
+    $("input").click(function () {
+      $("h3").toggle();
+    });
+
+    $("input").click(function () {
+      $("p").toggle();
+    });
+
+    
+  </script>
+</html>
