@@ -13,8 +13,13 @@
   </head>
   <body>
     <input type="button" value="点击" />
+    <button>变大</button>
     <p>显示,隐藏</p>
     <h3>123</h3>
+    <span>test1</span>
+    <span>test2</span>
+    <span class="point">长按</span>
+    <div class="nav"></div>
   </body>
   <script>
     $("input").click(function () {
@@ -25,6 +30,32 @@
       $("p").toggle();
     });
 
-    
+    $(function () {
+      var $button = $("button");
+      var $count = 16;
+      $button.click(function () {
+        $("span:last").css("fontSize", $count + "px");
+        $count += 10;
+        if ($count >= 200) {
+          $count = 16;
+        }
+      });
+    });
+
+    var count = 1;
+    $(".point").mousedown(function () {
+      var t = setInterval(function () {
+        count++;
+        if (
+            $(".point").mouseup(function () {
+                clearInterval(t);
+            })
+            );
+            fn();
+        },1000);
+    });
+    $(fn = function(){
+      $(".nav").append(count);
+    });
   </script>
 </html>
