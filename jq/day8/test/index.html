@@ -123,14 +123,20 @@
     <script>
       // 在线客服鼠标悬停显示
       $(function () {
-        $(".on").hover(
-          function () {
-            $(".topDown").show("slow");
-          },
-          function () {
-            $(".topDown").hide("fast");
-          }
-        );
+		$(".on").mouseover(function(){
+			$(".topDown").show();
+		})
+		$(".on").mouseleave(function(){
+			$(".topDown").hide();
+		})
+        // $(".on").hover(
+        //   function () {
+        //     $(".topDown").show("fast");
+        //   },
+        //   function () {
+        //     $(".topDown").hide("fast");
+        //   }
+        // );
 
         $(".nav dt").toggle(
           function () {
