@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border: 1px solid #000;
+      }
+      td {
+        border: 1px solid #000;
+        display: flex-item;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="btn" type="button" value="读取" />
+    <div id="text" class="text">
+      <table>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>
+
+<!-- 
+<script>
+  // 获取读取按钮的dom对象
+  var btn = document.getElementById("btn");
+  // 按钮点击事件获取文本数据
+  btn.onclick = function () {
+    file = "scores.csv"
+    // 1.创建xmlHTTPRequest对象
+    // 兼容性处理
+    if (window.XMLHttpRequest) {
+      // ie7及以上或事其他浏览器
+      var oAjax = new XMLHttpRequest();
+    } else {
+      // ie5或ie6
+      var oAjax = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    // var oAjax = new XMLHttpRequest();
+    // 2.open方法创建新的请求
+    // 第一个参数:请求方式 get,post,put
+    // 第二个参数:请求的url地址
+    // 第三个参数:是否异步请求,true,false
+    // 第四个参数:username 如服务器需要验证,则需要指定用户名
+    // 第五个参数:pwe 如果没有用户名,则无需写密吗
+    oAjax.open("GET", file, true);
+
+    // 3.send方法发送请求
+    oAjax.send();
+    // 4.根据请求响应的状态来确定是否显示内容
+    // 设置回调函数
+    oAjax.onreadystatechange = function () {
+      //  如果请求已完成,响应已就绪,并且http状态码正确返回,弹出对应的传输数据
+      // readyState:返回请求的当前状态  0、1、2、3、4
+      // 0:未初始化 1:开始发送请求  2.请求发送完成  3.开始读取响应  4.读取响应结束
+      if (oAjax.readyState == 4 && oAjax.status == 200) {
+        readContent(oAjax);
+      } 
+    };
+  };
+  function readContent(oAjax){
+    // 获取文本域对象
+    var text = document.getElementById("text");
+    var table = document.getElementsByTagName("tbody")[0];
+    // 获取文本域对象中的文本
+    var content = oAjax.responseText;
+    var arr = content.split("\r\n");
+    var title = arr[0];
+    for(var i in arr){
+        // console.log(arr[i]);
+        var data = arr[i].split(",");
+        for(var j in data){
+            console.log(data[j]);
+            table.innerHTML+=("<td>"+data[j]+"<tr>")
+
+        }
+    }
+    // 设置文本域对象中的文本
+    // text.innerHTML = arr;
+  }
+</script> -->
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(function () {
+    $("#btn").click(function () {
+      $.ajax({
+        url: "score.json",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+          // 表头
+          var title = Object.keys(data);
+          rowLength = Object.keys(data.姓名).length;
+          var newRow1 = document.getElementsByTagName("tbody")[0].insertRow();
+          // 标题 表头
+          for (var l in title) {
+            newRow1.insertCell().innerHTML += title[l];
+          }
+          // 行
+          for (var rowL = 0; rowL < rowLength; rowL++) {
+            var newRow = document.getElementsByTagName("tbody")[0].insertRow();
+            for (var i in data) {
+              newRow.insertCell().innerHTML += data[i][rowL];
+            }
+          }
+        },
+      });
+    });
+  });
+</script>
+<script type="text/javascript">
+  /*设置json文件里的值*/
+
+  /*获取json文件里的值*/
+  $.getJSON("score.json", function (json) {
+    /*遍历JSON对象， 元素索引和内容*/
+    $.each(json, function (i, n) {
+      // console.log("index="+i+";"+"value="+n);
+      $("#text").html(json.active);
+    });
+  });
+</script>
+<!-- 
+    Ajax:异步加载数据
+
+-->
