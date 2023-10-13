@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .box {
+        width: 100vw;
+        height: 50vh;
+      }
+      .main {
+        width: 100vw;
+        height: 50vh;
+        display: inline-flex;
+        margin: 0 auto;
+      }
+      .main img {
+        width: 100%;
+        height: 100%;
+      }
+      .left,
+      .right {
+        width: 5%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        opacity: 0.3;
+        text-align: center;
+        line-height: 50vh;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      /* 下标 */
+      .index {
+        width: 100vw;
+        height: 40px;
+        text-align: center;
+        position: relative;
+        top: -40px;
+        color: white;
+      }
+
+      .index ul li {
+        margin: 0 auto;
+        list-style: none;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid white;
+        text-align: center;
+      }
+      .index ul li:hover{
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="main">
+        <div class="left">&lt;</div>
+        <img class="img"
+          src="https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF"
+          alt="error"
+        />
+        <div class="right">&gt;</div>
+      </div>
+    </div>
+
+    <!-- 索引下标 -->
+    <div class="index">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+      </ul>
+    </div>
+  </body>
+</html>
+<script>
+    var imgs = ["https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF"]
+    setInterval(function(){
+        $(".img").attr("src",imgs[0])
+    },1000)
+</script>
