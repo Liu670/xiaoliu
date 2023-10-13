@@ -96,13 +96,13 @@
         success: function (data) {
           // 表头
           var title = Object.keys(data);
-          rowLength = Object.keys(data.姓名).length;
           var newRow1 = document.getElementsByTagName("tbody")[0].insertRow();
           // 标题 表头
           for (var l in title) {
             newRow1.insertCell().innerHTML += title[l];
           }
           // 行
+          rowLength = Object.keys(data.姓名).length;
           for (var rowL = 0; rowL < rowLength; rowL++) {
             var newRow = document.getElementsByTagName("tbody")[0].insertRow();
             for (var i in data) {
@@ -114,18 +114,7 @@
     });
   });
 </script>
-<script type="text/javascript">
-  /*设置json文件里的值*/
-
-  /*获取json文件里的值*/
-  $.getJSON("score.json", function (json) {
-    /*遍历JSON对象， 元素索引和内容*/
-    $.each(json, function (i, n) {
-      // console.log("index="+i+";"+"value="+n);
-      $("#text").html(json.active);
-    });
-  });
-</script>
+<script type="text/javascript"></script>
 <!-- 
     Ajax:异步加载数据
 
