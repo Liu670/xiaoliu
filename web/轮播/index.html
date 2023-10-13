@@ -10,23 +10,39 @@
         padding: 0;
         margin: 0;
       }
-      .box {
-        width: 100vw;
+      /* .box {
+        width: 3000px;
         height: 50vh;
-      }
+        overflow: hidden;
+
+      } */
       .main {
-        width: 100vw;
+        width: 3000px;
         height: 50vh;
-        display: inline-flex;
+        display: inline-block;
         margin: 0 auto;
+        overflow: hidden;
       }
       .main img {
-        width: 100%;
+        display: inline-block;
+        width: 500px;
         height: 100%;
+      }
+      .left{
+        position: fixed;
+        left: 0;
+        top: 0;
+      }
+      .right{
+        position: fixed;
+        right: 0;
+        top:0;
       }
       .left,
       .right {
-        width: 5%;
+        display: inline-block;
+        position: absolute;
+        width: 50px;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.2);
         opacity: 0.3;
@@ -54,21 +70,37 @@
         border: 1px solid white;
         text-align: center;
       }
-      .index ul li:hover{
+      .index ul li:hover {
         cursor: pointer;
       }
     </style>
   </head>
   <body>
     <div class="box">
+      <div class="left">&lt;</div>
       <div class="main">
-        <div class="left">&lt;</div>
-        <img class="img"
+        <img
+          class="img"
           src="https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF"
           alt="error"
         />
-        <div class="right">&gt;</div>
+        <img
+          class="img"
+          src="https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF"
+          alt="error"
+        />
+        <img
+          class="img"
+          src="https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF"
+          alt="error"
+        />
+        <img
+          class="img"
+          src="https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF"
+          alt="error"
+        />
       </div>
+      <div class="right">&gt;</div>
     </div>
 
     <!-- 索引下标 -->
@@ -81,8 +113,12 @@
   </body>
 </html>
 <script>
-    var imgs = ["https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF"]
-    setInterval(function(){
-        $(".img").attr("src",imgs[0])
-    },1000)
+  var imgs = [
+    "https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF",
+    "https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF",
+  ];
+  setInterval(function () {
+    var index = Math.floor(Math.random() * imgs.length);
+    // $(".img").attr("src", imgs[index]);
+  }, 3000);
 </script>
