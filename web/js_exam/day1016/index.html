@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .one{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            display: none;
+        }
+        .two{
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    
+    <button id="one">one</button>
+    <button id="two">two</button>
+    <div class="one"></div>
+    <div class="two"></div>
+    <script>
+        b1 = document.getElementById("one");
+        b2 = document.getElementById("two");
+        b1.onclick = function(){
+            document.getElementsByClassName("one")[0].style.display = "none";
+            document.getElementsByClassName("two")[0].style.display = "block";
+        }
+        
+        b2.onclick = function(){
+            document.getElementsByClassName("one")[0].style.display = "block";
+            document.getElementsByClassName("two")[0].style.display = "none";
+        }
+    </script>
 </body>
 </html>
