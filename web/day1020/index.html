@@ -31,20 +31,90 @@
       }
       console.log(`前100的和为${sum}`);
 
-      // 猜数字
-      let random = Math.round(Math.random() * 100);
-      let num = 0;
-      while (num !== random) {
-        num = parseInt(prompt("请输入一个数字"));
-        if (num > random) {
-          alert("猜大了");
-        } else if (num < random) {
-          alert("猜小了");
+      //   // 猜数字
+      //   let random = Math.round(Math.random() * 100);
+      //   random = 1;
+      //   let count = 0,
+      //     guessNumber;
+      //   while (guessNumber !== random) {
+      //     guessNumber = +prompt("请输入一个数字");
+      //     if (guessNumber > random) {
+      //       alert("猜大了");
+      //     } else if (guessNumber < random) {
+      //       alert("猜小了");
+      //     }
+      //     count++;
+      //   }
+      //   alert(`恭喜你猜对了,一共猜了${count}次`);
+
+      let array = [1, 2, 3, 4, 5];
+      for (var i in array) {
+        console.log(i);
+      }
+      for (var i of array) {
+        console.log(i);
+      }
+
+      // 阶乘
+      function fn(num) {
+        if (num == 1) {
+          return 1;
+        } else {
+          return num * fn(num - 1);
         }
       }
-      alert("恭喜你猜对了");
+      var sum = 0;
+      for (var i = 1; i <= 10; i++) {
+        sum += fn(i);
+      }
+      console.log(sum);
+      //   console.log(fn(10));
 
+      // 1!+2!+...+10! 10的阶乘  1 2 6 24 120 一重for循环
+      var sum = 0,
+        num = 10,
+        item = 1;
+      for (var i = 1; i <= num; i++) {
+        sum += item *= i;
+      }
+      //   双重for循环
+      var sum = 0,
+        num = 10,
+        item;
+      for (var i = 1; i <= num; i++) {
+        item = 1;
+        for (var j = 1; j <= i; j++) {
+          item *= j;
+        }
+        sum += item;
+      }
+      console.log(sum);
 
+      // 猜数字
+      var random = Math.floor(Math.random() * 10 + 1);
+
+      /*
+      while (true) {
+        var num = prompt("请输入一个数");
+        if (num == random) {
+          alert("恭喜你猜对了");
+          break;
+        } else if (num > random) {
+          alert("大了");
+          continue;
+        } else if (num < random) {
+          alert("小了");
+          continue;
+        }
+      }*/
+      // 素数
+      label: for (let i = 2; i <= 100; i++) {
+        for (let j = 2; j < i; j++) {
+          if (i % j == 0) {
+            continue label;
+          }
+        }
+      }
     </script>
   </body>
 </html>
