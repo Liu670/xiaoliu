@@ -10,6 +10,30 @@
       function show() {
         console.log("hello world");
       }
+
+      function getSum(num1, num2) {
+        return num1 + num2;
+      }
+      
+
+      var num1 = 1;
+      var num2 = 1;
+      console.log(`${num1}+${num2}=${getSum(num1, num2)}`);
+    
+      function yes(){
+        console.log("yes");
+      }
+      function no(){
+        console.log("no");
+      }
+      function ask(question,yes,no){
+        if(confirm(question)){
+            yes();
+        }else{
+            no();
+        }
+      }
+    
     </script>
   </body>
 </html>
