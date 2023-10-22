@@ -20,19 +20,13 @@
       console.log(`${num1}+${num2}=${getSum(num1, num2)}`);
 
       function yes() {
-        console.log("yes");
+        console.log("我确定");
       }
 
       function no() {
-        console.log("no");
+        console.log("我不确定了");
       }
 
-      function yes() {
-        console.log("yes");
-      }
-      function no() {
-        console.log("no");
-      }
       function ask(question, yes, no) {
         if (confirm(question)) {
           yes();
@@ -40,6 +34,7 @@
           no();
         }
       }
+      ask("你确定吗?", yes, no);
     </script>
   </body>
 </html>
