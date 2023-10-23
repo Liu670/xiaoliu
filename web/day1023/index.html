@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        function fn1(a,b,c){
+      function fn1(a, b, c = 1) {
+        return a + b + c;
+      }
+      console.log(fn1(1));
+      console.log(fn1(1, 2));
+      console.log(fn1(1, 2, 3));
+      console.log(fn1(1, 2, 3, 4));
 
+      console.log(0 || 1);
+      console.log(0 ?? 1);
+      console.log(0 && 1);
+      console.log(0 ^ 1);
+      console.log(1 << 1);
+
+      // 不定长参数
+      function mul(...paras) {
+        let acc = 1;
+        for (let i = 0; i < paras.length; i++) {
+          acc *= paras[i];
         }
-        console.log(fn1(1));
-        console.log(fn1(1,2));
-        console.log(fn1(1,2,3));
-        console.log(fn1(1));
-
-</script>
-</body>
+        return acc;
+      }
+      console.log(mul(1, 2, 3, 4, 5));
+    </script>
+  </body>
 </html>
