@@ -23,13 +23,25 @@
 
       // 不定长参数
       function mul(...paras) {
-        let acc = 1;
+        let acc = 0;
         for (let i = 0; i < paras.length; i++) {
-          acc *= paras[i];
+          acc += paras[i];
         }
         return acc;
       }
       console.log(mul(1, 2, 3, 4, 5));
+
+      function fn2(...paras) {
+        for (let i = paras[0]; i < paras[1]; i++) {
+          if (paras[2] == 0 && i % 2 == 0) {
+            console.log("偶数");
+          } else if (paras[2] == 1 && i % 2 == 1) {
+            console.log("奇数");
+          } else {
+          }
+        }
+      }
+      fn2(0, 10, 0);
     </script>
   </body>
 </html>
