@@ -3,7 +3,7 @@
 
 <%
 String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -18,9 +18,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath() %>/css/common.css">
+	href="<%=request.getContextPath()%>/css/common.css">
 </head>
 <body>
+	<%
+	String mess = (String) request.getAttribute("mess");
+	if (mess != null) {
+		out.println(mess);
+	}
+	%>
 	<!--页面的头部-->
 	<div id="header">
 		<!--页面顶部-->
@@ -46,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<!--banner-->
 		<div class="main-banner">
-			<img src="<%=request.getContextPath() %>/images/banner.png" />
+			<img src="<%=request.getContextPath()%>/images/banner.png" />
 		</div>
 		<!--搜索横框-->
 		<div class="search-box">
@@ -54,9 +60,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="sr clearfix">
 					<span class="left-search clearfix"> <label>站内搜索</label><input
 						type="text" name="keyword" value="关键词" />
-					<button class="go-btn"></button>
+						<button class="go-btn"></button>
 					</span> <span class="right-link"> <label>快速链接</label><select><option>-----专题选择-----</option></select>
-					<button class="go-btn"></button>
+						<button class="go-btn"></button>
 					</span>
 				</div>
 			</div>
@@ -131,15 +137,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="article-box">
 							<!--新闻的标题-->
 							<!-- <h1>课工场Java Web高能充电</h1> -->
-							<% out.print("<h1>课工场Java Web高能充电</h1>"); %>
-							<%= "<h1>课工场Java Web高能充电</h1>"%>
-							<% 
-								String title = "<h1>课工场Java Web高能充电</h1>";
-								out.print(title);
-								Date now = new Date();
-								SimpleDateFormat format = new SimpleDateFormat();
-								String strNow = format.format(now);
-								out.print("<h1>"+strNow+"</h1>");
+							<%
+							out.print("<h1>课工场Java Web高能充电</h1>");
+							%>
+							<%="<h1>课工场Java Web高能充电</h1>"%>
+							<%
+							String title = "<h1>课工场Java Web高能充电</h1>";
+							out.print(title);
+							Date now = new Date();
+							SimpleDateFormat format = new SimpleDateFormat();
+							String strNow = format.format(now);
+							out.print("<h1>" + strNow + "</h1>");
 							%>
 							<div class="source-bar">发布者：小K童鞋 分类：新闻信息 更新时间：2016-05-19</div>
 							<div class="article-content">

@@ -24,13 +24,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<%
 	int i = 0;
 	%>
-	
-	<%!
-	public int getSum(){
-		return 3+3;
-	}
-	%>
-	<%= getSum() %>
+
+	<%!public int getSum() {
+		return 3 + 3;
+	}%>
+	<%=getSum()%>
 	<%!int j = 0;%>
 	<%=i++%>
 	<%=j++%>
