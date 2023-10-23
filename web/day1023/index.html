@@ -34,14 +34,42 @@
       function fn2(...paras) {
         for (let i = paras[0]; i < paras[1]; i++) {
           if (paras[2] == 0 && i % 2 == 0) {
-            console.log("偶数");
+            console.log(i + "是偶数");
           } else if (paras[2] == 1 && i % 2 == 1) {
-            console.log("奇数");
+            console.log(i + "是奇数");
           } else {
           }
         }
       }
       fn2(0, 10, 0);
+      fn2(10, 20, 1);
+
+      // [初始值,条件,对某数取余,余数,输出]
+      function fn3(...paras) {
+        for (let i = paras[0]; i < paras[1]; i++) {
+          if (i % paras[2] == paras[3]) {
+            console.log(i + paras[4]);
+          }
+        }
+      }
+      fn3(0, 10, 2, 0, "是偶数");
+
+      var test = 1;
+      if (true) {
+        let test = true;
+      }
+      console.log(test);
+
+      // 闭包
+      let add = function () {
+        let count = 0;
+        return function () {
+          console.log(++count);
+        };
+      }();
+      add();
+      add();
+      add();
     </script>
   </body>
 </html>
