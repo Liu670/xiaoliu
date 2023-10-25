@@ -23,9 +23,38 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body>
 	<%
 	String mess = (String) request.getAttribute("mess");
-	if (mess != null) {
-		out.println(mess);
+	String mess1 = (String) session.getAttribute("mess");
+	if (mess1 != null) {
+		//out.println(mess1);
 	}
+	%>
+
+	<%
+	// 获取cookie数据
+	Cookie[] cookies = request.getCookies();
+	String user = "";
+	// 遍历cookies
+	for (int i = 0; i < cookies.length; i++) {
+		// 判断cookie中存储的数据键为user
+		if (cookies[i].getName().equals("user")) {
+			user = cookies[i].getValue();/* 
+									out.println(user+"******"); */
+		}
+	}
+	%>
+
+	<%
+	Object count = application.getAttribute("count");
+	//如果count为空,说明是首次访问,设置count为1,不为空,则设置对应值+1
+	if (count == null) {
+		application.setAttribute("count", 1);
+	} else {
+		// 先获取原先的count值+1
+		Integer i = (Integer) count;
+		application.setAttribute("count", i + 1);
+	}
+	Integer icount = (Integer) application.getAttribute("count");
+	out.println("该页面总共被访问了" + icount + "次");
 	%>
 	<!--页面的头部-->
 	<div id="header">
@@ -35,7 +64,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				<a href=""><span>新闻大视野</span></a>
 			</div>
 			<div class="login-box">
-				<label>用户名</label><input type="text" name="uname" /><label>密码</label><input
+				<label>用户名</label><input type="text" name="uname" value="<%=user%>" /><label>密码</label><input
 					type="text" name="upassword" />
 				<button>登录</button>
 			</div>
@@ -201,5 +230,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		Coyright&copy;1999-2007 News China gov,All Right Reserved.<br />
 		新闻中心版权所有
 	</div>
+
 </body>
 </html>

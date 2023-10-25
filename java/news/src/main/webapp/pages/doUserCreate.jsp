@@ -17,13 +17,20 @@ if (username != null && username != "") {
 	if (username.equals("admin")) {
 		request.setAttribute("mess", "注册失败,用户名已使用");
 		request.getRequestDispatcher("userCreate.jsp").forward(request, response);
-	} else {
+	} else {/* 
 		request.setAttribute("mess", "注册成功");
+		response.sendRedirect("newsDetail.jsp"); */
+		//设置session最大活动时间10s
+		/* session.setMaxInactiveInterval(10);
+		session.setAttribute("mess", "注册成功");
+		 */
+		// 创建cookie对象
+		Cookie cookie = new Cookie("user",username);
+		// 添加数据
+		response.addCookie(cookie);
 		response.sendRedirect("newsDetail.jsp");
 	}
-	/* 
-	request.getRequestDispatcher("").forward(arg0, arg1); 
-	*/
+	
 } else {
 	out.println("没有输入用户名!");
 	response.sendRedirect("304.jsp");
