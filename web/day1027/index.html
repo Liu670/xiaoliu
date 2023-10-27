@@ -44,6 +44,54 @@
       // 面向对象
       let obj1 = new Object();
       let obj2 = {};
+
+      let user = {
+        name: "user",
+        age: 18,
+        info: {
+          height: 170,
+          weight: 100,
+        },
+      };
+      console.log(user["info"]["weight"]);
+
+      // 拷贝对象
+      function copyObj(oldObj, newObj) {
+        for (let key in oldObj) {
+          newObj[key] = oldObj[key];
+        }
+      }
+      let obj3 = {};
+      copyObj({ 1: "1", 2: 2, 3: 3 }, obj3);
+      console.log(obj3);
+
+      let rect = {
+        width: 10,
+        height: 10,
+        area: () => {
+          return this.width * this.height;
+        },
+      };
+      console.log(rect.area());
+
+      // 构造方法
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.say = function () {
+          console.log(this.name + " say hello");
+        };
+      }
+      let p1 = new Person("p1", 18);
+      p1.say();
+
+      function Rectangle(w, h) {
+        this.w = w;
+        this.h = h;
+        return this.w * this.h;
+      }
+      let rect1 = new Rectangle(10, 10);
+      console.log(rect1);
     </script>
   </body>
 </html>
