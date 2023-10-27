@@ -92,6 +92,32 @@
       }
       let rect1 = new Rectangle(10, 10);
       console.log(rect1);
+
+      class Rectangle1 {
+        constructor(w, h) {
+          this.w = w;
+          this.h = h;
+        }
+        get W() {
+          return this._w;
+        }
+        set W(w) {
+          this._w = w;
+        }
+        get H() {
+          return this._h;
+        }
+        set H(h) {
+          this._h = h;
+        }
+        getArea() {
+          return this.w * this.h;
+        }
+      }
+      let r1 = new Rectangle1(11, 10);
+      r1.H = 20;
+      r1.W = 20;
+      console.log(r1.getArea());
     </script>
   </body>
 </html>
