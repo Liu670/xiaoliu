@@ -13,7 +13,25 @@
       fun();
       console.log((a, b) => a + b);
       console.log(((a, b) => a + b)(1, 2));
+
+      !function () {
+        console.log("hello world");
+      }();
       
+
+      // 箭头函数的this
+      let obj = {
+        name: "obj",
+        say: function () {
+          setTimeout(() => {
+            console.log(this.name+" say hello");
+          }, 1000);
+        },
+      };
+      obj.say();
+
+      let num = eval('((a,b)=>{return a+b})(1,1)');
+      console.log(num);
     </script>
   </body>
 </html>
