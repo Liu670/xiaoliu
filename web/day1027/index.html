@@ -99,13 +99,21 @@
           this.h = h;
         }
         get W() {
-          return this._w;
+            if (this.w < 0) {
+            return 0;
+          } else {
+            return this._w;
+          }
         }
         set W(w) {
           this._w = w;
         }
         get H() {
-          return this._h;
+          if (this.h < 0) {
+            return 0;
+          } else {
+            return this._h;
+          }
         }
         set H(h) {
           this._h = h;
