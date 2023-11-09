@@ -30,6 +30,7 @@
   </body>
 </html>
 <script>
+  // 跳转注册页
   function reg() {
     location.href = "reg.jsp";
   }
