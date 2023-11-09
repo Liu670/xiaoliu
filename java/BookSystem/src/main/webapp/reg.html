@@ -1,0 +1,93 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      span {
+        width: 80px;
+        display: inline-block;
+      }
+
+      span[class="must"] {
+        color: red;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <form action="">
+        <h1>会员注册</h1>
+        <label for="username" class="username"
+          ><span>登录账号：</span>
+          <input type="text" id="username" class="must" /><span class="must"
+            >*</span
+          ><br />
+        </label>
+        <label for="password1"
+          ><span>密&emsp;&emsp;码：</span>
+          <input type="password" id="password1" class="must" /><span
+            class="must"
+            >*</span
+          ><br />
+        </label>
+        <label for="password2"
+          ><span>确认密码：</span>
+          <input type="password" id="password2" class="must" /><span
+            class="must"
+            >*</span
+          ><br />
+        </label>
+        <label for="sex"
+          ><span>性&emsp;&emsp;别：</span>
+          <select name="sex" id="sex">
+            <option value="" selected>-请选择-</option>
+            <option value="男">男</option>
+            <option value="女">女</option></select
+          ><span class="must">*</span><br />
+        </label>
+        <label for="email"
+          ><span>电子邮箱</span> <input type="text" id="email" /><br />
+        </label>
+        <button type="submit" onclick="sub()">注册</button>
+        <button type="button" onclick="location.href='index.jsp'">返回</button>
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+  var div = document.createElement("div");
+  div.style.color = "red";
+  document.querySelector(".username").appendChild(div);
+  // 监听并实时获取input输入的内容
+  document.getElementById("username").oninput = function () {
+    // 获取输入框中的内容
+    var user = document.getElementById("username").value;
+
+    if (user.length > 2) {
+      console.log(document.querySelector("#username~.must"));
+      div.innerHTML = "账号不能超过25位";
+    }
+  };
+
+  //对比密码
+  function sub() {
+    var pwd1 = document.getElementById("password1").value;
+    var pwd2 = document.getElementById("password2").value;
+    if (pwd1 != pwd2) {
+      alert("密码不一致！");
+    }
+  }
+</script>
+
+<!-- 
+    1、带有“*”标记的字段不能为空。 
+    2、“登录账号”最大长度为 25 位。 
+    3、“密码”至少 6 位，“确认密码”与“密码”必须一致。 
+    4、对于邮箱地址输入要进行格式验证，验证规则：需含有“@”符号。当输入有误时需要给出错误 信息提示。
+
+ -->
