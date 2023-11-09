@@ -34,6 +34,7 @@
   function reg() {
     location.href = "reg.jsp";
   }
+  //
   function login() {
     location.href = "login.jsp";
   }
