@@ -34,7 +34,7 @@
   function reg() {
     location.href = "reg.jsp";
   }
-  //跳转登录页
+  // 跳转登录页
   function login() {
     location.href = "login.jsp";
   }
