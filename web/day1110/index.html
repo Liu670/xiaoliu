@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>11月10日</title>
   </head>
-  <body></body>
+  <body>
+    <div class="time" id="time"></div>
+  </body>
 </html>
 <script>
   console.log(Array.from({ length: 50 }, (x, i) => 2 * i));
@@ -36,5 +38,46 @@
     .join("*");
   // reduce
   var array = [1, 2, 3, 4, 5];
-  array.reduce((a, b) => a*2);
+  array.reduce((a, b) => a * 2);
+  array.map((v) => v * 2);
+
+  // 一个成绩数组  开方乘十 统计及格人数
+  var scores = [23, 45, 21, 9, 0, 89, 65, 33];
+  var score1 = scores.map((v) => Math.round(Math.sqrt(v) * 10));
+  var num = score1.map((v) => (v > 60 ? 1 : 0)).reduce((a, b) => a + b);
+  console.log(
+    scores.sort((pre, cur) => {
+      return pre - cur;
+    })
+  );
+  console.log(scores.sort((a, b) => a - b));
+  // 数组去重
+  var arr = [1, 2, 3, 4, 5, 1, 2, 3, 4];
+  var arr1 = [...new Set(arr)];
+  console.log(arr1);
+  ["11", "14", "4"].sort((a, b) => +a - +b);
+  var time =
+    (new Date() - new Date("2000-05-25 00:00:00")) /
+    (24 * 60 * 60 * 1000 * 365);
+  console.log(`活了${time}年`);
+
+  let clock = document.getElementById("time");
+  let value = 1;
+  //   setInterval(() => {
+  //     time = new Date();
+  //     clock.innerHTML = `${time.getHours()}:${time.getMinutes()}:${time.getHours()}:${time.getSeconds()}`;
+  //   }, 1000);
+  setInterval(() => {
+    var examTime = new Date("2024-01-07 08:00:00");
+    var now = new Date();
+    var timeSpan = examTime - now;
+    var days = Math.floor(timeSpan / (24 * 60 * 60 * 1000));
+    var leave1 = timeSpan % (24 * 60 * 60 * 1000);
+    var hours = Math.floor(leave1 / (60 * 60 * 1000));
+    var leave2 = leave1 % (60 * 60 * 1000);
+    var minutes = Math.floor(leave2 / (60 * 1000));
+    var leave3 = leave2 % (60 * 1000);
+    var seconds = Math.round(leave3 / 1000);
+    clock.innerHTML = `<h1>省考倒计时：${days}天${hours}时${minutes}分${seconds}秒</h1>`;
+  }, 1000);
 </script>
