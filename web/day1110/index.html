@@ -8,5 +8,33 @@
   <body></body>
 </html>
 <script>
-  
+  console.log(Array.from({ length: 50 }, (x, i) => 2 * i));
+  arr = [
+    [
+      [
+        [1, 2, 3, 4],
+        [1, 2],
+      ],
+      [1],
+    ],
+  ];
+  arr.flat(2);
+  console.log(arr);
+  var arr = [1, 2, 3];
+  arr.forEach((v, i) => console.log(v, i));
+  arr1 = [1, 2, 3, 4];
+  arr2 = [4, 3, 2, 1];
+  arr3 = arr1.concat(arr2);
+  console.log(arr3);
+  // 生成100个数组
+  var arr4 = Array.from({ length: 100 }, (v, i) => i);
+  console.log(arr4.filter((v) => v % 3 != 0));
+  var str = "hello my   name    is Tom";
+  var str1 = str
+    .split(" ")
+    .filter((v) => v !== "")
+    .join("*");
+  // reduce
+  var array = [1, 2, 3, 4, 5];
+  array.reduce((a, b) => a*2);
 </script>
