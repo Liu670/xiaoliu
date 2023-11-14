@@ -21,7 +21,6 @@ public class BookType {
 	}
 
 	public BookType(int id, String type_name) {
-		super();
 		this.id = id;
 		this.type_name = type_name;
 	}

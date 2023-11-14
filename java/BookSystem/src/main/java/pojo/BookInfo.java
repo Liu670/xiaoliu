@@ -2,7 +2,7 @@ package pojo;
 
 import java.util.Date;
 
-public class Bookinfo {
+public class BookInfo {
 	private int book_id;
 	private String book_code;
 	private String book_name;
@@ -15,9 +15,15 @@ public class Bookinfo {
 	private Date creation_time;
 	private Date last_updatetime;
 
-	public Bookinfo(int book_id, String book_code, String book_name, int book_type, String book_author,
+	public BookInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public BookInfo(int book_id, String book_code, String book_name, int book_type, String book_author,
 			String publish_press, Date publish_date, int is_borrow, String createdBy, Date creation_time,
 			Date last_updatetime) {
+		super();
 		this.book_id = book_id;
 		this.book_code = book_code;
 		this.book_name = book_name;
@@ -29,10 +35,6 @@ public class Bookinfo {
 		this.createdBy = createdBy;
 		this.creation_time = creation_time;
 		this.last_updatetime = last_updatetime;
-	}
-
-	public Bookinfo() {
-
 	}
 
 	public int getBook_id() {
@@ -125,7 +127,7 @@ public class Bookinfo {
 
 	@Override
 	public String toString() {
-		return "Bookinfo [book_id=" + book_id + ", book_code=" + book_code + ", book_name=" + book_name + ", book_type="
+		return "BookInfo [book_id=" + book_id + ", book_code=" + book_code + ", book_name=" + book_name + ", book_type="
 				+ book_type + ", book_author=" + book_author + ", publish_press=" + publish_press + ", publish_date="
 				+ publish_date + ", is_borrow=" + is_borrow + ", createdBy=" + createdBy + ", creation_time="
 				+ creation_time + ", last_updatetime=" + last_updatetime + "]";
