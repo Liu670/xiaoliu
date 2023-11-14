@@ -66,6 +66,18 @@ pageEncoding="UTF-8"%>
           alert("两次密码不一致");
           return false;
         }
+        if (user_code.length > 25 || user_code.length > 0) {
+          alert("用户名长度在0-25之间");
+          return false;
+        }
+        if (password.length < 6) {
+          alert("密码长度必须大于6");
+          return false;
+        }
+        if (email.indexOf("@") < 0) {
+          alert("邮箱格式不正确");
+          return false;
+        }
       });
     });
   </script>
