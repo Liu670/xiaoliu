@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+        }
+
+        /* 计算器 */
+        .box .counter {
+            width: 450px;
+            height: 600px;
+            background-color: #cf575c;
+            border-radius: 2%;
+            box-shadow: 5px -5px 20px red;
+        }
+
+        /* 计算器面板区域 */
+        .counter>div {
+            width: 430px;
+            margin: 0px auto;
+            margin-top: 10px;
+
+        }
+
+        /* 显示区域 */
+        .counter .show {
+            height: 80px;
+            border-radius: 2%;
+            background-color: #fff;
+        }
+
+        .counter .show>div {
+            width: 100%;
+            height: 50%;
+            text-align: end;
+            font-size: 30px;
+        }
+
+        /* 第一块显示区域 */
+        .counter .show .content {
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* 第二部分计算结果显示区域 */
+
+        /* 按键面板区域  */
+        .counter .panel {
+            height: 490px;
+            /* background-color: green; */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .counter .panel .button {
+            width: calc(490/7*1px);
+            height: calc(490/7*1px);
+            margin: 10px;
+            background-color: #ad474a;
+            border: 3px solid rgba(0, 0, 0, .1);
+            /* box-shadow: 5px -5px 20px rgba(0, 0, 0, .4); */
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            font-size: 25px;
+            font-weight: bolder;
+        }
+
+        .counter .panel .button:active {
+            background-color: #cf575c;
+            border: 2px solid white;
+        }
+
+        /* 退格键 删除 */
+        .counter .panel .delete div {
+            display: inline-block;
+            position: relative;
+        }
+
+        /* 三角形 左箭头 箭头triangle */
+        .counter .panel .delete .triangle {
+            color: #ad474a;
+            width: 0;
+            height: 0;
+            border: 12px solid transparent;
+            border-right-color: white;
+            right: 5px;
+        }
+
+        /* 删除键 矩形 */
+        .counter .panel .delete .shape {
+            width: 30px;
+            height: 22px;
+            background-color: white;
+            color: #ad474a;
+            /* top: 2px; */
+            right: 12px;
+        }
+
+        /* 删除键 x文字 位置调整*/
+        .counter .panel .delete .x {
+            position: relative;
+            bottom: 5px;
+            right: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 计算器框架  边框曲 显示区域+4x5格子-->
+        <div class="counter">
+            <!-- 显示区域 -->
+            <div class="show">
+                <div class="content">0</div>
+                <div class="result">0</div>
+            </div>
+            <!-- 按键区域 4*5 20个按键-->
+            <div class="panel">
+                <button class="button">AC</button>
+                <button class="button">0</button>
+                <button class="button delete">
+                    <!-- 三角形 -->
+                    <div class="triangle"></div>
+                    <!-- 矩形 -->
+                    <div class="shape">
+                        <span class="x">x</span>
+                    </div>
+                </button>
+                <button class="button add">+</button>
+                <button class="button one">1</button>
+                <button class="button two">2</button>
+                <button class="button three">3</button>
+                <button class="button reduce">-</button>
+                <button class="button four">4</button>
+                <button class="button five">5</button>
+                <button class="button six">6</button>
+                <button class="button pow">*</button>
+                <button class="button seven">7</button>
+                <button class="button eight">8</button>
+                <button class="button nine">9</button>
+                <button class="button division">/</button>
+                <button class="button point">.</button>
+                <button class="button left">(</button>
+                <button class="button right">)</button>
+                <button class="button equal">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
