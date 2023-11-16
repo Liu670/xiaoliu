@@ -1,3 +1,4 @@
+TIME=`date +%Y-%m-%d,%H:%M:%S`
 git add .
-git commit -am "计算器html页面的语音生成模块的实现"
+git commit -am $TIME
 git push origin main
