@@ -1,0 +1,13 @@
+#!/bin/zsh
+TIME=`date +%Y-%m-%d,%H:%M:%S`
+text=$TIME
+if [ $# != 0 ]; then
+    text=$1;
+else
+    text=$TIME
+fi
+git add .
+git commit -am $text
+git push origin main
+
+echo 已完成推送至gitee仓库，提交时间于:$TIME
