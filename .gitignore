@@ -1,7 +1,8 @@
-.DS_Store
+# .DS_Store
 # .vscode
 # *.sh
 # code.code-workspace
 # git-help
-
+.*
+*.sh
 
