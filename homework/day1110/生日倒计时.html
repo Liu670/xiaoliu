@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        font-family: "Times New Roman", Times, serif;
+      }
+      .box {
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        /* background: url("https://img2.baidu.com/it/u=648490343,2055622014&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1700067600&t=3bb68b5c6e626f9dac244daafa7a54c9") no-repeat; */
+        background-image: url("https://img-qn.51miz.com/preview/element/00/01/15/05/E-1150544-33070C74.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        overflow: hidden;
+      }
+      /* 头部标题部分 */
+      .box header {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: bolder;
+        font-size: 4em;
+      }
+      /* 底部年份样式 */
+      span[class="year"] {
+        font-size: 35em;
+        color: rgba(255, 255, 255, 0.4);
+        position: relative;
+        top: -10vh;
+        font-weight: bolder;
+        /* text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.4); */
+      }
+
+      /* 中间倒数计时时间样式 */
+      .date {
+        display: flex;
+        margin: 0 auto;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 80vw;
+        height: 30vh;
+        /* text-align: center; */
+      }
+      .date .time,
+      .date .time-unit {
+        display: flex;
+        width: calc(100 / 4 * 1%);
+        /* background: rgba(255, 255, 255, 0.5); */
+        /* border: 1px solid red; */
+        justify-content: center;
+        align-items: center;
+        /* color: #dbc400; */
+        color: rgba(255, 255, 0, 0.6);
+        font-weight: bolder;
+      }
+      .date .time {
+        font-size: 5em;
+      }
+      .date .time-unit {
+        font-size: 3em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <header>Timer To Your Next Birthday</header>
+      <div class="date">
+        <div class="time"><span class="day">00</span></div>
+        <div class="time"><span class="hour">00</span></div>
+        <div class="time"><span class="minute">00</span></div>
+        <div class="time"><span class="second">00</span></div>
+        <div class="time-unit">DAYS</div>
+        <div class="time-unit">HOURS</div>
+        <div class="time-unit">MINUTES</div>
+        <div class="time-unit">SECONDS</div>
+      </div>
+
+      <div class="years">
+        <span class="year"></span>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  // 生日倒计时
+  setInterval(function () {
+    // 现在的时间
+    var date = new Date();
+    var year = date.getFullYear();
+
+    // 下一个生日时间
+    var birth_time = "05 25";
+    var birth_date = new Date(`${year + 1} ${birth_time} 00:00:00`);
+
+    // 倒计时
+    var days = parseInt((birth_date - date) / 1000 / 60 / 60 / 24),
+      hours = parseInt((birth_date - date) / 1000 / 60 / 60 - days * 24),
+      minutes = parseInt(
+        (birth_date - date) / 1000 / 60 - days * 24 * 60 - hours * 60
+      ),
+      seconds = parseInt(
+        (birth_date - date) / 1000 -
+          days * 24 * 60 * 60 -
+          hours * 60 * 60 -
+          minutes * 60
+      );
+    console.log(date, birth_date);
+
+    // 写入html
+    document.querySelector(".year").innerHTML = year + 1;
+    document.querySelector(".day").innerHTML = days;
+    document.querySelector(".hour").innerHTML = hours;
+    document.querySelector(".minute").innerHTML = minutes;
+    document.querySelector(".second").innerHTML = seconds;
+  }, 1000);
+</script>

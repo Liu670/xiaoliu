@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+        }
+
+        /* 计算器 */
+        .box .counter {
+            width: 450px;
+            height: 600px;
+            background-color: #cf575c;
+            border-radius: 2%;
+            box-shadow: 5px -5px 20px red;
+        }
+
+        /* 计算器面板区域 */
+        .counter>div {
+            width: 430px;
+            margin: 0px auto;
+            margin-top: 10px;
+
+        }
+
+        /* 显示区域 */
+        .counter .show {
+            height: 80px;
+            border-radius: 2%;
+            background-color: #fff;
+        }
+
+        .counter .show>div {
+            width: 100%;
+            height: 50%;
+            text-align: end;
+            font-size: 30px;
+        }
+
+        /* 第一块显示区域 */
+        .counter .show .content {
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* 将div变为可以输入的输入框  */
+        /* 去掉input聚焦时候的外边框 */
+        [contenteditable]:focus {
+            outline: none;
+        }
+
+        /* 第二部分计算结果显示区域 */
+        .counter .show .result {
+            /* border-bottom: 1px solid #000; */
+        }
+
+        /* 按键面板区域  */
+        .counter .panel {
+            height: 490px;
+            /* background-color: green; */
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .counter .panel .button {
+            width: calc(490/7*1px);
+            height: calc(490/7*1px);
+            margin: 10px;
+            background-color: #ad474a;
+            border: 3px solid rgba(0, 0, 0, .1);
+            /* box-shadow: 5px -5px 20px rgba(0, 0, 0, .4); */
+            border-radius: 50%;
+            cursor: pointer;
+            color: white;
+            font-size: 25px;
+            font-weight: bolder;
+        }
+
+        /* 点击每个按钮时  伪类样式 */
+        .counter .panel .button:active {
+            background-color: #cf575c;
+            border: 2px solid white;
+        }
+
+        /* 退格键 删除 */
+        .counter .panel .delete div {
+            display: inline-block;
+            position: relative;
+        }
+
+        /* 三角形 左箭头 箭头triangle */
+        .counter .panel .delete .triangle {
+            color: #ad474a;
+            width: 0;
+            height: 0;
+            border: 12px solid transparent;
+            border-right-color: white;
+            right: 5px;
+        }
+
+        /* 删除键 矩形 */
+        .counter .panel .delete .shape {
+            width: 30px;
+            height: 22px;
+            background-color: white;
+            color: #ad474a;
+            /* top: 2px; */
+            right: 12px;
+        }
+
+        /* 删除键 x文字 位置调整*/
+        .counter .panel .delete .x {
+            position: relative;
+            bottom: 5px;
+            right: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 音频读取测试 -->
+    <!-- 
+    <input type="text" id="text">
+    <button id="speak">朗读</button> 
+    -->
+
+    <div class="box">
+        <!-- 计算器框架  边框曲 显示区域+4x5格子 使用弹性盒子-->
+        <div class="counter">
+            <!-- 显示区域 -->
+            <div class="show">
+                <div class="content" contenteditable>0</div>
+                <div class="result">0</div>
+            </div>
+            <!-- 按键区域 4*5 20个按键-->
+            <div class="panel">
+                <button class="button" value="clear" name="清空">AC</button>
+                <button class="button" value="0" name="0">0</button>
+                <button class="button delete" value="delete" name="删除">
+                    <!-- 三角形 -->
+                    <div class="triangle " value="delete">
+                    </div>
+                    <!-- 矩形 -->
+                    <div class="shape " value="delete">
+                        <span class="x">x</span>
+                    </div>
+                </button>
+                <button class="button add operator" value="+" name="加">+</button>
+                <button class="button one num" value="1" name="1">1</button>
+                <button class="button two num" value="2" name="2">2</button>
+                <button class="button three num" value="3" name="3">3</button>
+                <button class="button reduce operator" value="-" name="减">-</button>
+                <button class="button four num" value="4" name="4">4</button>
+                <button class="button five num" value="5" name="5">5</button>
+                <button class="button six num" value="6" name="6">6</button>
+                <button class="button pow operator" value="*" name="乘">*</button>
+                <button class="button seven num" value="7" name="7">7</button>
+                <button class="button eight num" value="8" name="8">8</button>
+                <button class="button nine num" value="9" name="9">9</button>
+                <button class="button division operator" value="/" name="除">/</button>
+                <button class="button point" value="." name="点">.</button>
+                <button class="button left" value="(" name="左括号">(</button>
+                <button class="button right" value=")" name="右括号">)</button>
+                <button class="button equal operator" value="=" name="等于">=</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    // 获取按钮、输入部分、输出部分对象
+    var buttons = document.querySelectorAll(".button");
+    var content = document.querySelector(".content");
+    var result = document.querySelector(".result");
+    for (var button of buttons) {
+        // 监听鼠标点击事件，获取每个按钮内容
+        button.addEventListener('click', function (event) {
+            var content_text = content.innerHTML;
+            var result_text = result.innerHTML;
+            // 获取按钮值
+            value = event.target.value;
+            // 获取name值 用于语音播放
+            text = event.target.name;
+            // 如果首位为0且第二位非小数点，则置空
+            if (content_text.charAt(0) == 0 && content_text.charAt(1) != '.') {
+                content.innerHTML = "";
+            }
+            if (result_text.charAt(0) == 0) {
+                result.innerHTML = "";
+            }
+            // 表达式
+            // expression = content.innerHTML;
+            // console.log(value, typeof (value))
+            switch (value) {
+                case ".":
+                    // if (content_text.charAt(0) == "0") {
+                    content.innerHTML = content_text + value;
+                    result.innerHTML = content.innerHTML;
+                    // }
+                    break;
+                case "delete":
+                    // 字符串分割 点击删除 删去最后一位
+                    content.innerHTML = content_text.substring(0, content_text.length - 1);
+                    // result.innerHTML = result_text.substring(0, result_text.length - 1);
+                    break;
+                // 清空
+                case "clear":
+                    content.innerHTML = 0;
+                    result.innerHTML = 0;
+                    break;
+                case "=":
+                    result.innerHTML = content_text
+                    content.innerHTML = '';
+                    try {
+                        if (result.innerHTML != '') {
+                            result.innerHTML = eval(expression.substring(0, expression.length));
+                            // content.innerHTML = result.innerHTML;
+                        }
+                    } catch (error) {
+                        result.innerHTML = '语法错误';
+                    }
+                    break;
+
+                // 输入运算符
+                // case "+": case "-": case "*": case "/":
+                // content.innerHTML = result.innerHTML;
+                default:
+                    main(event);
+                    break;
+            }
+            // 按下按钮 播放对应声音
+            speak(event);
+
+        });
+    }
+    // 实现计算功能主要模块
+    function main(event) {
+        var value = event.target.innerHTML;
+        var content_text = content.innerHTML;
+        var result_text = result.innerHTML;
+        // 判断计算的结果是否有内容，如果有内容并且输入了运算符后则作为输入进行下一步计算
+        if (event.target.className.split(" ")[2] == "operator") {
+            if (content_text.charAt(0) == '0') {
+                content.innerHTML += result.innerHTML;
+            } else {
+                content.innerHTML = result.innerHTML;
+            }
+
+        }
+        // 如果点击到的位置不对，则不做任何操作
+        // if (typeof (value) != "undefined" && typeof (content_text) != "undefined" && typeof (result_text) != "undefined") {
+        content.innerHTML += value;
+        expression = content.innerHTML;
+        // 计算的结果
+        try { // 异常处理  如果表达式中无法计算，表达式错误的则写入错误代码
+            // 判断表达式中末尾是否是数字或特殊字符
+            // if (expression.charAt(expression.length - 1) >= 0 || expression.charAt(expression.length - 1) == ')') {
+            result.innerHTML = eval(expression.substring(0, expression.length));
+            // content.innerHTML = result.innerHTML;
+            // } else {
+            // result.innerHTML = 0;
+            // }
+        } catch (error) {
+            result.innerHTML = "";
+        }
+        // result.innerHTML += value;
+    }
+
+    // 语音播报模块
+    function speak(event) {
+        text = event.target.name;
+        // 语音播放模块
+        var utterance = new SpeechSynthesisUtterance();
+        if (value == '=') {
+            utterance.text = text + result.innerHTML;
+        } else {
+            utterance.text = text;
+        }
+        utterance.lang = 'zh-CN';//语言
+        utterance.rate = 1.6;//语速
+        utterance.pitch = 2;//音量大小
+        speechSynthesis.speak(utterance);
+    }
+
+
+
+    // 监听键盘事件
+    document.addEventListener("onkeydown", function (event) {
+        console.log(event);
+    })
+
+
+
+</script>
