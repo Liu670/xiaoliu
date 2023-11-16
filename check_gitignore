@@ -1,7 +1,0 @@
-# 清除本地缓存
-git rm -r --cached . 
-# 添加当前所有内容
-git add .
-# 提交
-git commit -m 'update .gitignore'
-
