@@ -6,7 +6,7 @@ if [ $# != 0 ]; then
 else
     text=$TIME
 fi
-git add .
+git add ~/code
 git commit -am $text
 git push origin main
 
