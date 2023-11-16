@@ -57,6 +57,9 @@
         }
 
         /* 第二部分计算结果显示区域 */
+        .counter .show .result {
+            border-bottom: 1px solid #ddd;
+        }
 
         /* 按键面板区域  */
         .counter .panel {
@@ -82,6 +85,7 @@
             font-weight: bolder;
         }
 
+        /* 点击每个按钮时  伪类样式 */
         .counter .panel .button:active {
             background-color: #cf575c;
             border: 2px solid white;
@@ -133,36 +137,106 @@
             </div>
             <!-- 按键区域 4*5 20个按键-->
             <div class="panel">
-                <button class="button">AC</button>
-                <button class="button">0</button>
-                <button class="button delete">
+                <button class="button" value="clear">AC</button>
+                <button class="button" value="0">0</button>
+                <button class="button delete" value="delete">
                     <!-- 三角形 -->
-                    <div class="triangle"></div>
+                    <div class="triangle " value="delete">
+                    </div>
                     <!-- 矩形 -->
-                    <div class="shape">
+                    <div class="shape " value="delete">
                         <span class="x">x</span>
                     </div>
                 </button>
-                <button class="button add">+</button>
-                <button class="button one">1</button>
-                <button class="button two">2</button>
-                <button class="button three">3</button>
-                <button class="button reduce">-</button>
-                <button class="button four">4</button>
-                <button class="button five">5</button>
-                <button class="button six">6</button>
-                <button class="button pow">*</button>
-                <button class="button seven">7</button>
-                <button class="button eight">8</button>
-                <button class="button nine">9</button>
-                <button class="button division">/</button>
-                <button class="button point">.</button>
-                <button class="button left">(</button>
-                <button class="button right">)</button>
-                <button class="button equal">=</button>
+                <button class="button add operator" value="+">+</button>
+                <button class="button one num" value="1">1</button>
+                <button class="button two num" value="2">2</button>
+                <button class="button three num" value="3">3</button>
+                <button class="button reduce operator" value="-">-</button>
+                <button class="button four num" value="4">4</button>
+                <button class="button five num" value="5">5</button>
+                <button class="button six num" value="6">6</button>
+                <button class="button pow operator" value="*">*</button>
+                <button class="button seven num" value="7">7</button>
+                <button class="button eight num" value="8">8</button>
+                <button class="button nine num" value="9">9</button>
+                <button class="button division operator" value="/">/</button>
+                <button class="button point" value=".">.</button>
+                <button class="button left" value="(">(</button>
+                <button class="button right" value=")">)</button>
+                <button class="button equal operator" value="=">=</button>
             </div>
         </div>
     </div>
 </body>
 
 </html>
+<script>
+    var button = document.querySelectorAll(".button");
+    var content = document.querySelector(".content");
+    var result = document.querySelector(".result");
+
+    // 监听鼠标点击事件，获取每个按钮内容
+    document.addEventListener('click', function (event) {
+        var content_text = content.innerHTML;
+        var result_text = result.innerHTML;
+        // 获取按钮值
+        value = event.target.value;
+        // 如果首位为0，则置空
+        if (content_text.charAt(0) == 0) {
+            content.innerHTML = "";
+        }
+        if (result_text.charAt(0) == 0) {
+            result.innerHTML = "";
+        }
+        // 表达式
+        // expression = content.innerHTML;
+        console.log(value, typeof (value))
+        switch (value) {
+            case "delete":
+                // 字符串分割 点击删除 删去最后一位
+                content.innerHTML = content_text.substring(0, content_text.length - 1);
+                // result.innerHTML = result_text.substring(0, result_text.length - 1);
+                break;
+            // 清空
+            case "clear":
+                content.innerHTML = 0;
+                result.innerHTML = 0;
+                break;
+            case "=":
+                content.innerHTML = '';
+                if (result.innerHTML != '') {
+                    result.innerHTML = eval(expression.substring(0, expression.length));
+                    // content.innerHTML = result.innerHTML;
+                }
+                break;
+            default:
+                // 判断计算的结果是否有内容，如果有内容则作为输入进行下一步计算
+                if (result.innerHTML != '') {
+                    content.innerHTML += result.innerHTML;
+                }
+                // 如果点击到的位置不对，则不做任何操作
+                if (typeof (value) != "undefined") {
+                    content.innerHTML += value;
+                    expression = content.innerHTML;
+                    // 计算的结果
+                    try { // 异常处理  如果表达式中无法计算，表达式错误的则写入错误代码
+                        // 判断表达式中末尾是否是数字或特殊字符
+                        // if (expression.charAt(expression.length - 1) >= 0 || expression.charAt(expression.length - 1) == ')') {
+                        result.innerHTML = eval(expression.substring(0, expression.length));
+                        // } else {
+                        // result.innerHTML = 0;
+                        // }
+                    } catch (error) {
+                        result.innerHTML = "";
+                    }
+                    // result.innerHTML += value;
+                }
+                break;
+        }
+    });
+    // 监听键盘事件
+    document.addEventListener("onkeydown", function (event) {
+        console.log(event);
+    })
+</script>
