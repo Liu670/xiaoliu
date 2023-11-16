@@ -3,4 +3,5 @@
 *.sh
 code.code-workspace
 git-help
+.gitignore
 
