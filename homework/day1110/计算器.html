@@ -125,6 +125,7 @@
 
         /* 删除键 x文字 位置调整*/
         .counter .panel .delete .x {
+            content: "x";
             position: relative;
             bottom: 5px;
             right: 2px;
@@ -157,7 +158,7 @@
                     </div>
                     <!-- 矩形 -->
                     <div class="shape " value="delete">
-                        <span class="x">x</span>
+                        <span class="x" value="delete">x</span>
                     </div>
                 </button>
                 <button class="button add operator" value="+" name="加">+</button>
@@ -198,34 +199,36 @@
             // 获取name值 用于语音播放
             text = event.target.name;
             // 如果首位为0且第二位非小数点，则置空
-            if (content_text.charAt(0) == 0 && content_text.charAt(1) != '.') {
+            if (content_text.charAt(0) == '0') {
                 content.innerHTML = "";
             }
             if (result_text.charAt(0) == 0) {
                 result.innerHTML = "";
+            }
+            // 解决点击删除按钮span内的部分出现undefined情况
+            if (typeof (value) == 'undefined') {
+                value = 'delete';
+                event.target.name = '删除';
             }
 
             // 表达式
             // expression = content.innerHTML;
             // console.log(value, typeof (value))
             switch (value) {
-                case ".":
-                    // if (content_text.charAt(0) == "0") {
-                    content.innerHTML = content_text + value;
-                    result.innerHTML = content.innerHTML;
-                    // }
-                    break;
+
                 case "delete":
                     // 字符串分割 点击删除 删去最后一位
-                    content.innerHTML = content_text.substring(0, content_text.length - 1);
+                    content.innerHTML = content.innerHTML.substring(0, content.innerHTML.length - 1);
                     // result.innerHTML = result_text.substring(0, result_text.length - 1);
                     break;
                 // 清空
                 case "clear":
+                    // 输入输出置为0
                     content.innerHTML = 0;
                     result.innerHTML = 0;
                     break;
                 case "=":
+                    // 计算结果
                     result.innerHTML = content_text
                     content.innerHTML = '';
                     try {
@@ -255,32 +258,28 @@
         var value = event.target.innerHTML;
         var content_text = content.innerHTML;
         var result_text = result.innerHTML;
+
         // 判断计算的结果是否有内容，如果有内容并且输入了运算符后则作为输入进行下一步计算
+        console.log(event.target.className);
         if (event.target.className.split(" ")[2] == "operator") {
             if (content_text.charAt(0) == '0') {
                 content.innerHTML += result.innerHTML;
             } else {
+                // content.innerHTML = value;
                 content.innerHTML = result.innerHTML;
             }
-
+            // content.innerHTML = result.innerHTML;
         }
-        // 如果点击到的位置不对，则不做任何操作
-        // if (typeof (value) != "undefined" && typeof (content_text) != "undefined" && typeof (result_text) != "undefined") {
         content.innerHTML += value;
         expression = content.innerHTML;
+        console.log(expression);
         // 计算的结果
         try { // 异常处理  如果表达式中无法计算，表达式错误的则写入错误代码
-            // 判断表达式中末尾是否是数字或特殊字符
             // if (expression.charAt(expression.length - 1) >= 0 || expression.charAt(expression.length - 1) == ')') {
             result.innerHTML = eval(expression.substring(0, expression.length));
-            // content.innerHTML = result.innerHTML;
-            // } else {
-            // result.innerHTML = 0;
-            // }
         } catch (error) {
             result.innerHTML = "";
         }
-        // result.innerHTML += value;
     }
 
     // 语音播报模块
@@ -289,7 +288,11 @@
         // 语音播放模块
         var utterance = new SpeechSynthesisUtterance();
         if (value == '=') {
-            utterance.text = text + result.innerHTML;
+            if (result.innerHTML == "语法错误") {
+                utterance.text = result.innerHTML;
+            } else {
+                utterance.text = text + result.innerHTML;
+            }
         } else {
             utterance.text = text;
         }
