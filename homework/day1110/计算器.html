@@ -157,7 +157,7 @@
                     </div>
                     <!-- 矩形 -->
                     <div class="shape " value="delete">
-                        <span class="x">x</span>
+                        <span class="x" value="delete">x</span>
                     </div>
                 </button>
                 <button class="button add operator" value="+" name="加">+</button>
@@ -203,6 +203,11 @@
             }
             if (result_text.charAt(0) == 0) {
                 result.innerHTML = "";
+            }
+            // 解决点击删除按钮span内的部分出现undefined情况
+            if (typeof (value) == 'undefined') {
+                value = 'delete';
+                event.target.name = '删除';
             }
 
             // 表达式
