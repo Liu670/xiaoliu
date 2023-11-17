@@ -144,7 +144,8 @@
         <div class="counter">
             <!-- 显示区域 -->
             <div class="show">
-                <div class="content" contenteditable>0</div>
+                <!-- 输入内容禁止换行 -->
+                <div class="content" contenteditable style="overflow:hidden"></div>
                 <div class="result">0</div>
             </div>
             <!-- 按键区域 4*5 20个按键-->
@@ -188,6 +189,7 @@
     var buttons = document.querySelectorAll(".button");
     var content = document.querySelector(".content");
     var result = document.querySelector(".result");
+    var flag = true;// 是否初始化  true为初始化
     for (var button of buttons) {
         // 监听鼠标点击事件，获取每个按钮内容
         button.addEventListener('click', function (event) {
@@ -201,7 +203,8 @@
             if (content_text.charAt(0) == 0 && content_text.charAt(1) != '.') {
                 content.innerHTML = "";
             }
-            if (result_text.charAt(0) == 0) {
+            // 输出结果首位为0，置空    
+            if (flag && result_text.charAt(0) == 0) {
                 result.innerHTML = "";
             }
             // 解决点击删除按钮span内的部分出现undefined情况
@@ -231,6 +234,8 @@
                     result.innerHTML = 0;
                     break;
                 case "=":
+                    flag = false;
+
                     result.innerHTML = content_text
                     content.innerHTML = '';
                     try {
@@ -308,11 +313,22 @@
 
 
     // 监听键盘事件
-
     document.onkeydown = function (event) {
         var text = document.querySelector(".content").textContent;
-        console.log(text);
-        console.log("按下:" + event.key + "键:" + event.keyCode);
+        try {
+            var v = eval(text);
+            // console.log(event, key)
+            if (event.keyCode == '13') {
+                result.innerHTML = v;
+                content.innerHTML = '';
+
+            }
+        } catch (error) {
+            result.innerHTML = "语法错误";
+        }
+        // 获取键盘输入的值
+        // result.innerHTML = eval(text);
+        // console.log("按下:" + event.key + "键:" + event.keyCode);
     }
 
 </script>
