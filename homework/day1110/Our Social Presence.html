@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Social Presence</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .box>header {
+            width: 100%;
+            height: 30%;
+            background-color: #fee48a;
+            font-weight: bolder;
+            font-size: 5em;
+            text-align: center;
+            line-height: 25vh;
+        }
+
+        .box>footer {
+            width: 100vw;
+            height: 70vh;
+            background-color: #f3f3f3;
+        }
+
+        .box>footer ul {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .box>footer>ul>li {
+            display: grid;
+            grid-row-gap: 3vh;
+            width: 25%;
+            /* height: 100%; */
+            list-style: none;
+            /* display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: auto auto auto; */
+            text-align: center;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .box>footer>ul>li>img {
+            width: 200px;
+            /* height: 100px; */
+        }
+
+        footer .p1 {
+            font-size: 30px;
+        }
+
+        footer .p2 {
+            font-size: 50px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <header>Our Social Presence</header>
+        <footer>
+            <ul>
+                <li>
+                    <img
+                        src="https://img0.baidu.com/it/u=177641310,4066898959&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <p class="p1">Subscribers</p>
+                    <p class="p2" id="num1">21035</p>
+                </li>
+                <li>
+                    <img
+                        src="https://img0.baidu.com/it/u=1426697609,3835331259&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <p class="p1">Followers</p>
+                    <p class="p2" id="num2">8025</p>
+                </li>
+                <li>
+                    <img
+                        src="https://img2.baidu.com/it/u=2898752392,4271988464&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <p class="p1">Likes</p>
+                    <p class="p2" id="num3">125312</p>
+                </li>
+                <li>
+                    <img
+                        src="https://img1.baidu.com/it/u=4288036179,1055553030&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500">
+                    <p class="p1">Connections</p>
+                    <p class="p2" id="num4">625</p>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</body>
+
+</html>
+<!-- 参考csdn一篇博文 -->
+<!-- https://blog.csdn.net/qq2942713658/article/details/117520462?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-117520462-blog-125297264.235^v38^pc_relevant_sort_base1&spm=1001.2101.3001.4242.2&utm_relevant_index=4 -->
+<script src="https://cdn.bootcss.com/countup.js/1.9.3/countUp.js"></script>
+
+<script>
+    var nums = document.querySelectorAll(".p2");
+    var options = {
+        useEasing: true, // 使用缓和
+        useGrouping: true, // 使用分组(是否显示千位分隔符,一般为 true)
+        separator: ',', // 分隔器(千位分隔符,默认为',')
+        decimal: '.', // 十进制(小数点符号,默认为 '.')
+        prefix: '', // 字首(数字的前缀,根据需要可设为 $,¥,￥ 等)
+        suffix: ''  // 后缀(数字的后缀 ,根据需要可设为 元,个,美元 等) 
+    };
+
+    // CountUp(参数一, 参数二, 参数三, 参数四, 参数五, 参数六)
+    // 参数一: 数字所在容器
+    // 参数二: 数字开始增长前的默认值(起始值),一般从 0 开始增长
+    // 参数三: 数字增长后的最终值,该值一般通过异步请求获取
+    // 参数四: 数字小数点后保留的位数
+    // 参数五: 数字增长特效的时间,此处为3秒
+    // 参数六: 其他配置项
+    // 注: 参数六也可不加,其配置项则为默认值
+    // for (var i = 0; i < nums[0].textContent; i++) {
+    //     nums[i].innerHTML = i;
+    //     console.log(i);
+    //     // new CountUp(nums[i].id, 0, nums[i].textContent, 0, options).start();
+    // }
+    function NumAutoPlusAnimation(baseNumber, finalNum) {
+
+        var initial = 0;
+        var timer = setInterval(() => {
+            nums[0].innerHTML = initial;
+            // initial++;
+            if (initial++ >= finalNum) {
+                clearInterval(timer);
+                timer = null;
+            }
+        }, 30);
+    }
+    NumAutoPlusAnimation(0, 10);
+
+
+</script>
