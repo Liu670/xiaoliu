@@ -105,10 +105,40 @@
 </body>
 
 </html>
+<!-- 原生js实现数字变化  使用定时器 -->
+<script>
+    // 原生js实现
+    // 找到数字所在元素位置
+    var nums = document.querySelectorAll(".p2");
+    // 获取随机值，用于改变变化速度
+    // var random = 300;
+    // 用于控制速度     值越小，速度越快，speed不能大于nums里的数值，否则为0
+    var speed = 200;
+
+    function NumAutoPlusAnimation(p2, ceil) {
+        var count = 0;
+        var timer = setInterval(() => {
+            p2.innerHTML = count;
+            //speed不能大于nums里的数值，如果大于里，就等于nums值，即迭代+1
+            count = count + Math.floor(ceil / (speed > ceil ? ceil : speed));
+            if (count >= ceil) {
+                clearInterval(timer);
+                timer = null;
+                p2.innerHTML = ceil;
+            }
+        }, 10);
+    }
+    for (var i = 0; i < nums.length; i++) {
+        NumAutoPlusAnimation(nums[i], nums[i].textContent);
+    }
+
+
+
+</script>
+
 <!-- 参考csdn一篇博文 -->
 <!-- https://blog.csdn.net/qq2942713658/article/details/117520462?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-117520462-blog-125297264.235^v38^pc_relevant_sort_base1&spm=1001.2101.3001.4242.2&utm_relevant_index=4 -->
 <script src="https://cdn.bootcss.com/countup.js/1.9.3/countUp.js"></script>
-
 <script>
     var nums = document.querySelectorAll(".p2");
     var options = {
@@ -133,19 +163,5 @@
     //     console.log(i);
     //     // new CountUp(nums[i].id, 0, nums[i].textContent, 0, options).start();
     // }
-    function NumAutoPlusAnimation(baseNumber, finalNum) {
-
-        var initial = 0;
-        var timer = setInterval(() => {
-            nums[0].innerHTML = initial;
-            // initial++;
-            if (initial++ >= finalNum) {
-                clearInterval(timer);
-                timer = null;
-            }
-        }, 30);
-    }
-    NumAutoPlusAnimation(0, 10);
-
 
 </script>
