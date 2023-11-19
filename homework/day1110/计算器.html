@@ -318,10 +318,10 @@
         try {
             var v = eval(text);
             // console.log(event, key)
+            // 13 回车键
             if (event.keyCode == '13') {
                 result.innerHTML = v;
                 content.innerHTML = '';
-
             }
         } catch (error) {
             result.innerHTML = "语法错误";
