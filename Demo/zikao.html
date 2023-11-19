@@ -60,7 +60,7 @@
         }
     }
 
-    url = `https://sdata.jseea.cn/tpl_front/score/allScoreList.html/?zkzh=${number}&ksmx=${name}`;
+    url = `https://sdata.jseea.cn/tpl_front/score/allScoreList.html/?zkzh=${number}&ksmx=0${name}`;
     button = document.getElementById("submit");
     document.getElementById("submit").addEventListener("click", function () {
         window.location = url;
@@ -73,7 +73,7 @@
         // console.log(value1, value2)//输出
         for (var i = 0; i < arr.length; i++) {
             if (arr[i][1] == value) {
-                show.innerHTML = "你的准考证号是：" + arr[i][2]
+                show.innerHTML = "你的准考证号是：" + `${arr[i][2]}`;
                 return;
             } else {
                 show.innerHTML = '';
