@@ -22,8 +22,9 @@
 
 <body>
     <div class="box">
-        <h1 style=>考 试 成 绩 查 询 系 统 </h1>
+        <h1 style>考 试 成 绩 查 询 系 统 </h1>
         姓名：<input type=" text" id="name">
+        <!-- <a href="#">123</a> -->
         <input type="submit" id="submit" value="立即查询"><br>
         <div>
             <p id="show"></p>
@@ -73,6 +74,8 @@
         document.getElementById("submit").addEventListener("click", function () {
             window.open(url);
         });;
+        // document.querySelector("a").href = url
+
     }
 
 

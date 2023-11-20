@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        header {
+            width: 100vw;
+            height: 20vh;
+            background-color: #030303;
+        }
+
+        footer {
+            width: 100vw;
+            height: 1vh;
+            background-color: #0f0303;
+
+        }
+
+        .box {
+
+            width: 100vw;
+            height: 80vh;
+            /* background-color: #333d4f; */
+            background-image: url("https://www.dpm.org.cn/Public/static/themes/image/bo/bg17.jpg");
+            background-repeat: no-repeat;
+
+        }
+
+        .main {
+            width: 40vw;
+            height: 50vh;
+            background-color: transparent;
+            margin: 0 auto;
+            margin-bottom: 20%;
+        }
+
+        .title {
+            display: flex;
+            color: #fff;
+        }
+
+        .title>h3 {
+            display: inline-block;
+            width: 32%;
+            height: 50px;
+            text-align: center;
+            line-height: 230%;
+            border: 1px solid black;
+            position: relative;
+            left: 18%;
+
+        }
+
+        .title>h3:hover {
+            background-color: grey;
+            cursor: pointer;
+        }
+
+        /* 用户输入框 */
+        .login {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .main input {
+            width: 60%;
+            height: 10%;
+            padding-left: 3%;
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+            border: 1px solid grey;
+            color: #fff;
+            background-color: transparent;
+
+        }
+
+        .main input:focus {
+            outline: none;
+        }
+
+        .main input::placeholder {
+            color: #fff;
+        }
+
+
+        .login input:nth-child(3) {
+            /* display: inline-block; */
+            width: 40%;
+            margin-left: 18%;
+        }
+
+        /* 验证码 */
+        .login input:nth-child(3)~.code {
+            width: 100px;
+            height: 35px;
+            background-color: transparent;
+            position: relative;
+            left: 64%;
+            bottom: 10%;
+            border: 1px solid grey;
+
+        }
+
+        /* 登录按钮 */
+        .login {
+            text-align: center;
+
+        }
+
+        /* 登录按钮 */
+        .login button {
+            width: 150px;
+            height: 30px;
+            font-size: 18px;
+            color: white;
+            background-color: transparent;
+            border: 1px solid #fff;
+            /* margin-top: 20px; */
+        }
+
+        .login button:hover {
+            cursor: pointer;
+        }
+
+        /* 忘记密码 */
+        .login .forget {
+            text-decoration: none;
+            color: white;
+            position: relative;
+            left: 12%;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+
+    <div class="box">
+        <!-- 头部 -->
+        <div class="main">
+            <div class="title">
+                <h3 class="loginTitle">我是会员</h3>
+                <h3 class="regTitle">还未注册</h3>
+            </div>
+            <!-- 登录模块 -->
+            <div class="login">
+                <input class="user" type="text" name="" placeholder="账号">
+                <input class="pwd" type="password" placeholder="密码">
+                <input type="text" class="code" placeholder="验证码">
+                <div class="code codeDiv" style="cursor: pointer"></div>
+                <div class="loginButton" style="display: inline-block;margin-left: 10px;cursor: pointer;">
+                    <span style="color: #fff;position: relative;left: 35%;top: -13px;">登录</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="158" height="40" style="left: 0px;">
+                        <desc>Created with Raphaël</desc>
+                        <defs></defs>
+                        <path fill="none" stroke="#dcdcdc"
+                            d="M0,5L5,5L5,0L153,0L153,5L158,5L158,35L153,35L153,40L5,40L5,35L0,35L0,5"
+                            style="stroke-width: 2px; stroke-dashoffset: 0px; stroke-dasharray: 500px, 500px;"
+                            stroke-width="2" stroke-dasharray="1000,1000"></path>
+                    </svg>
+                    <a class="forget" href="#">忘记密码？</a>
+
+                </div>
+                <!-- <button class="submit" value="登录">登录</button> -->
+            </div>
+            <!-- 注册 -->
+            <div class="reg" style="display: none;">
+                <input class="user" type="text" name="" placeholder="账号">
+                <input class="pwd" type="password" placeholder="密码">
+                <input type="text" class="code" placeholder="验证码">
+                <div class="code"></div>
+                <div class="loginButton" style="display: inline-block;margin-left: 10px;cursor: pointer;">
+                    <span style="color: #fff;position: relative;left: 35%;top: -13px;">登录</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="158" height="40" style="left: 0px;">
+                        <desc>Created with Raphaël</desc>
+                        <defs></defs>
+                        <path fill="none" stroke="#dcdcdc"
+                            d="M0,5L5,5L5,0L153,0L153,5L158,5L158,35L153,35L153,40L5,40L5,35L0,35L0,5"
+                            style="stroke-width: 2px; stroke-dashoffset: 0px; stroke-dasharray: 500px, 500px;"
+                            stroke-width="2" stroke-dasharray="1000,1000"></path>
+                    </svg>
+                    <a class="forget" href="#">忘记密码？</a>
+
+                </div>
+            </div>
+        </div>
+        <!-- 尾部 -->
+    </div>
+    <footer>
+    </footer>
+</body>
+
+</html>
+<script>
+    var logButton = document.querySelector(".loginTitle");
+    var regButton = document.querySelector(".regTitle");
+    var loginDiv = document.querySelector(".login");
+    var regDiv = document.querySelector(".reg");
+    logButton.addEventListener('click', function () {
+        regDiv.style.display = "none";
+        loginDiv.style.display = "block";
+        logButton.style.backgroundColor = "grey";
+        regButton.style.backgroundColor = "";
+    });
+    regButton.addEventListener('click', function () {
+        regDiv.style.display = "block";
+        loginDiv.style.display = "none";
+        logButton.style.backgroundColor = "";
+        regButton.style.backgroundColor = "grey";
+    });
+
+    // 随机验证码和颜色，位置
+    function getCode() {
+
+    }
+    // 随机颜色
+    function randomColors() {
+
+        return `rgb(${randomOneColor()},${randomOneColor()},${randomOneColor()})`
+    }
+    function randomOneColor() {
+        return parseInt(Math.random() * 206 + 50);
+    }
+    // 随机位置
+    var codeDiv = document.querySelector(".codeDiv");
+
+    function getW() {
+        width1 = codeDiv.offsetWidth;
+        w = width1 * Math.random();
+        return w;
+    }
+    function getH() {
+        height1 = codeDiv.offsetHeight;
+        h = height1 * Math.random();
+        return h;
+    }
+
+    function getRandom() {
+        return parseInt(Math.random() * 10)
+    }
+    function getColor() {
+        return randomColors();
+    }
+    var codes = ""
+    function getCodeNum() {
+        codeDiv.innerHTML = ''
+        for (var i = 0; i < 4; i++) {
+            n = getRandom();
+            codes += n;
+            codeDiv.innerHTML += `<span style="color:${getColor()};position: relative;right:${getRandom()}px;font-size:${10 + getRandom() * 2}px">${n}</span>`;
+        }
+    }
+    codeDiv.addEventListener('click', function () {
+        getCodeNum();
+    });
+    getCodeNum();
+</script>

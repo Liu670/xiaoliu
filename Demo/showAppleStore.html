@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <title>AppleStore.csv数据展示</title>
+</head>
+<style>
+    .tableCls,
+    .tableCls td {
+        border: 1px solid rgb(22, 129, 36);
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    #pagination {
+        text-align: center;
+        margin: 10px;
+    }
+
+    #table {
+        width: auto;
+        margin: auto;
+        border: 1px solid rgb(22, 129, 36);
+        text-align: center;
+    }
+
+    #table th {
+        height: auto;
+        border: 1px solid rgb(22, 129, 36);
+        text-align: center;
+    }
+
+    #table td {
+        height: auto;
+        border: 1px solid rgb(22, 129, 36);
+        text-align: center;
+    }
+
+    #title {
+        text-align: center;
+    }
+
+    button {
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 0 0 10px rgb(21, 146, 10);
+    }
+
+    #searchPage {
+        padding: 10px;
+        margin: 10px;
+        width: 30px;
+        box-shadow: 0 0 5px rgb(21, 146, 10);
+    }
+</style>
+
+<body>
+    <div id="title">
+        <h2>AppleStore.csv数据展示</h2>
+    </div>
+    <table id="table">
+        <thead>
+            <th>序号</th>
+            <th>id</th>
+            <th>track_name</th>
+            <th>size_bytes</th>
+            <th>currency</th>
+            <th>price</th>
+            <th>currency</th>
+            <th>rating_count_tot</th>
+            <th>user_rating</th>
+            <th>user_rating_ver</th>
+            <th>ver</th>
+            <th>cont_rating</th>
+            <th>prime_genre</th>
+            <th>sup_devices.num</th>
+            <th>ipadSc_urls.num</th>
+            <th>lang.num</th>
+            <th>vpp_lic</th>
+        </thead>
+        <tbody id="tdbody">
+
+        </tbody>
+
+
+
+    </table>
+
+    <div id="pagination">
+        <button id="prev">《</button>
+        <button id="firstpageBtn">1</button>
+        <button id="currentBtn">1</button>
+        <button id="secondBtn">2</button>
+        <button id="thirdBtn">3</button>
+        <b>...</b>
+        <button id="next">》</button>
+        <d>跳转到<input id="searchPage">
+            <d>页</d></input>
+        </d>
+        <button id="actionBtn">跳转</button>
+        <d id="showtotalpage">总页数：</d>
+    </div class>
+    <script>
+
+        var totalPage;
+        var currentPage = 1;
+
+        function main() {
+            getdata(currentPage);
+        }
+        main();
+
+
+        /*
+        从服务器获取数据 
+         */
+        function getdata(pageNum) {
+            $.ajax({
+                url: "http://127.0.0.1:81/Python/scoreSpider/exam/",//后台请求的数据
+                data: {
+                    pageNum: pageNum //请求获取数据的页数 如获取第三页数据 pageNum=3
+                },
+                dataType: 'json', //数据格式
+                type: "get",//请求方式
+                success: function (data) {
+                    //推荐这种方式
+                    var dataStr = JSON.stringify(data);
+                    data = $.parseJSON(dataStr);
+                    totalPage = data.totalPage;
+                    writeFrom(data);
+                    changePageText();
+                },
+                error: function (arg1) {
+                    alert("加载数据失败");
+                    console.log(arg1);
+                }
+            })
+        }
+        //将数据写入表格
+        function writeFrom(data) {
+            var tbody = document.getElementById('tdbody');
+            var mytable = document.getElementById('table');
+            var columm = mytable.rows[0].cells.length;//获取表头列数
+
+            var rowStr = "";  //行的字符串的代码
+            var k = 1;
+            for (var j = 0; j < data.data.length; j++) {
+                var tdStr = "";
+                for (var i = 0; i < columm - 1; i++) {
+                    if (i == 0) {
+                        tdStr += "<td>" + k + "</td>";
+                    }
+                    tdStr += "<td>" + data.data[j][i] + "</td>";
+                }
+                k++;
+                rowStr = rowStr + tdStr + "</tr>";
+            }
+            tbody.innerHTML = rowStr;
+        }
+
+        //绑定向前翻页事件
+        prev.onclick = function () {
+            if (currentPage > 1) {
+                currentPage--;
+                getdata(currentPage);
+                changePageText();
+            } else {
+                alert('当前为第一页！')
+            }
+        }
+
+        currentBtn.onclick = function () {
+
+            alert("显示页为当前页");
+
+        }
+        secondBtn.onclick = function () {
+            var st = document.getElementById('secondBtn').textContent;
+            currentPage = parseInt(st);
+            getdata(st);
+        }
+        thirdBtn.onclick = function () {
+            var st = document.getElementById('thirdBtn').textContent;
+            currentPage = parseInt(st);
+            getdata(st);
+        }
+
+        //绑定向后翻页事件
+        next.onclick = function () {
+            console.log("总页数:" + totalPage);
+            if (currentPage <= totalPage) {
+                currentPage++;
+                getdata(currentPage);
+                changePageText();
+            } else {
+                alert('当前为最后一页！')
+            }
+        }
+        firstpageBtn.onclick = function () {
+            currentPage = 1;
+            getdata(currentPage);
+            changePageText();
+        }
+        //输入框跳转特定页
+        actionBtn.onclick = function () {
+            var st = document.getElementById('searchPage').value;
+            st = parseInt(st);
+            if (st > 0 && st < totalPage + 1) {
+                currentPage = st;
+                getdata(currentPage);
+                changePageText();
+            } else {
+                alert("此页不存在");
+            }
+
+        }
+        //更改页标显示  
+        function changePageText() {
+            var isShowfirst = document.getElementById("firstpageBtn");
+            var isShowsecond = document.getElementById("secondBtn");
+            var isShowthird = document.getElementById("thirdBtn");
+
+            if (currentPage > 0 && currentPage < totalPage + 1) {
+                $('#currentBtn').text(currentPage);
+                $('#showtotalpage').text("总页数：" + totalPage);
+                document.getElementById('currentBtn').style.color = '#ff3333';
+                $('#secondBtn').text(currentPage + 1);
+                $('#thirdBtn').text(currentPage + 2);
+                if (currentPage == 1) {
+                    isShowfirst.style.display = "none"
+                    isShowsecond.style.display = "inline-block";
+                    isShowthird.style.display = "inline-block";
+                }
+                else if (currentPage == totalPage) {
+                    isShowfirst.style.display = "inline-block";
+                    isShowsecond.style.display = "none";
+                    isShowthird.style.display = "none";
+                }
+                else if (currentPage == totalPage - 1) {
+                    isShowfirst.style.display = "inline-block";
+                    isShowsecond.style.display = "inline-block";
+                    isShowthird.style.display = "none";
+                } else {
+                    isShowfirst.style.display = "inline-block";
+                    isShowsecond.style.display = "inline-block";
+                    isShowthird.style.display = "inline-block";
+                }
+            } else {
+                alert("不存在此页");
+            }
+
+        }
+        $(document).ready(function () {
+            $('searchPage').keydown(function (event) {
+                if (event.keyCode = 13) {
+                    alert(document.getElementById('searchPage').textContent);
+                    alert('sss');
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
