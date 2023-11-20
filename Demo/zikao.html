@@ -51,8 +51,9 @@
     readTextFile("zkz.json");
     arr = obj.data;
     // var name = "刘金林";
-    var number = getStuNo();
-    function getStuNo() {
+    // var name = document.getElementById("")
+    // var number = getStuNo(name);
+    function getStuNo(name) {
         for (var i = 0; i < arr.length; i++) {
             if (arr[i][1] == name) {
                 return arr[i][2];
@@ -69,6 +70,8 @@
     let show = document.getElementById("show");
     let inputChange1 = document.getElementById("name")//获取inputDom
     inputChange1.oninput = function () {//监听输入事件
+        let name = this.value;
+        let arr = getStuNo(name);
         let value = this.value//拿到输入的值
         // console.log(value1, value2)//输出
         for (var i = 0; i < arr.length; i++) {
