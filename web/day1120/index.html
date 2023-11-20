@@ -14,8 +14,15 @@
 </html>
 
 <script>
-    let element = document.createElement("p");
-    element.innerHTML = "Hello";
-    element.style = "color:red;backgroundColor:blue";
+    (() => {
+        document.body.innerHTML =
+            `
+        <button onclick="addPara();">添加新段落</button>
+        <button onclick="addDiv();">添加新Div</button>
+        `
+    })
+    let element = document.createElement("button");
+    element.innerHTML = "添加新div";
+    element.onclick = "addPara";
     document.body.appendChild(element)
 </script>
