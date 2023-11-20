@@ -8,17 +8,18 @@
 </head>
 
 <body>
-    <div class="box" style=""></div>
+    <div class="box" style="width: 400px;height: 400px;"></div>
 </body>
 
 </html>
 <script>
-    var random = parent(Math.random() * 256);
+    function getColor() {
+        return parseInt(Math.random() * 256)
+    }
     var box = document.querySelector('.box');
-    box.style.width = "400px";
-    box.style.height = "400px";
-    box.style.backgroundColor = red;
     setInterval(function () {
-
+        box.style.backgroundColor = `rgb(${getColor()},${getColor()},${getColor()})`;
+        box.style.width = `${getColor()}px`;
+        box.style.height = `${getColor()}px`;
     }, 500);
 </script>
