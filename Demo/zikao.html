@@ -60,7 +60,7 @@
             }
         }
     }
-
+    var number;
     url = `https://sdata.jseea.cn/tpl_front/score/allScoreList.html/?zkzh=0${number}&ksmx=${name}`;
     button = document.getElementById("submit");
     document.getElementById("submit").addEventListener("click", function () {
@@ -71,7 +71,7 @@
     let inputChange1 = document.getElementById("name")//获取inputDom
     inputChange1.oninput = function () {//监听输入事件
         let name = this.value;
-        let number = getStuNo(name);
+        number = getStuNo(name);
         let value = this.value//拿到输入的值
         // console.log(value1, value2)//输出
         for (var i = 0; i < arr.length; i++) {
