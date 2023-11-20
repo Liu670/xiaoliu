@@ -60,12 +60,22 @@
             }
         }
     }
-    var number;
-    url = `https://sdata.jseea.cn/tpl_front/score/allScoreList.html/?zkzh=0${number}&ksmx=${name}`;
-    button = document.getElementById("submit");
-    document.getElementById("submit").addEventListener("click", function () {
-        window.location = url;
-    });;
+    // var number;
+    // url = `https://sdata.jseea.cn/tpl_front/score/allScoreList.html/?zkzh=0${number}&ksmx=${name}`;
+    // button = document.getElementById("submit");
+    // document.getElementById("submit").addEventListener("click", function () {
+    //     window.location = url;
+    // });;
+
+    function click(name, number) {
+        url = `https://sdata.jseea.cn/tpl_front/score/allScoreList.html/?zkzh=0${number}&ksmx=${name}`;
+        button = document.getElementById("submit");
+        document.getElementById("submit").addEventListener("click", function () {
+            window.location = url;
+        });;
+    }
+
+
 
     let show = document.getElementById("show");
     let inputChange1 = document.getElementById("name")//获取inputDom
@@ -77,6 +87,7 @@
         for (var i = 0; i < arr.length; i++) {
             if (arr[i][1] == value) {
                 show.innerHTML = "你的准考证号是：" + `0${arr[i][2]}`;
+                click(name, number);
                 return;
             } else {
                 show.innerHTML = '';
