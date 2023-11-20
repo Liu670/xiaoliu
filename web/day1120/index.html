@@ -8,21 +8,38 @@
 </head>
 
 <body>
-
+    <div class="box"></div>
 </body>
 
 </html>
 
 <script>
+    box = document.querySelector(".box");
+
     (() => {
-        document.body.innerHTML =
-            `
+        box.innerHTML =
+            `        
         <button onclick="addPara();">添加新段落</button>
-        <button onclick="addDiv();">添加新Div</button>
+        <button onclick="addDiv();">添加新Div</button><br/>
         `
-    })
-    let element = document.createElement("button");
-    element.innerHTML = "添加新div";
-    element.onclick = "addPara";
-    document.body.appendChild(element)
+    })();
+    function addPara() {
+        p = document.createElement("p");
+        p.innerHTML = "这是p段落";
+        p.style.display = 'inline-block'
+        box.appendChild(p);
+    }
+    function addDiv() {
+        div = document.createElement("div");
+        div.style.width = "100px";
+        div.style.height = "100px";
+        div.style.display = 'inline-block'
+        div.style.backgroundColor = `rgb(${getOneColor()},${getOneColor()},${getOneColor()})`;
+        box.appendChild(div);
+
+    }
+
+    function getOneColor() {
+        return parseInt((Math.random() * 256))
+    }
 </script>

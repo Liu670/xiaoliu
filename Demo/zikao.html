@@ -68,7 +68,7 @@
     // });;
 
     function click(name, number) {
-        url = `https://sdata.jseea.cn/tpl_front/score/allScoreList.html/?zkzh=0${number}&ksmx=${name}`;
+        url = `https://sdata.jseea.cn/tpl_front/score/allScoreList.html?zkzh=0${number}&ksmx=${name}`;
         button = document.getElementById("submit");
         document.getElementById("submit").addEventListener("click", function () {
             window.open(url);
