@@ -35,7 +35,6 @@
             /* background-color: #333d4f; */
             background-image: url("https://www.dpm.org.cn/Public/static/themes/image/bo/bg17.jpg");
             background-repeat: no-repeat;
-
         }
 
         .main {
@@ -261,6 +260,7 @@
         for (var i = 0; i < 4; i++) {
             n = getRandom();
             codes += n;
+
             codeDiv.innerHTML += `<span style="color:${getColor()};position: relative;right:${getRandom()}px;font-size:${10 + getRandom() * 2}px">${n}</span>`;
         }
     }

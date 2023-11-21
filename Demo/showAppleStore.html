@@ -39,6 +39,8 @@
             width: 90%;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/gh/zh-lx/pinyin-pro@latest/dist/pinyin-pro.js"></script>
+
 </head>
 
 <body>
@@ -3365,6 +3367,7 @@
         onSearch(txtsearch.value.trim(), 2);
     }
     function onSearch(searchContent, col) {
+        inputEng = CNtoEN(searchContent).split(" ").join("");
         setTimeout(function () {//因为是即时查询，需要用setTimeout进行延迟，让值写入到input内，再读取  
             thead_html = document.getElementsByTagName("thead")[0].outerHTML
             var storeId = document.getElementsByTagName('table')[0];//获取table的id标识  //获取table的id标识  
@@ -3378,7 +3381,7 @@
             for (var i = 1; i < rowsLength; i++) {//按表的行数进行循环，本例第一行是标题，所以i=1，从第二行开始筛选（从0数起）  
                 try {
                     var searchText = storeId.rows[i].cells[searchCol].innerHTML.trim();//取得table行，列的值  
-                    if (searchText.match(searchContent) || searchText.toUpperCase().match(searchContent.toUpperCase())) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，  
+                    if (CNtoEN((searchText).split(" ").join("")).match(inputEng) || searchText.match(searchContent) || searchText.toUpperCase().match(searchContent.toUpperCase())) {//用match函数进行筛选，如果input的值，即变量 key的值为空，返回的是ture，  
                         flag = true;
                         storeId.rows[i].style.display = '';//显示行操作，  
                     } else {
@@ -3401,7 +3404,16 @@
             //     }  
             // }
         }, 20);//20为延时时间  
-    }   
+    }
+
+    // 将姓名中文转为英文字符
+    function CNtoEN(text) {
+        var { pinyin } = pinyinPro;
+        var eng = pinyin(text, { toneType: 'none' });
+        return eng;
+    }
+
 </script>
+
 
 </html>
