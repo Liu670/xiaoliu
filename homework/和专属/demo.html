@@ -6,15 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<script src="http://liu.ihong.love:81/file/html/js/jquery-3.7.1.js"></script>
 
 <body>
-    <div id="test" onclick="demo()" style="background-color:red ;">点我</div>
+    <form id="myForm">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="age">Age: </label>
+        <input type="number" id="age" name="age"><br><br>
+        <label for="city">City: </label>
+        <input type="text" id="city" name="city"><br><br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 
 </html>
 <script>
-    function demo() {
-        alert(1)
-    }
+    $("#myForm").submit(function (event) {
+        event.preventDefault(); // 阻止表单的默认提交行为
+
+        // 从表单中获取值
+        var name = $("#name").val();
+        var age = $("#age").val();
+        var city = $("#city").val();
+
+        // 创建JSON对象
+        var data = {
+            "name": name,
+            "age": age,
+            "city": city
+        };
+
+        // 将JSON对象写入文件
+        $.ajax({
+            type: "get",
+            url: "http://127.0.0.1:81/homework/和专属/1.json", // 这里需要指定服务器端处理文件的URL
+            // data: JSON.stringify(data),
+            data: data,
+            // contentType: "application/json",
+            success: function () {
+                alert("Data saved successfully!");
+            },
+            error: function () {
+                alert("Error occurred while saving data.");
+            }
+        });
+    });
 
 </script>
