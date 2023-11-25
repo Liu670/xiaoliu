@@ -2,7 +2,7 @@
  * @Author: xiaoliu 2558949748@qq.com
  * @Date: 2023-11-25 08:04:48
  * @LastEditors: xiaoliu
- * @LastEditTime: 2023-11-26 01:15:41
+ * @LastEditTime: 2023-11-26 02:16:05
  * @FilePath: /code/homework/day1124/login.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -300,7 +300,7 @@
             }
 
             /* 登录框 */
-            button {
+            .login-box>button {
                 width: 150px;
                 height: 40px;
                 background-color: #1dc797;
@@ -313,7 +313,7 @@
                 transition: .3s;
             }
 
-            button:hover {
+            .login-box>button:hover {
                 letter-spacing: 25px;
                 text-indent: 25px;
                 cursor: pointer;
@@ -322,7 +322,22 @@
 
             /* 登录框向上举 */
             .up {
-                transform: translate(-50%, -180px);
+                transform: translate(-50%, -110px);
+            }
+
+            /* 查看密码 */
+            .show {
+                position: absolute;
+                top: 10px;
+                left: 290px;
+                border: none;
+                outline: none;
+            }
+
+            .show:hover {
+                cursor: pointer;
+                background-color: #2fa080;
+
             }
         </style>
     </head>
@@ -373,8 +388,9 @@
                 <label for="">用户名</label>
             </div>
             <div class="ipt-box">
-                <input type="password" required id="password">
+                <input type="password" required id="password" class="on">
                 <label for="">密码</label>
+                <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
             </div>
             <button>登录</button>
         </div>
@@ -408,5 +424,24 @@
             top: y
         })
     })
+
+
+    // 点击眼睛显示密码
+    $('.show').click(function () {
+        $('.login-box').addClass('up');
+
+        // 如果有on的属性 则说明密码类型 不可见
+        if ($('#password').hasClass('on')) {
+            $('#password').removeClass('on');
+            $('#password').attr({ 'type': 'password' });
+            $('.show').text('>_<')
+        } else {
+            $('#password').addClass('on');
+            $('#password').attr('type', 'text');
+            $('.show').text('👀');
+            // $('show').text('^o^');
+
+        }
+    });
 
 </script>
