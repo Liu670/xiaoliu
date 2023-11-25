@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>
+
+<script>
+    box = document.querySelector(".box");
+
+    (() => {
+        box.innerHTML =
+            `        
+        <button onclick="addPara();">添加新段落</button>
+        <button onclick="addDiv();">添加新Div</button><br/>
+        `
+    })();
+    function addPara() {
+        p = document.createElement("p");
+        p.innerHTML = "这是p段落";
+        p.style.display = 'inline-block'
+        box.appendChild(p);
+    }
+    function addDiv() {
+        div = document.createElement("div");
+        div.style.width = "100px";
+        div.style.height = "100px";
+        div.style.display = 'inline-block'
+        div.style.backgroundColor = `rgb(${getOneColor()},${getOneColor()},${getOneColor()})`;
+        box.appendChild(div);
+
+    }
+
+    function getOneColor() {
+        return parseInt((Math.random() * 256))
+    }
+</script>

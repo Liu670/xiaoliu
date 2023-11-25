@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let animal = {
+        eats: true,
+      };
+      let rabbit = {
+        jumps: true,
+      };
+
+      function Rabbit(name) {
+        this.name = name;
+      }
+      Rabbit.prototype = animal; //
+      let rabbit1 = new Rabbit("White Rabbit");
+      console.log(rabbit1.eats); //true
+
+      rabbit.__proto__ = animal; // rabbit是animal的子类
+      console.log(rabbit.eats); //true
+      console.log(rabbit.jumps); //true
+    </script>
+  </body>
+</html>

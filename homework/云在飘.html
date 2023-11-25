@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云在飘</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 100vw;
+            height: 100vh;
+            background-image: url("./river.jpg");
+            /* background-color: black; */
+            background-repeat: no-repeat;
+            /* animation: move 2s; */
+        }
+
+        .box div {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .cloud1 {
+            animation: move 240s infinite;
+            background-image: url("./cloud_two.png");
+            background-repeat: no-repeat;
+        }
+
+        .cloud2 {
+            animation: move2 240s infinite;
+            background-image: url("./cloud_one.png");
+            background-repeat: no-repeat;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+
+        @keyframes move2 {
+            0% {
+                transform: translateX(-100vw);
+            }
+
+            100% {
+                transform: translateX(100vw);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 大盒子 -->
+    <div class="box">
+        <!-- 第一朵云 -->
+        <div class="cloud1">
+            <!-- 第二朵云 -->
+            <div class="cloud2"></div>
+        </div>
+    </div>
+</body>
+
+</html>

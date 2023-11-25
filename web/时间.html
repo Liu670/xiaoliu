@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>当前时间</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .main {
+            width: 100vw;
+            height: 100vh;
+            background-color: #333555;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            height: 60%;
+        }
+
+        .box div {
+            color: white;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .box .time1 {
+            font-size: 200px;
+            font-weight: 900;
+        }
+
+        .box .time2 {
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <div class="time1">
+                <span class="hour">00</span>:<span class="minute">00</span>:<span class="second">00</span>
+                <span class="AMPM">AM</span>
+            </div>
+            <div class="time2">
+                <span class="week">Friday</span>,
+                <span class="month">November</span>&nbsp; <span class="day">10</span>,
+                <span class="year">2023</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function getMonth(m) {
+        // 获取月份
+        var Month = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+        return m > 11 || m < 0 ? -1 : Month[m];
+    }
+    // 获取星期
+    function getWeek(w) {
+        var Week = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ];
+        return w > 6 || w < 0 ? -1 : Week[w];
+    }
+    // 判断上下午
+    function getAMPM(h) {
+        return h > 12 && h < 24 ? "PM" : "AM";
+    }
+
+    // 当前时间
+    setInterval(function () {
+        var now = new Date();
+
+        // 获取时间
+        var year = now.getFullYear(); //年
+        var month = getMonth(now.getMonth()); //月
+        var week = getWeek(now.getDay()); //周
+        var day = now.getDate(); // 日
+        var hour = now.getHours(); //时
+        // 分
+        var minute =
+            now.getMinutes() > 10 ? now.getMinutes() : `0${now.getMinutes()}`;
+        // 秒
+        var second =
+            now.getSeconds() > 10 ? now.getSeconds() : `0${now.getSeconds()}`;
+        // 早上 下午
+        var AMPM = getAMPM(hour);
+        console.log(minute);
+
+        // 设置时间
+        document.querySelector(".day").innerHTML = day;
+        document.querySelector(".month").innerHTML = month;
+        document.querySelector(".year").innerHTML = year;
+        document.querySelector(".week").innerHTML = week;
+        // 1-13  2-14 3-15
+        document.querySelector(".hour").innerHTML = hour > 12 ? hour - 12 : hour;
+        document.querySelector(".minute").innerHTML = minute;
+        document.querySelector(".second").innerHTML = second;
+        document.querySelector(".AMPM").innerHTML = AMPM;
+    }, 1000);
+</script>

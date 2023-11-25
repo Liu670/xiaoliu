@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .box {
+            width: 100vw;
+            height: 100vh;
+            background-color: #381017;
+
+        }
+
+        .frame {
+            position: relative;
+            top: 20%;
+            width: 50vw;
+            height: 50vh;
+            margin: 0 auto;
+            border: 1px solid #000;
+            background-color: #d8a12d;
+            text-align: center;
+            border-radius: 10px;
+            display: grid;
+            /* 行列距离 */
+            /* grid-gap: 30px; */
+        }
+
+        .frame>.title {
+            font-size: 3em;
+            font-weight: bolder;
+            color: #381017;
+            margin-top: 40px;
+        }
+
+        /* 输入框模块 */
+        .input-group {
+            margin-top: -80px;
+        }
+
+        /* 输入框 */
+        .input-group>input {
+            width: 250px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid #000;
+            font-size: 1.5em;
+            padding-left: 30px;
+            padding-right: 10px;
+        }
+
+        /* 按钮 */
+        .input-group>button {
+            width: 120px;
+            height: 50px;
+            border-radius: 10px;
+            border: 1px solid #000;
+            background-color: #5f1a28;
+            color: white;
+            position: relative;
+            top: -5px;
+            box-shadow: 0px 5px grey;
+        }
+
+        /* 按钮悬停变手型 */
+        .input-group>button:hover {
+            cursor: pointer;
+        }
+
+        /* 按钮按下的样式 */
+        .input-group>button:active {
+            background-color: #970303;
+            box-shadow: 0px 1px grey;
+            transform: translateY(2px);
+        }
+
+        /* 输出信息 默认隐藏，点击按钮显示内容 */
+        .info {
+            width: 100%;
+            height: 150%;
+            display: grid;
+            margin-top: -100px;
+            justify-items: center;
+            align-items: center;
+            visibility: hidden;
+        }
+
+        .info>div[class="born-time"] {
+            font-size: 28px;
+        }
+
+        .info>div[class="old-time"] {
+            font-size: 32px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="frame">
+            <div class="title">Age Calculator</div>
+            <!-- 输入框 -->
+            <div class="input-group">
+                <input type="date" class="time">
+                <button type="submit" value="Calculate" class="submit">Calculate</button>
+            </div>
+            <div class="info">
+                <!-- 出生时间 -->
+                <div class="born-time">You were born on
+                    <!-- <span class="week" name="星期几">Tue</span>
+                    <span class="month" name="月份">Jul</span>
+                    <span class="day" name="日">04</span>
+                    <span class="year" name="年">2023</span>. -->
+                    <span class="bornTimeInfo"></span>.
+                </div>
+                <!-- 多大 -->
+                <div class="old-time">You are
+                    <span class="years" name="年">0</span> years,
+                    <span class="months" name="月">4</span> months and
+                    <span class="days" name="日">6</span> days old.
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
+<script>
+    var time1 = document.querySelector(".time");
+    var button = document.querySelector(".submit");
+    var infoDiv = document.querySelector(".info");
+    // 出生时间
+    var timeInfo1 = document.querySelector(".bornTimeInfo");
+    // var bornTime = document.querySelector(".born-time");
+    // // Tue Jul 04 2023 星期，月份，日期，年份
+    // var bornTime_week = bornTime.querySelector(".week");
+    // var bornTime_month = bornTime.querySelector(".month");
+    // var bornTime_day = bornTime.querySelector(".day");
+    // var bornTime_year = bornTime.querySelector(".year");
+    // 多大年纪
+    var oldTime = document.querySelector(".old-time");
+    // 0years,4months,6days     年、月、日
+    var years = oldTime.querySelector(".years");
+    var months = oldTime.querySelector(".months");
+    var days = oldTime.querySelector(".days");
+    button.onclick = function () {
+        // 获取input的date时间值
+        var date = time1.value.length == 0 ? new Date() : new Date(time1.value);
+        // 默认隐藏
+        infoDiv.style.visibility = "visible";
+        // 获取出生的时间
+        // var obj = getBornTime(date);
+        getBornTime(date);
+        getOldTime(date);
+
+    }
+    // 出生时间
+    function getBornTime(date) {
+        var weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        // 获取出生年份
+        var year = date.getFullYear();
+        // 获取出生月份且输出为英文缩写
+        var month = months[date.getMonth()];
+        // 获取出生星期几，并且输出为英文缩写
+        var week = weeks[date.getDay()];
+        // 获取出生日
+        var day = date.getDate();
+        // 返回结果为 ：Tue Jul 04 2023 星期，月份，日期，年份
+        var times = `${week} ${month} ${day} ${year}`;
+        timeInfo1.innerHTML = times;
+        // return { week, month, day, year };
+    }
+    // 计算年龄
+    function getOldTime(date) {
+        // 获取当前时间
+        var now = new Date();
+        // 计算年
+        var year = now.getFullYear() - date.getFullYear();
+        // 计算月
+        var month = now.getMonth() - date.getMonth();
+        // 计算天
+        var day = now.getDay() - date.getDay();
+
+        years.innerHTML = year;
+        months.innerHTML = month;
+        days.innerHTML = day;
+    }
+</script>

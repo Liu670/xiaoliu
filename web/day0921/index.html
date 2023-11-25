@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20230921</title>
+    <link rel="icon" href="https://www.nuist.edu.cn/_upload/tpl/00/43/67/template67/images/favicon.ico">
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <p>
+        选择你喜欢的书：
+        <input id="book1" type="radio" name="book" onclick="showBook()">
+            <label for="book1">我和狗狗一起活下来</label>
+        <input id="book2" type="radio" name="book" onclick="showBook()">
+            <label for="book2">灰霾来了怎么办</label>
+    </p>
+
+    <div id="info">
+        <img src="" alt="" id="image" onclick="showAlt()"><span></span>
+    </div>
+    <script>
+        function showBook(){
+            var books = document.getElementsByName("book");
+            // var image = document.getElementById("image");
+
+            if(books[0].checked){
+                document.getElementById('info').innerHTML = '';
+                // 创建img节点和span节点
+                var image = document.createElement('img');
+                image.setAttribute('onclick','copy()');
+
+                image.setAttribute('src','https://img2.baidu.com/it/u=115359259,4107736304&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=441')
+                image.setAttribute('alt',"我和狗狗一起活下来");
+
+                var span = document.createElement('span');
+                span.innerHTML = '<br/>我和狗狗一起活下来';
+
+                document.getElementById('info').appendChild(image);
+                document.getElementById('info').appendChild(span);
+                // image.nextElementSibling.innerHTML = "我和狗狗一起活下来";
+            }else if(books[1].checked){
+                document.getElementById('info').innerHTML = '';
+                // 创建img节点和span节点
+                var image = document.createElement('img');
+                image.setAttribute('onclick','copy()');
+                image.setAttribute('src','https://img2.baidu.com/it/u=1162644648,828607145&fm=253&fmt=auto&app=138&f=JPEG?w=292&h=400')
+                image.setAttribute('alt',"灰霾来了怎么办");
+
+                var span = document.createElement('span');
+                span.innerHTML = '<br/>我和狗狗一起活下来';
+
+                document.getElementById('info').appendChild(image);
+                document.getElementById('info').appendChild(span);
+            }
+
+
+            // 点击图片时，弹出alt属性内容
+            function showAlt(){
+                alert(document.getElementById("image").getAttribute('alt'));
+            }
+
+            // 点击图片时，复制图片
+            function copy(){
+                var cloneNode = document.getElementById('info').firstElementChild.cloneNode();
+                document.getElementById('info').appendChild(cloneNode);
+            }
+        }
+    </script>
+</body>
+</html>

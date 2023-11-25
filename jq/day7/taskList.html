@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title>任务列表</title>
+    <style></style>
+    <link rel="stylesheet" href="css/taskStyle.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <section id="taskList">
+      <ul id="nav">
+        <li>日常任务</li>
+        <li>成长任务</li>
+      </ul>
+      <div class="taskContent">
+        <ul id="dayTask">
+          <li>
+            <div>
+              <h1>交口称赞</h1>
+              <p>为喜欢的回答送出一个赞</p>
+              <p>奖励：<span>财富值×10</span><span>经验之石（小）×1</span></p>
+            </div>
+            <div><input type="button" value="前往" /></div>
+          </li>
+          <li>
+            <div>
+              <h1>每日答题</h1>
+              <p>前往回答一个问题</p>
+              <p>
+                奖励：<span>铜宝箱×1</span><span>财富值×10</span
+                ><span>经验之石（小）×1</span>
+              </p>
+            </div>
+            <div><input type="button" value="前往" /></div>
+          </li>
+          <li>
+            <div>
+              <h1>助人为乐</h1>
+              <p>当日获得1个采纳</p>
+              <p>奖励：<span>铜宝箱×1</span><span>财富值×10</span></p>
+            </div>
+            <div><input type="button" value="前往" /></div>
+          </li>
+        </ul>
+        <ul id="growTask">
+          <li>
+            <div>
+              <h1>成长之路</h1>
+              <p>知道等级达到2级</p>
+              <p>
+                奖励：<span>财富值×20</span><span>铜宝箱×1</span
+                ><span>准备入学微章×1</span>
+              </p>
+            </div>
+            <div><input type="button" value="前往" /></div>
+          </li>
+          <li>
+            <div>
+              <h1>知识之路</h1>
+              <p>在知道获得1个采纳</p>
+              <p>
+                奖励：<span>铜宝箱×1</span><span>财富值×20</span
+                ><span>经验之石（小）×1</span>
+              </p>
+            </div>
+            <div><input type="button" value="前往" /></div>
+          </li>
+          <li>
+            <div></div>
+            <div><input type="button" id="del" value="解除绑定" /></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </body>
+  <script>
+    $("#nav li:first").bind("click", bg1=function(){
+        $(".taskContent").css({"background":"#2a96df",});
+        $("#dayTask").show();
+        $("#growTask").hide();
+    })
+
+    $("#nav li:last").bind("click", bg2=function(){
+        $(".taskContent").css("background","orange");
+        $("#dayTask").hide();
+        $("#growTask").show();
+    })
+
+    $("#del").hover(
+      function(){
+        $("#del").css({"cursor":"pointer","color":"white"});
+    },
+    function(){
+      $("#del").css({"opacity":"1","color":"rgba(255,255,255,.8)"});
+    }
+    );
+
+    $("#del").click(function(){
+      $("#nav li:first").unbind("click",bg1);
+      var value = $("#del").val();
+      if(value== "解除绑定"){
+        $("#del").val("重新绑定");
+        $("#growTask li:last div:last input").css({"background":"green"})
+      }else if(value== "重新绑定"){
+        $("#del").val("解除绑定");
+        $("#del").css({"background":"red"})
+        $("#nav li:first").bind("click",bg1);
+
+      }
+      // $("#growTask li:last div:first").append("解除绑定成功");
+    })
+
+
+    // $("#nav li:first").hover(function(){
+    //   $(".taskContent").css({"background":"skyblue"});
+    //     $("#dayTask").show();
+    //     $("#growTask").hide();
+    // })
+    // $("#nav li:last").hover(function(){
+    //   $(".taskContent").css("background","orange");
+    //     $("#dayTask").hide();
+    //     $("#growTask").show();
+    // })
+  </script>
+</html>

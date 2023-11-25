@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      /* .box {
+        width: 3000px;
+        height: 50vh;
+        overflow: hidden;
+
+      } */
+      .main {
+        width: 3000px;
+        height: 50vh;
+        display: inline-block;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+      .main img {
+        display: inline-block;
+        width: 500px;
+        height: 100%;
+      }
+      .left{
+        position: fixed;
+        left: 0;
+        top: 0;
+      }
+      .right{
+        position: fixed;
+        right: 0;
+        top:0;
+      }
+      .left,
+      .right {
+        display: inline-block;
+        position: absolute;
+        width: 50px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        opacity: 0.3;
+        text-align: center;
+        line-height: 50vh;
+        font-size: 40px;
+        cursor: pointer;
+      }
+      /* 下标 */
+      .index {
+        width: 100vw;
+        height: 40px;
+        text-align: center;
+        position: relative;
+        top: -40px;
+        color: white;
+      }
+
+      .index ul li {
+        margin: 0 auto;
+        list-style: none;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid white;
+        text-align: center;
+      }
+      .index ul li:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="left">&lt;</div>
+      <div class="main">
+        <img
+          class="img"
+          src="https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF"
+          alt="error"
+        />
+        <img
+          class="img"
+          src="https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF"
+          alt="error"
+        />
+        <img
+          class="img"
+          src="https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF"
+          alt="error"
+        />
+        <img
+          class="img"
+          src="https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF"
+          alt="error"
+        />
+      </div>
+      <div class="right">&gt;</div>
+    </div>
+
+    <!-- 索引下标 -->
+    <div class="index">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+      </ul>
+    </div>
+  </body>
+</html>
+<script>
+  var imgs = [
+    "https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF",
+    "https://t7.baidu.com/it/u=1956604245,3662848045&fm=193&f=GIF",
+  ];
+  setInterval(function () {
+    var index = Math.floor(Math.random() * imgs.length);
+    // $(".img").attr("src", imgs[index]);
+  }, 3000);
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="f" onsubmit="check(this)" method="post">
+        <fieldset style="text-align: center;">
+            <legend>登录</legend>
+
+            <label for="name">账号</label>
+            <input type="text" name="name" id="name"><br>
+            <label for="passwd">密码</label>
+            <input type="password" name="passwd" id="passwd"><br>
+            <input type="submit">
+        </fieldset>
+    </form>
+
+    <script>
+        
+        function check(thisform) {
+ 
+            var name=document.getElementById("name").value;  //读取表单数据，创建变量
+            var pass=document.getElementById("passwd").value;
+
+                if (name=="1" && pass=="1" || name=="root" && pass=="root") {  
+                    //验证变量。此处设置账号、密码（可设置多组，用||隔开）
+                    alert("登录成功！");
+                    document.f.action="index2.html";  //此处设置登录后跳转页面
+                    document.f.submit();
+                }
+                else{
+                    alert("用户名或密码错误！");
+                    document.f.action="index.html";  //此处设置登录后跳转页面
+                    document.f.submit();
+                }
+
+        }
+    </script>
+</body>
+</html>

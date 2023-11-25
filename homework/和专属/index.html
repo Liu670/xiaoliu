@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        header {
+            width: 100vw;
+            height: 20vh;
+            background-color: #030303;
+        }
+
+        footer {
+            width: 100vw;
+            height: 1vh;
+            background-color: #0f0303;
+
+        }
+
+        .box {
+
+            width: 100vw;
+            height: 80vh;
+            /* background-color: #333d4f; */
+            background-image: url("https://www.dpm.org.cn/Public/static/themes/image/bo/bg17.jpg");
+            background-repeat: no-repeat;
+        }
+
+        .main {
+            width: 40vw;
+            height: 50vh;
+            background-color: transparent;
+            margin: 0 auto;
+            margin-bottom: 20%;
+        }
+
+        .title {
+            display: flex;
+            color: #fff;
+        }
+
+        .title>h3 {
+            display: inline-block;
+            width: 32%;
+            height: 50px;
+            text-align: center;
+            line-height: 230%;
+            border: 1px solid black;
+            position: relative;
+            left: 18%;
+
+        }
+
+        .title>h3:hover {
+            background-color: grey;
+            cursor: pointer;
+        }
+
+        /* 用户输入框 */
+        /* 登录 */
+        .login {
+            width: 100%;
+            height: 100%;
+        }
+
+        /*注册 */
+        .reg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main input {
+            width: 60%;
+            height: 10%;
+            padding-left: 3%;
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+            border: 1px solid grey;
+            color: #fff;
+            background-color: transparent;
+        }
+
+        .main input:focus {
+            outline: none;
+        }
+
+        .main input::placeholder {
+            color: #fff;
+        }
+
+
+        .login input:nth-child(3) {
+            /* display: inline-block; */
+            width: 40%;
+            margin-left: 18%;
+        }
+
+        .reg input:nth-child(4) {
+            /* display: inline-block; */
+            width: 40%;
+            margin-left: 18%;
+        }
+
+        /* 验证码 */
+        .login input:nth-child(3)~.code {
+            width: 100px;
+            height: 35px;
+            background-color: transparent;
+            position: relative;
+            left: 64%;
+            bottom: 10%;
+            border: 1px solid grey;
+        }
+
+        .reg input:nth-child(4)~.code {
+            width: 100px;
+            height: 35px;
+            background-color: transparent;
+            position: relative;
+            left: 64%;
+            bottom: 10%;
+            border: 1px solid grey;
+        }
+
+        /* 登录按钮 */
+        .login {
+            text-align: center;
+
+        }
+
+        /* 登录按钮 */
+        .login button {
+            width: 150px;
+            height: 30px;
+            font-size: 18px;
+            color: white;
+            background-color: transparent;
+            border: 1px solid #fff;
+            /* margin-top: 20px; */
+        }
+
+        .login button:hover {
+            cursor: pointer;
+        }
+
+        /* 忘记密码 */
+        .login .forget {
+            text-decoration: none;
+            color: white;
+            position: relative;
+            left: 12%;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+
+    <div class="box">
+        <!-- 头部 -->
+        <div class="main">
+            <div class="title">
+                <h3 class="loginTitle">我是会员</h3>
+                <h3 class="regTitle">还未注册</h3>
+            </div>
+            <!-- 登录模块 -->
+            <div class="login" style="display: block;">
+                <input class="user" type="text" name="" placeholder="账号">
+                <input class="pwd" type="password" placeholder="密码">
+                <input type="text" class="code" placeholder="验证码">
+                <div class="code codeDiv1" style="cursor: pointer"></div>
+                <div class="loginButton" style="display: inline-block;margin-left: 10px;cursor: pointer;">
+                    <span style="color: #fff;position: relative;left: 35%;top: -13px;">登录</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="158" height="40" style="left: 0px;">
+                        <desc>Created with Raphaël</desc>
+                        <defs></defs>
+                        <path fill="none" stroke="#dcdcdc"
+                            d="M0,5L5,5L5,0L153,0L153,5L158,5L158,35L153,35L153,40L5,40L5,35L0,35L0,5"
+                            style="stroke-width: 2px; stroke-dashoffset: 0px; stroke-dasharray: 500px, 500px;"
+                            stroke-width="2" stroke-dasharray="1000,1000"></path>
+                    </svg>
+                    <a class="forget" href="#">忘记密码？</a>
+
+                </div>
+                <!-- <button class="submit" value="登录">登录</button> -->
+            </div>
+            <!-- 注册 -->
+            <div class="reg" style="display: none;">
+                <input class="user" type="text" name="" placeholder="账号">
+                <input class="pwd" type="password" placeholder="密码">
+                <input class="repwd" type="password" placeholder="密码">
+                <input type="text" class="code" placeholder="验证码">
+                <div class="code codeDiv2" style="cursor: pointer;"></div>
+                <div class="regButton" style="display: inline-block;margin-left: 150px;cursor: pointer;"
+                    onclick="reg()">
+                    <span style="color: #fff;position: relative;left: 50%;top: -13px;">注册</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="158" height="40" style="left: 0px;">
+                        <desc>Created with Raphaël</desc>
+                        <defs></defs>
+                        <path fill="none" stroke="#dcdcdc"
+                            d="M0,5L5,5L5,0L153,0L153,5L158,5L158,35L153,35L153,40L5,40L5,35L0,35L0,5"
+                            style="stroke-width: 2px; stroke-dashoffset: 0px; stroke-dasharray: 500px, 500px;"
+                            stroke-width="2" stroke-dasharray="1000,1000"></path>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+        <!-- 尾部 -->
+    </div>
+    <footer>
+    </footer>
+</body>
+
+</html>
+<script>
+    var loginTitle = document.querySelector(".loginTitle");
+    var regTitle = document.querySelector(".regTitle");
+    var loginDiv = document.querySelector(".login");
+    var regDiv = document.querySelector(".reg");
+    loginTitle.addEventListener('click', function () {
+        regDiv.style.display = "none";
+        loginDiv.style.display = "block";
+        loginTitle.style.backgroundColor = "grey";
+        regTitle.style.backgroundColor = "";
+    });
+    regTitle.addEventListener('click', function () {
+        regDiv.style.display = "block";
+        loginDiv.style.display = "none";
+        loginTitle.style.backgroundColor = "";
+        regTitle.style.backgroundColor = "grey";
+    });
+
+    // 随机验证码和颜色，位置
+    function getCode() {
+
+    }
+    // 随机颜色
+    function randomColors() {
+
+        return `rgb(${randomOneColor()},${randomOneColor()},${randomOneColor()})`
+    }
+    function randomOneColor() {
+        return parseInt(Math.random() * 206 + 50);
+    }
+    // 随机位置
+    var codeDivLogin = document.querySelector(".codeDiv1");
+    var codeDivReg = document.querySelector(".codeDiv2");
+
+    function getW() {
+        width1 = codeDivLogin.offsetWidth;
+        w = width1 * Math.random();
+        return w;
+    }
+    function getH() {
+        height1 = codeDivLogin.offsetHeight;
+        h = height1 * Math.random();
+        return h;
+    }
+
+    function getRandom() {
+        return parseInt(Math.random() * 10)
+    }
+    function getColor() {
+        return randomColors();
+    }
+    var code1;
+    function getCodeNum1() {
+        code1 = ''
+        codeDivLogin.innerHTML = ''
+        for (var i = 0; i < 4; i++) {
+            n = getRandom();
+            code1 += n;
+
+            codeDivLogin.innerHTML += `<span style="color:${getColor()};position: relative;right:${getRandom()}px;font-size:${10 + getRandom() * 2}px">${n}</span>`;
+        }
+    }
+    var code2;
+    function getCodeNum2() {
+        code2 = ''
+        codeDivReg.innerHTML = ''
+        for (var i = 0; i < 4; i++) {
+            n = getRandom();
+            code2 += n;
+
+            codeDivReg.innerHTML += `<span style="color:${getColor()};position: relative;left:${getRandom() + 20}px;font-size:${10 + getRandom() * 2}px">${n}</span>`;
+        }
+    }
+    codeDivLogin.addEventListener('click', function () {
+        getCodeNum1();
+    });
+    codeDivReg.addEventListener('click', function () {
+
+        getCodeNum2();
+    });
+    getCodeNum1();
+    getCodeNum2();
+</script>
+<!-- 登录注册 -->
+<script>
+    var accounts = [
+        {
+            user: 1,
+            pwd: 1
+        },
+        {
+            user: 'root',
+            pwd: 'root'
+        },
+        {
+            user: 'admin',
+            pwd: 'admin'
+        },
+
+    ]
+
+
+    // 登录
+    function login() {
+        // 找到登录按钮框
+        loginButton = document.querySelector(".login .loginButton");
+        loginButton.addEventListener('click', function () {
+            // 获取账号输入内容 input值
+            inputUser = document.querySelector(".login .user");
+            inputPwd = document.querySelector(".login .pwd");
+            inputCode = document.querySelector('.login .code')
+            user = inputUser.value;
+            pwd = inputPwd.value;
+            code = inputCode.value
+            flag = -1;// 未登录 
+            for (var i in accounts) {
+                if (accounts[i].user == user) {
+                    if (accounts[i].pwd == pwd) {
+                        flag = 0;//success
+                        break;
+                    } else {
+                        flag = 1;// 密码错误
+                        break;
+                    }
+                } else {
+                    flag = 2;
+                }
+            }
+            var flag1 = false;//验证码
+            // 判断验证码
+            if (code == code1) {
+                flag1 = true;
+            }
+
+            // 0登录成功
+            if (!flag) {
+                if (flag1) {
+                    alert("登录成功")
+                    window.open("http://liu.ihong.love:81")
+                } else {
+                    alert("验证码错误")
+                }
+            } else if (flag == 1) {
+                alert("密码错误");
+            } else {
+                alert("账号不存在")
+            }
+        });
+    }
+    login();
+
+
+    // 注册
+    function reg() {
+        // 找到注册按钮框
+        regButton = document.querySelector(".reg .regButton");
+        regButton.addEventListener('click', function () {
+            // 获取账号输入内容 input值
+            inputUser = document.querySelector(".reg .user");
+            inputPwd = document.querySelector(".reg .pwd");
+            inputPwd1 = document.querySelector(".reg .pwd");
+            inputCode = document.querySelector('.reg .code')
+            user = inputUser.value;
+            pwd = inputPwd.value;
+            code = inputCode.value
+            // flag=0已存在用户无法注册，等于1可以注册
+            flagReg = -1; isTrue = false; // 未注册 
+            for (var i in accounts) {
+                // 账户存在
+                if (accounts[i].user == user) {
+                    flagReg = 0;
+                    break;
+                } else {
+                    flagReg = 1;
+                }
+            }
+            var flag1 = false;//验证码
+
+            // 判断验证码
+            if (code == code2) {
+                isTrue = true;
+            } else
+
+                // 1表示可以注册
+                if (flagReg && isTrue) {
+                    if (inputPwd == inputPwd1) {
+                        alert("注册成功")
+                        window.open("./index.html")
+                    } else {
+                        alert("两次账号密码不一致")
+                    }
+                } else {
+                    alert("账号已存在，无法注册")
+                }
+        });
+    }
+    reg();
+</script>

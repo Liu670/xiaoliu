@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let fun = (content = "hello world") => {
+        console.log(content);
+      };
+      fun();
+      console.log((a, b) => a + b);
+      console.log(((a, b) => a + b)(1, 2));
+
+      !(function () {
+        console.log("hello world");
+      })();
+
+      // 箭头函数的this
+      let obj = {
+        name: "obj",
+        say: function () {
+          setTimeout(() => {
+            console.log(this.name + " say hello");
+          }, 1000);
+        },
+      };
+      obj.say();
+
+      let num = eval("((a,b)=>{return a+b})(1,1)");
+      console.log(num);
+      let timer = setTimeout("console.log('hello world')", 1000);
+      console.log(timer);
+
+      timer = setInterval(() => {
+        console.log(`this is setInterval`);
+      }, 1000);
+      setTimeout(() => {
+        clearInterval(timer);
+      }, 1000);
+
+      // 面向对象
+      let obj1 = new Object();
+      let obj2 = {};
+
+      let user = {
+        name: "user",
+        age: 18,
+        info: {
+          height: 170,
+          weight: 100,
+        },
+      };
+      console.log(user["info"]["weight"]);
+
+      // 拷贝对象
+      function copyObj(oldObj, newObj) {
+        for (let key in oldObj) {
+          newObj[key] = oldObj[key];
+        }
+      }
+      let obj3 = {};
+      copyObj({ 1: "1", 2: 2, 3: 3 }, obj3);
+      console.log(obj3);
+
+      let rect = {
+        width: 10,
+        height: 10,
+        area: () => {
+          return this.width * this.height;
+        },
+      };
+      console.log(rect.area());
+
+      // 构造方法
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.say = function () {
+          console.log(this.name + " say hello");
+        };
+      }
+      let p1 = new Person("p1", 18);
+      p1.say();
+
+      function Rectangle(w, h) {
+        this.w = w;
+        this.h = h;
+        return this.w * this.h;
+      }
+      let rect1 = new Rectangle(10, 10);
+      console.log(rect1);
+
+      class Rectangle1 {
+        constructor(w, h) {
+          this.w = w;
+          this.h = h;
+        }
+        get W() {
+          if (this.w < 0) {
+            return 0;
+          } else {
+            return this._w;
+          }
+        }
+        set W(w) {
+          this._w = w;
+        }
+        get H() {
+          if (this.h < 0) {
+            return 0;
+          } else {
+            return this._h;
+          }
+        }
+        set H(h) {
+          this._h = h;
+        }
+        getArea() {
+          return this.w * this.h;
+        }
+      }
+      let r1 = new Rectangle1(11, 10);
+      r1.H = 20;
+      r1.W = 20;
+      console.log(r1.getArea());
+    </script>
+    
+  </body>
+</html>
+

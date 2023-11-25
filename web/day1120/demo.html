@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text"><button onclick="add()">添加</button><br>
+    学生列表如下
+    <ol>
+
+    </ol>
+</body>
+
+</html>
+<script>
+    ol = document.querySelector("ol");
+    input = document.querySelector("input");
+    function add() {
+        // 动态增加学生列表
+        li = document.createElement("li");
+        li.innerHTML = input.value;
+        ol.append(li);
+    }
+</script>

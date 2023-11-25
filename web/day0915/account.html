@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css"> -->
+
+
+    <style>
+        legend {
+            text-align: center;
+        }
+
+        .btn-primary {
+            margin:10px  0px;
+            text-align: center;
+            width: 70px;
+            height: 40px;
+            font-size: 16px;
+            border-radius: 10%;
+            color: #fff;
+            background-color: #0d6efd;
+            border-color: #0d6efd
+        }
+
+        .btn-primary:hover {
+            cursor: pointer;
+            color: #fff;
+            background-color: #0b5ed7;
+            border-color: #0a58ca
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Register</legend>
+
+            <div>
+                <label for="name">Account:</label>
+                <input id="name" type="text" value="mpadmin">
+            </div>
+
+            <div>
+                <label for="pwd">Password:</label>
+                <input type="password" value="mpadmin">
+            </div>
+
+            <div>
+                <label for="pwd">Password Confirm:</label>
+                <input type="password" value="">
+            </div>
+
+            <div>
+                <label for="sex">Gender:</label>
+                <input type="radio" name="Gender" checked>Male
+                <input type="radio" name="Gender">Female
+            </div>
+
+            <div>
+                <label for="age">Age:</label>
+                <input id="age" type="number" max="100" min="0">
+            </div>
+
+            <div>
+                <label for="Birthday">Birthday</label>
+                <input id="Birthday" type="date">
+            </div>
+
+            <div>
+                <label for="nationality">Nationality:</label>
+                <select name="nationality" id="Nationality">
+                    <option value="China" selected>China</option>
+                    <option value="America">America</option>
+                    <option value="Japan">Japan</option>
+                    <option value="France">France</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="habits">Habits:</label>
+                <input type="checkbox">Game
+                <input type="checkbox">Painting
+                <input type="checkbox">Photography
+                <input type="checkbox">Film
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input id="email" type="email" placeholder="please input your email">
+            </div>
+
+            <div>
+                <label for="website">Personal website:</label>
+                <input id="website" type="url" placeholder="please input your website">
+            </div>
+
+            <div>
+                <label for="phone">Phone:</label>
+                <input id="phone" type="tel" placeholder="please input your phone">
+            </div>
+
+            <div>
+                <label for="identifier">Identifier:</label>
+                <input id="identifier" type="number" placeholder="please input your phone ider">
+            </div>
+
+            <div>
+                <label for="biography">Biography:</label>
+                <textarea id="biography" name="" cols="30" rows="10"></textarea>
+            </div>
+
+            <div>
+                <label for="avatar">Avatar:</label>
+                <input id="avatar" type="file" value="Choose File">
+            </div>
+
+            <div>
+                <label for="final"></label>
+                <input type="reset" value="reset" class="btn btn-primary">
+                <input type="button" value="submit" class="btn btn-primary">
+            </div>
+
+        </fieldset>
+
+    </form>
+</body>
+
+</html>

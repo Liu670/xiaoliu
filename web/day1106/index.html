@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <label for="phone">手机号：</label>
+    <input type="text" name="phone" id="phone" />
+    <span class="phone"></span>
+    <br />
+    <label for="email">邮箱号：</label>
+    <input type="text" name="email" id="email" />
+    <span class="email"></span>
+    <br />
+    <label for="idCard">身份证：</label>
+    <input type="text" name="idCard" id="idCard" />
+    <span class="idCard"></span>
+    <br />
+
+    <script>
+      /*手机号码规则：以1开头，第二位数字为3，4，5，6，7，8，9中一个
+    第三位到十一位数字为0到9的任意一个数字
+     */
+      function vaildatePhone(phone) {
+        if (phone.length != 11) {
+          console.log("请输入11位手机号码");
+          return false;
+        }
+        if (phone.charAt(0) != "1") {
+          console.log("请输入以1开头的手机号码");
+          return false;
+        }
+        if (!"3456789".includes(phone.charAt(1))) {
+          return false;
+        }
+        for (let i = 0; i < phone.length; i++) {
+          if (phone[i] < "0" || phone[i] > "9") {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      /*邮箱规则：必须要有@，@前是数字，字母和下划线的组合，
+    @后面是两个或三个用.隔开的数字，字母和下划线的组合字符串
+     */
+
+      /*身份证规则：长度18或者15位，最后一位可能是X，其它都是一个数字
+       */
+      function vaildateidCard(idCard) {
+        if (idCard.length != 15 && idCard.length != 18) {
+          console.log("请输入15位或18位身份证号码");
+          return false;
+        }
+        let lastId = idCard[idCard.length - 1];
+        if (lastId == "X" || lastId == "x") {
+          return false;
+        }
+        for (let i = 0; i < idCard.length; i++) {
+          if (idCard[i] < "0" || idCard[i] > "9") {
+            return false;
+          }
+        }
+      }
+    </script>
+    <script>
+      function check(id, functions, i) {
+        document.getElementById(id).addEventListener("keyup", myFunction);
+        var inputBox = document.getElementById(id);
+        function myFunction() {
+          span = document.getElementsByTagName("span");
+          if (functions(inputBox.value)) {
+            span[i].innerHTML = "✅";
+          } else {
+            span[i].innerHTML = "❌";
+          }
+        }
+      }
+      check("idCard", vaildateidCard, 2);
+
+      //   // 手机号验证
+      //   document.getElementById("phone").addEventListener("keyup", myFunction);
+      //   var inputBox = document.getElementById("phone");
+      //   span[0].innerHTML = inputBox.value;
+      //   function myFunction() {
+      //     span = document.getElementsByTagName("span");
+      //     let phoneNum = inputBox.value;
+      //     if (vaildatePhone(phoneNum)) {
+      //       span[0].innerHTML = "✅";
+      //     } else {
+      //       span[0].innerHTML = "❌";
+      //     }
+      //   }
+    </script>
+  </body>
+</html>

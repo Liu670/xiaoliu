@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box" style="width: 400px;height: 400px;"></div>
+</body>
+
+</html>
+<script>
+    function getColor() {
+        return parseInt(Math.random() * 256)
+    }
+    var box = document.querySelector('.box');
+    setInterval(function () {
+        box.style.backgroundColor = `rgb(${getColor()},${getColor()},${getColor()})`;
+        box.style.width = `${getColor()}px`;
+        box.style.height = `${getColor()}px`;
+    }, 500);
+</script>

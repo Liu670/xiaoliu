@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+        var year = +prompt("请输入年份:") ?? 1900;
+        var month = prompt("请输入月份:");
+        // 判断闰年
+        let isLeapYear = year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
+        let days = 31;
+        if(month>=1&&month<=12){
+            alert("该月份不在范围内");
+        }else{
+        switch (+month) {
+          case 4:
+          case 6:
+          case 9:
+          case 11:
+            days = 30;
+            break;
+          case 2:
+            days = isLeapYear + 28;
+            break;
+        }
+      }
+        alert(days);
+    </script>
+  </body>
+</html>

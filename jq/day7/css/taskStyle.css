@@ -1,0 +1,76 @@
+*{margin: 0; padding: 0; font-family: "微软雅黑"; font-size: 14px; line-height: 25px; color: #717578;}
+ul,ol,li{list-style: none;}
+#taskList{
+    width: 560px;
+    overflow: hidden;
+    margin: 5px auto 0 auto;
+}
+#taskList>ul li{
+    float: left;
+    width: 120px;
+    height: 35px;
+    overflow: hidden;
+    line-height: 35px;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+#taskList>ul li:first-of-type{
+    margin-left: 10px;
+    margin-right: 1px;
+    background: #26a6e3;
+}
+#taskList>ul li:last-of-type{
+    background: #ff9400;
+}
+.taskContent{
+    clear: both;
+    background: #26a6e3;
+    border-radius: 8px;
+    height: 310px;
+    overflow: hidden;
+    padding-top: 10px;
+}
+.taskContent li{
+    height: 95px;
+    overflow: hidden;
+    padding-left: 95px;
+    width: 435px;
+    margin: 5px auto 0 auto;
+    border-radius: 5px;
+}
+.taskContent li div:first-of-type{
+    float: left;
+    width: 320px;
+    padding-top: 10px;
+}
+.taskContent li div:last-of-type{
+    width: 100px;
+    padding-top: 45px;
+    float: left;
+}
+.taskContent h1{font-size: 16px; color: #5a5156;}
+.taskContent span{color: #fd5000; padding-right: 10px;}
+.taskContent input{
+    width: 92px;
+    height: 35px;
+    text-align: center;
+    height: 36px;
+    line-height: 35px;
+    overflow: hidden;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px;
+}
+#dayTask li:nth-of-type(1){background: #ffffff url(../images/day01.png) 10px 15px no-repeat;}
+#dayTask li:nth-of-type(2){background: #ffffff url(../images/day02.png) 10px 15px no-repeat;}
+#dayTask li:nth-of-type(3){background: #ffffff url(../images/day03.png) 10px 15px no-repeat;}
+#dayTask input{background: #4dc83a;}
+#growTask{display: none;}
+#growTask li:nth-of-type(1){background: #ffffff url(../images/task01.png) 10px 15px no-repeat;}
+#growTask li:nth-of-type(2){background: #ffffff url(../images/task02.png) 10px 15px no-repeat;}
+#growTask input{background: #ff4e00;}
