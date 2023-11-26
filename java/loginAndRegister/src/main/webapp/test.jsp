@@ -6,6 +6,8 @@
 <%
 
     try {
+     	response.addHeader("Access-Control-Allow-Origin", "*");
+
         Class.forName("com.mysql.jdbc.Driver");  //驱动程序名
         //com.mysql.jdbc.cj.Driver也是OK的
         String url = "jdbc:mysql://localhost:3306/test"; //数据库名 ？后面的是为了指定字符的编码、解码格式。
@@ -39,7 +41,6 @@
                   ReturnJson.put(JsonTmp);
                 } 
             /* 解决跨域问题 */
-         	response.addHeader("Access-Control-Allow-Origin", "*");
 
             response.getWriter().write(ReturnJson.toString());
  }
