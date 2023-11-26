@@ -2,7 +2,7 @@
  * @Author: xiaoliu 2558949748@qq.com
  * @Date: 2023-11-25 08:04:48
  * @LastEditors: xiaoliu
- * @LastEditTime: 2023-11-26 02:24:25
+ * @LastEditTime: 2023-11-26 15:36:20
  * @FilePath: /code/homework/day1124/login.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -17,6 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>登录</title>
         <link rel="icon" href="https://raw.githubusercontent.com/Liu670/cloudimg/main/PicList/html/favicon.jpg">
+        <link rel="stylesheet" href="button.css">
         <style>
             * {
                 padding: 0;
@@ -96,18 +97,19 @@
             .eye-white {
                 width: 30px;
                 height: 30px;
+
                 border-radius: 50%;
                 background-color: white;
                 position: absolute;
                 top: 20px;
             }
 
-            /* 左眼球 */
+            /* 左眼 */
             .eye-white.left {
                 left: 10px;
             }
 
-            /* 右眼球 */
+            /* 右眼 */
             .eye-white.right {
                 right: 10px;
             }
@@ -235,15 +237,16 @@
                 right: -20px;
             }
 
-            /* 登录框 */
-            .login-box {
+            /* 登录框,注册框 */
+            .login-box,
+            .reg-box {
                 width: 400px;
                 height: 300px;
                 background-color: #fff;
                 border-radius: 10%;
                 position: absolute;
-                left: 50%;
-                top: 50%;
+                left: 36%;
+                top: 40%;
                 transform: translate(-50%, -30%);
                 z-index: 2;
                 /* 弹性布局 使登录框内部居中 */
@@ -251,7 +254,23 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
+                /* 翻转动画 */
+                animation: action 3s forwards;
             }
+
+            /* 登录注册切换 反转效果 */
+            @keyframes action {
+                from {
+                    /* transform: rotateY(0deg); */
+                    transform: scaleX(-1);
+                }
+
+                to {
+                    /* transform: rotateY(180deg); */
+                    transform: scaleX(1);
+                }
+            }
+
 
             h1 {
                 color: #1dc797;
@@ -300,7 +319,8 @@
             }
 
             /* 登录框 */
-            .login-box>button {
+            .login-box>button,
+            .reg-box>button {
                 width: 150px;
                 height: 40px;
                 background-color: #1dc797;
@@ -313,7 +333,8 @@
                 transition: .3s;
             }
 
-            .login-box>button:hover {
+            .login-box>button:hover,
+            .reg-box>button:hover {
                 letter-spacing: 25px;
                 text-indent: 25px;
                 cursor: pointer;
@@ -338,6 +359,49 @@
                 cursor: pointer;
                 background-color: #2fa080;
 
+            }
+
+            /* 没有账号，立即注册 */
+            .reg {
+                font-size: 12px;
+                position: absolute;
+                top: 10px;
+                right: 0;
+                color: #bbb;
+
+            }
+
+            /* 已有账号，去登录 */
+            .loginBtn {
+                font-size: 12px;
+                color: #bbb;
+            }
+
+            .reg:hover {
+                text-decoration: underline;
+                cursor: pointer;
+                color: #1dc797;
+
+            }
+
+            .loginBtn:hover {
+                text-decoration: underline;
+                cursor: pointer;
+                color: #1dc797;
+
+            }
+
+            .reg-box>input {}
+
+            /* 登录框注册框隐藏 */
+            .none {
+                display: none;
+            }
+
+            /* 闭眼 */
+            .offeye {
+                width: 40px;
+                height: 1px;
             }
         </style>
     </head>
@@ -379,20 +443,45 @@
 
         </div>
 
-        <div class="login-box">
+        <!-- 登录框 -->
+        <div class="login-box none">
             <div class="hand left"></div>
             <div class="hand right"></div>
             <h1>用户登录</h1>
             <div class="ipt-box">
                 <input type="text" required>
                 <label for="">用户名</label>
+                <div class="reg">没有账号?立即注册</div>
             </div>
             <div class="ipt-box">
-                <input type="password" required id="password" class="on">
+                <input class="pwd" type="password" required id="password" class="on">
                 <label for="">密码</label>
                 <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
             </div>
             <button>登录</button>
+        </div>
+
+        <!-- 注册框 -->
+        <div class="reg-box none1">
+            <div class="hand left"></div>
+            <div class="hand right"></div>
+            <h1>用户注册</h1>
+            <div class="ipt-box">
+                <input type="text" required>
+                <label for="">用户名</label>
+            </div>
+            <div class="ipt-box">
+                <input class="pwd" type="password" required id="password1" class="on">
+                <label for="">密码</label>
+                <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
+            </div>
+            <div class="ipt-box">
+                <input class="pwd" type="password" required id="password2" class="on">
+                <label for="">重复密码</label>
+                <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
+            </div>
+            <button>注册</button>
+            <div class="loginBtn">已有账号，去登录</div>
         </div>
 
     </div>
@@ -403,13 +492,16 @@
 </html>
 <script src="http://liu.ihong.love:81/file/html/js/jquery-3.7.1.js"></script>
 <script>
-    $('#password').focusin(function () {
+    $('.pwd').focusin(function () {
         // 密码框选中
         $('.login-box').addClass('up');
+        $('.eye-white').addClass('offeye');
 
     }).focusout(function () {
         // 密码框非选中
         $('.login-box').removeClass('up');
+        $('.eye-white').removeClass('offeye');
+
 
     })
 
@@ -428,19 +520,30 @@
 
     // 点击眼睛显示密码
     $('.show').click(function () {
-
         // 如果有on的属性 则说明密码类型 不可见
-        if ($('#password').hasClass('on')) {
-            $('#password').removeClass('on');
-            $('#password').attr({ 'type': 'password' });
+        if ($('.pwd').hasClass('on')) {
+            $('.pwd').removeClass('on');
+            $('.pwd').attr({ 'type': 'password' });
             $('.show').text('>_<')
         } else {
-            $('#password').addClass('on');
-            $('#password').attr('type', 'text');
+            $('.pwd').addClass('on');
+            $('.pwd').attr('type', 'text');
             $('.show').text('👀');
             // $('show').text('^o^');
-
         }
     });
+
+
+    // 点击去登录
+    $('.loginBtn').click(function () {
+        $('.login-box').removeClass('none')
+        $('.reg-box').addClass('none')
+    })
+    // 点击去注册
+    $('.reg').click(function () {
+        $('.login-box').addClass('none')
+        $('.reg-box').removeClass('none')
+    })
+
 
 </script>
