@@ -1,0 +1,326 @@
+<!--
+ * @Author: xiaoliu 2558949748@qq.com
+ * @Date: 2023-11-25 08:04:48
+ * @LastEditors: xiaoliu
+ * @LastEditTime: 2023-11-27 03:48:52
+ * @FilePath: /code/homework/day1124/index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!--
+ *                        _oo0oo_
+ *                       o8888888o
+ *                       88" . "88
+ *                       (| -_- |)
+ *                       0\  =  /0
+ *                     ___/`---'\___
+ *                   .' \\|     |// '.
+ *                  / \\|||  :  |||// \
+ *                 / _||||| -:- |||||- \
+ *                |   | \\\  - /// |   |
+ *                | \_|  ''\---/''  |_/ |
+ *                \  .-\__  '-'  ___/-. /
+ *              ___'. .'  /--.--\  `. .'___
+ *           ."" '<  `.___\_<|>_/___.' >' "".
+ *          | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+ *          \  \ `_.   \_ __\ /__ _/   .-` /  /
+ *      =====`-.____`.___ \_____/___.-`___.-'=====
+ *                        `=---='
+ * 
+ * 
+ *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * 
+ *            佛祖保佑     永不宕机     永无BUG
+ * 
+ *        佛曰:  
+ *                写字楼里写字间，写字间里程序员；  
+ *                程序人员写程序，又拿程序换酒钱。  
+ *                酒醒只在网上坐，酒醉还来网下眠；  
+ *                酒醉酒醒日复日，网上网下年复年。  
+ *                但愿老死电脑间，不愿鞠躬老板前；  
+ *                奔驰宝马贵者趣，公交自行程序员。  
+ *                别人笑我忒疯癫，我笑自己命太贱；  
+ *                不见满街漂亮妹，哪个归得程序员？
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Liu670/cloudimg/main/PicList/html/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="http://liu.ihong.love:81/file/html/js/jquery-3.7.1.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="panda">
+            <!-- 左耳 -->
+            <div class="ear left"></div>
+            <!-- 右耳 -->
+            <div class="ear right"></div>
+            <!-- 脸 -->
+            <div class="face">
+                <!-- 眼睛 -->
+                <div class="eye-shadow left">
+                    <div class="eye-white left">
+                        <div class="eye-ball"></div>
+                    </div>
+                </div>
+                <div class="eye-shadow right">
+                    <div class="eye-white right">
+                        <div class="eye-ball"></div>
+                    </div>
+                </div>
+                <!-- 鼻子 -->
+                <div class="nose"></div>
+                <!-- 嘴巴 -->
+                <div class="mouth"></div>
+            </div>
+            <!-- 身子 -->
+            <div class="body"></div>
+            <!-- 脚 -->
+            <div class="foot left">
+                <!-- 脚底 -->
+                <div class="sole"></div>
+            </div>
+            <div class="foot right">
+                <!-- 脚底 -->
+                <div class="sole"></div>
+            </div>
+
+        </div>
+
+        <!-- 登录框 -->
+        <div class="login-box none1">
+            <div class="hand left"></div>
+            <div class="hand right"></div>
+            <h1>用户登录</h1>
+            <div class="ipt-box">
+                <input type="text" required id="loginId">
+                <label for="">用户名</label>
+                <div class="reg">没有账号?立即注册</div>
+            </div>
+            <div class="ipt-box">
+                <input class="pwd" type="password" required id="password" class="on">
+                <label for="">密码</label>
+                <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
+            </div>
+            <button class="loginButton">登录</button>
+            <span class="log"></span>
+        </div>
+
+        <!-- 注册框 -->
+        <div class="reg-box none">
+            <div class="hand left"></div>
+            <div class="hand right"></div>
+            <h1>用户注册</h1>
+            <div class="ipt-box">
+                <input type="text" required id="regName">
+                <label for="">用户名</label>
+            </div>
+            <div class="ipt-box">
+                <input class="pwd" type="password" required id="password1" class="on">
+                <label for="">密码</label>
+                <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
+            </div>
+            <div class="ipt-box">
+                <input class="pwd" type="password" required id="password2" class="on">
+                <label for="">重复密码</label>
+                <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
+            </div>
+            <button class="registerButton">注册</button>
+            <div class="loginBtn">已有账号，去登录</div>
+            <span class="log"></span>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    $(".pwd")
+        .focusin(function () {
+            // 密码框选中
+            $(".login-box").addClass("up");
+            $(".eye-white").addClass("offeye");
+        })
+        .focusout(function () {
+            // 密码框非选中
+            $(".login-box").removeClass("up");
+            $(".eye-white").removeClass("offeye");
+        });
+
+    // 鼠标位置移动 眼睛跟着动
+    $(document).on("mousemove", function (e) {
+        let dw = $(document).width() / 20;
+        let dh = $(document).height() / 15;
+        let x = e.pageX / dw;
+        let y = e.pageY / dh;
+        // console.log(e.pageX, e.pageY);
+        $(".eye-ball").css({
+            left: e.pageX / dw,
+            top: e.pageY / dh,
+        });
+    });
+
+    // 点击眼睛显示密码
+    $(".show").click(function () {
+        // 如果有on的属性 则说明密码类型 不可见
+        if ($(".pwd").hasClass("on")) {
+            $(".pwd").removeClass("on");
+            $(".pwd").attr({ type: "password" });
+            $(".show").text(">_<");
+        } else {
+            $(".pwd").addClass("on");
+            $(".pwd").attr("type", "text");
+            $(".show").text("👀");
+            // $('show').text('^o^');
+        }
+    });
+
+    // 点击去登录
+    $(".loginBtn").click(function () {
+        // 将输入框置空
+        $("input").val("");
+        $(".login-box").removeClass("none");
+        $(".reg-box").addClass("none");
+    });
+    // 点击去注册
+    $(".reg").click(function () {
+        $("input").val("");
+        $(".login-box").addClass("none");
+        $(".reg-box").removeClass("none");
+    });
+
+    // 登录功能
+    function login(data) {
+        var users = data;
+        // 登录成功跳转链接  登录验证
+        $(".loginButton").click(function () {
+            var u = $("#loginId").val();
+            var p = $("#password").val();
+            var isExits = true;
+            for (const i of users) {
+                // 判断账号是否一致
+                if (i.name === u) {
+                    // 判断密码
+                    if (i.password === p) {
+                        $(".log").text("🙆登录成功！");
+                        alert("🙆登录成功！");
+                        window.location.href = "https://github.com/Liu670";
+                    } else {
+                        $(".log").text("❌密码错误");
+                    }
+                    break;
+                } else {
+                    isExits = false;
+                }
+            }
+            if (!isExits) {
+                $(".log").text("⚠️账号不存在");
+            }
+            // alert(users[0].user)
+            // window.location.href = "https://github.com/Liu670";
+        });
+    }
+
+    // 登录
+    $(document).ready(function () {
+        $.ajax({
+            url: "http://liu.ihong.love:8089/loginAndRegister/test.jsp",
+            type: "GET",
+            dataType: "json",
+            // async: true,
+            success: function (data) {
+                // 在这里处理获取到的JSON数据
+                // console.log(data);
+                login(data);
+                register(data);
+            },
+            error: function (xhr, status, error) {
+                // 处理请求错误
+                // console.log(error);
+            },
+        });
+    });
+
+    $(document).ready(function () {
+        // $.ajax({
+        //     url: `http://localhost:8080/loginAndRegister/reg.jsp`,
+        //     type: "get",
+        //     // data: {
+        //     //     name: 'join',
+        //     //     age: 19,
+        //     // },
+        //     username: uname,
+        //     password: pwd,
+        //     // data: JSON.stringify({ "password": "1", "name": "1" }),
+        //     dataType: "text",
+        //     contentType: "application/json",
+        //     success: function (response) {
+        //         // 在这里处理后端返回的响应
+        //         console.log(response);
+        //     },
+        //     error: function (xhr, status, error) {
+        //         // 在这里处理错误
+        //     },
+        // });
+    });
+
+    // 注册功能
+    function register(data) {
+        $(".registerButton").click(function () {
+            $(".log").text("");
+            // 从前端获取注册信息
+            var name = $("#regName").val();
+            var pwd1 = $("#password1").val();
+            var pwd2 = $("#password2").val();
+            // 判断账号是否存在
+            flag = false; //不存在
+            for (var i of data) {
+                if (i.name == name) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
+                $(".log").text("账号已存在");
+            } else if (!flag && pwd1 != pwd2) {
+                $(".log").text("密码不一致");
+            } else {
+                // ajax向后端发送请求
+                $.ajax({
+                    url: `http://liu.ihong.love:8089/loginAndRegister/reg.jsp?username=${name}&password1=${pwd1}`,
+                    type: "get",
+                    username: name,
+                    password1: pwd1,
+                    password2: pwd2,
+                    dataType: "text",
+                    // contentType: "application/json",
+                    success: function (response) {
+                        // 在这里处理后端返回的响应
+                        $(".log").text("注册成功");
+                    },
+                    error: function (xhr, status, error) {
+                        // 在这里处理错误
+                        console.log(error);
+                        $(".log").text("注册失败");
+                    },
+                });
+            }
+        });
+    }
+
+</script>
