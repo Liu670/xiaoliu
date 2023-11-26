@@ -2,7 +2,7 @@
  * @Author: xiaoliu 2558949748@qq.com
  * @Date: 2023-11-25 08:04:48
  * @LastEditors: xiaoliu
- * @LastEditTime: 2023-11-27 03:04:47
+ * @LastEditTime: 2023-11-27 03:10:58
  * @FilePath: /code/homework/day1124/login.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -37,7 +37,7 @@
             }
 
             .container {
-                border: 1px solid black;
+                /* border: 1px solid black; */
             }
 
             /* 画熊猫 */
@@ -516,14 +516,14 @@
 
     // 鼠标位置移动 眼睛跟着动
     $(document).on('mousemove', function (e) {
-        // let dw = $(document).width() / 20;
-        // let dh = $(document).height() / 15;
-        // let x = e.pageX / dw;
-        // let y = e.pageY / dh;
+        let dw = $(document).width() / 20;
+        let dh = $(document).height() / 15;
+        let x = e.pageX / dw;
+        let y = e.pageY / dh;
         // console.log(e.pageX, e.pageY);
         $('.eye-ball').css({
-            left: e.pageX / 100,
-            top: e.pageY / 100,
+            left: e.pageX / dw,
+            top: e.pageY / dh,
         })
     })
 
