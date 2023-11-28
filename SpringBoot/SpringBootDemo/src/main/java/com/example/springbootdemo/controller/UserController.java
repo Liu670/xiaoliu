@@ -16,7 +16,7 @@ public class UserController {
     }
 
     @RequestMapping("/hi")
-    public String hi(){return "hi12312";}
+    public String hi(){return "hi1";}
 
 }
 /**/
