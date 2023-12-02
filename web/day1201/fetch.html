@@ -1,0 +1,41 @@
+<!--
+ * @Author: xiaoliu
+ * @Date: 2023-12-01 08:58:07
+ * @LastEditors: xiaoliu
+ * @LastEditTime: 2023-12-01 09:15:09
+ * @Description: file content
+ * @FilePath: /code/Web/day1201/fetch.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Liu670/cloudimg/main/PicList/html/favicon.jpg">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    (async function () {
+        let response = await fetch("data.json");
+        if (response.ok) {
+            let json = await response.json();
+            console.log(json);
+        } else {
+            console.log("请求失败");
+        }
+    })();
+</script>

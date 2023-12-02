@@ -4,12 +4,6 @@ server:
 spring:
   application:
     name: SpringBootDemo
-#    ???
-#  devtools:
-#    restart:
-#      enabled:true
-#    additional-paths:
-#      src/main/java
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

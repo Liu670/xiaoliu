@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Liu670/cloudimg/main/PicList/html/favicon.jpg">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // 保存cookie
+    function saveToCookie(name, value) {
+        document.cookie = name + "=" + value;
+        console.log(document.cookie);
+
+    }
+    saveToCookie("tom", "123")
+
+    // 删除cookie
+    function deleteFromCookie(name) {
+        document.cookie = name + "=;expires=Thu, 01 Jan 2030 00:00:00 GMT";
+        console.log(document.cookie);
+    }
+    // deleteFromCookie("tom");
+    // 获取cookie
+    function getFromCookie(name) {
+        let cookie = document.cookie;
+        let arr = cookie.split(";");
+        for (let i = 0; i < arr.length; i++) {
+            let arr2 = arr[i].split("=");
+            if (arr2[0].trim() == name.trim()) {
+                return arr2[1];
+            }
+        }
+        return "";
+    }
+    console.log(getFromCookie("tom"));
+
+</script>

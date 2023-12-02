@@ -1,0 +1,93 @@
+<!--
+ * @Author: xiaoliu
+ * @Date: 2023-12-01 08:12:45
+ * @LastEditors: xiaoliu
+ * @LastEditTime: 2023-12-01 10:33:30
+ * @Description: file content
+ * @FilePath: /code/Web/day1201/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Liu670/cloudimg/main/PicList/html/favicon.jpg">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="people">
+        <input class="name" type="text" name="name" value="张三">
+        <input type="text" name="age" value="22">
+    </form>
+</body>
+
+</html>
+<script>
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'data.json');
+    // xhr.responseType = 'json';
+    xhr.send();
+    xhr.onload = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            let data = JSON.parse(xhr.response);
+            // console.log(data);
+        }
+    }
+
+    new Promise((resolve, reject) => {
+        fetch('data.json')
+    }).then();
+
+    fetch('data.json').then(response => response.json()).then(data => fetch1(data));
+    function fetch1(resp) {
+        // console.log(1, resp);
+        return resp;
+    }
+
+
+    function getResp(url) {
+        let a = fetch(url).then(response => response.json()).then(data => { return data });
+        // console.log(2, a);
+    }
+    getResp("data.json");
+
+    (async function () {
+        let data = await fetch('data.json');
+        let res = await data.json();
+        console.log(res);
+    })();
+
+
+
+    async function sendRequest1(url, params, handle) {
+        let response = await fetch(url, {
+            method: "post",
+            body: params
+        })
+        let result = await response.json();
+        handle(result);
+    }
+
+    function sendRequest2(url, params, handle) {
+        fetch(url, {
+            method: "POST",
+            body: params
+        })
+            .then(response => response.json())
+            .then(data => handle(data));
+    }
+    // sendRequest2('data.json', null, handleUser);
+    function handleUser(user) {
+        console.log(JSON.stringify(user));
+    }
+
+</script>

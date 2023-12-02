@@ -1,0 +1,43 @@
+<!--
+ * @Author: xiaoliu
+ * @Date: 2023-12-01 10:36:48
+ * @LastEditors: xiaoliu
+ * @LastEditTime: 2023-12-01 10:42:21
+ * @Description: file content
+ * @FilePath: /code/Web/day1201/websocket.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/Liu670/cloudimg/main/PicList/html/favicon.jpg">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    {
+        let socket = new WebSocket("ws://javascript.info")
+
+        socket.onopen = function (e) {
+            console.log("连接成功")
+        }
+
+        socket.onmessage = function (e) {
+            console.log(e.data)
+        }
+    }
+</script>
