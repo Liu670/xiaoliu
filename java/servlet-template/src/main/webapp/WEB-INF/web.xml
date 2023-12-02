@@ -5,4 +5,20 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+  <!--servlet描述信息-->
+  <!--任何一个servlet都对应一个servlet-mapping-->
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <!--这个位置必须是带有包名的全限定类名-->
+    <servlet-class>com.test.servlet.RegisterServlet</servlet-class>
+  </servlet>
+  <!--servlet映射信息-->
+  <servlet-mapping>
+  <!--名字需跟上面的一致-->
+  <servlet-name>RegisterServlet</servlet-name>
+  <!--需要一个路径，必须以 / 开始-->
+  <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+
+
 </web-app>
