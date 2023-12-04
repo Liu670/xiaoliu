@@ -141,7 +141,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 <!--      <Context docBase="/Users/liu/code/java" path="/" reloadable="true"/><Context docBase="news_mysqlConnect" path="/news_mysqlConnect" reloadable="true" source="org.eclipse.jst.jee.server:news_mysqlConnect"/><Context docBase="news1" path="/news1" reloadable="true" source="org.eclipse.jst.jee.server:news1"/><Context docBase="news" path="/news" reloadable="true" source="org.eclipse.jst.jee.server:news"/>-->
-      <Context docBase="web_exam_1108" path="/web_exam_1108" reloadable="true" source="org.eclipse.jst.jee.server:web_exam_1108"/></Host>
+      <Context docBase="AjaxDemo" path="/AjaxDemo" reloadable="true" source="org.eclipse.jst.jee.server:AjaxDemo"/></Host>
     </Engine>
   </Service>
 </Server>
