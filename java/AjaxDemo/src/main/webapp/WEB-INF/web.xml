@@ -9,14 +9,32 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
+  <!-- <servlet>
+    <display-name>UserServlet1</display-name>
+    <servlet-name>UserServlet1</servlet-name>
+    <servlet-class>com.demo.servlet.UserServlet1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet1</servlet-name>
+    <url-pattern>/UserServlet1</url-pattern>
+  </servlet-mapping>
+    <servlet>
     <description></description>
     <display-name>UserServlet</display-name>
     <servlet-name>UserServlet</servlet-name>
-    <servlet-class>UserServlet</servlet-class>
+    <servlet-class>com.demo.servlet.UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
     <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
+  <filter>
+    <filter-name>myFilter</filter-name>
+    <filter-class>com.demo.filter.MyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>myFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+ -->
 </web-app>

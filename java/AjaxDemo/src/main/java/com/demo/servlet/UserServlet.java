@@ -1,8 +1,10 @@
+package com.demo.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -10,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class UserServlet
  */
+@WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +36,11 @@ public class UserServlet extends HttpServlet {
 			used = true;
 		}
 		PrintWriter out = response.getWriter();
-		out.print(used);
+		if (used) {
+			out.print("<h1>欢迎来到王者荣耀</h1>");
+		} else {
+			out.print("该用户不可用！");
+		}
 		out.flush();
 		out.close();
 
