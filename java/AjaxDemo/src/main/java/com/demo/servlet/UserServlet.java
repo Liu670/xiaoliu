@@ -36,11 +36,7 @@ public class UserServlet extends HttpServlet {
 			used = true;
 		}
 		PrintWriter out = response.getWriter();
-		if (used) {
-			out.print("<h1>欢迎来到王者荣耀</h1>");
-		} else {
-			out.print("该用户不可用！");
-		}
+		out.print(used);
 		out.flush();
 		out.close();
 

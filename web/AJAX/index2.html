@@ -3,9 +3,9 @@
  * @Author: xiaoliu
  * @Date: 2023-12-04 13:59:26
  * @LastEditors: xiaoliu
- * @LastEditTime: 2023-12-04 15:51:48
+ * @LastEditTime: 2023-12-05 09:19:50
  * @Description: file content
- * @FilePath: /code/Web/AJAX/index1.html
+ * @FilePath: /code/Web/AJAX/index2.html
 -->
     <!DOCTYPE html>
     <html lang="en">
@@ -26,11 +26,11 @@
     <script src="http://liu.ihong.love:81/file/html/js/jquery-3.7.1.js  "></script>
 
     <body>
-        <form action="UserServlet" id="myForm">
+        <form action="" id="myForm">
             <table>
                 <tr>
                     <td>用户名：</td>
-                    <td><input type="text" name="name" id="name" onblur="validate()">
+                    <td><input type="text" name="name" id="name">
                         <font color="red">*</font>
                     </td>
                     <td>
@@ -56,21 +56,42 @@
 
     </html>
     <script>
+        $(function () {
+            $('#name').blur(function () {
+                var name = this.value;
+                if (name == null || name == "") {
+                    $("#nameDiv").html("用户名不能为空");
+                } else {
+                    $.ajax({
+                        "url": "UserServlet",
+                        "type": "get",
+                        "data": "name=" + name,
+                        "dataType": "text",
+                        "success": callback,
+                        "error": function () {
+                            $('#nameDiv').html("error");
+                        }
+                    });
+                    //XMLHttpRequest.send(null);
+                    function callback(data) {
+                        if (data == "true") {
+                            $("#nameDiv").html("用户名已被使用");
+                        } else {
+                            $("#nameDiv").html("用户名可用");
+                        }
+                    }
+                }
+            })
+        });
+
+
+
         function validate() {
             var name = $("#name").val();
             if (name == null || name == "") {
                 $("#nameDiv").html("用户名不能为空");
             } else {
-                // 创建XMLHttpRequest对象
-                var XMLHttpRequest = createXmlHttpRequest();
-                // 设置回调函数
-                XMLHttpRequest.onreadystatechange = callback;
-                // 初始化请求
-                var url = "UserServlet?name=" + name;
-                XMLHttpRequest.open("POST", url, true);
-                // 发送请求
-                XMLHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                XMLHttpRequest.send("test=111&test2=222");
+
                 //XMLHttpRequest.send(null);
                 function callback() {
                     if (XMLHttpRequest.readyState == 4 && XMLHttpRequest.status == 200) {
