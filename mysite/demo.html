@@ -2,7 +2,7 @@
  * @Author: xiaoliu
  * @Date: 2023-12-06 23:10:13
  * @LastEditors: xiaoliu
- * @LastEditTime: 2023-12-07 00:28:47
+ * @LastEditTime: 2023-12-07 00:55:32
  * @Description: file content
  * @FilePath: /code/mysite/demo.html
 -->
@@ -13,8 +13,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Document</title>
-    <link rel="icon" href="http//liu.ihong.love:81/favicon.ico">
+    <link rel="icon" href="http://liu.ihong.love:81/favicon.ico" sizes="32x32" />
     <style>
         * {
             margin: 0;
@@ -38,7 +39,7 @@
         }
 
         .container {
-            min-width: 600px;
+            /* min-width: 600px; */
             padding: 30px;
             box-shadow: 0 2px 16px #fff;
             border-radius: 20px;
@@ -122,28 +123,11 @@
     <h2 class="title">小刘的前端作品，精致导航栏</h2>
 
     <div style="margin-bottom: 20px;">
-        <label for="">暗号:</label>
-        <input id="id" type="text" placeholder="输入口令,解锁隐藏功能">
+        <label for="myInput">暗号:</label>
+        <input id="myInput" type="text" placeholder="输入口令,解锁隐藏功能">
         <button class="button" id="button">进入</button>
     </div>
-    <script>
-        function open() {
-            var input = document.querySelector("#id").value;
-            var div1 = document.querySelector(".div1");
-            var div2 = document.querySelector(".div2");
-            if (input == "0501") {
-                div1.style.display = "none";
-                div2.style.display = "block";
-            } else {
-                div1.style.display = "block";
-                div2.style.display = "none";
-            }
-        }
-        button.addEventListener('click', function (event) {
-            // 处理逻辑 console.log('按钮被点击了');
-            open();
-        }); 
-    </script>
+
     <div class="container div1" style="display: none;">
         <h2 class="title1" style="text-align: center;">快输入暗号，解锁新姿势</h2>
 
@@ -240,3 +224,30 @@
 </body>
 
 </html>
+<script>
+
+    function open() {
+        var input = document.querySelector("#myInput");
+        var div1 = document.querySelector(".div1");
+        var div2 = document.querySelector(".div2");
+        if (input.value == "0501") {
+            div1.style.display = "none";
+            div2.style.display = "block";
+        } else {
+            div1.style.display = "block";
+            div2.style.display = "none";
+        }
+    }
+    button.addEventListener('click', function (event) {
+        // 处理逻辑 console.log('按钮被点击了');
+        open();
+    });
+    var input = document.getElementById("myInput");
+
+    input.addEventListener('keydown', function (event) {
+        if (event.keyCode == 13) {
+            open();
+        }
+    });
+
+</script>
