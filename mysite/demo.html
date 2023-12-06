@@ -1,0 +1,242 @@
+<!--
+ * @Author: xiaoliu
+ * @Date: 2023-12-06 23:10:13
+ * @LastEditors: xiaoliu
+ * @LastEditTime: 2023-12-07 00:28:47
+ * @Description: file content
+ * @FilePath: /code/mysite/demo.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon" href="http//liu.ihong.love:81/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: #001C30;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: #eee;
+        }
+
+        .title {
+            margin: 20px auto;
+        }
+
+        .container {
+            min-width: 600px;
+            padding: 30px;
+            box-shadow: 0 2px 16px #fff;
+            border-radius: 20px;
+            overflow-x: auto;
+        }
+
+        .nav-box {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 2px solid rgba(229, 229, 229);
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-box .nav-item {
+            font-size: 18px;
+            font-weight: 600;
+            list-style: none;
+            padding: 18px;
+            cursor: pointer;
+        }
+
+        .nav-box .nav-item.active {
+            color: #64CCC5;
+        }
+
+        .list-view {
+            padding: 20px;
+        }
+
+        .list-view .content {
+            display: none;
+            animation: animate 0.5s ease-in-out forwards;
+        }
+
+        @keyframes animate {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+
+        .list-view .content.active {
+            display: block;
+        }
+
+        .list-view .content h2 {
+            margin-bottom: 10px;
+        }
+
+        .slider {
+            position: absolute;
+            left: 14px;
+            top: 59px;
+            width: 72px;
+            height: 5px;
+            background-color: #64CCC5;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .div2 a {
+            color: #64CCC5;
+            /* border: 1px solid; */
+            text-decoration: none;
+            /* width: 100vw; */
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="title">小刘的前端作品，精致导航栏</h2>
+
+    <div style="margin-bottom: 20px;">
+        <label for="">暗号:</label>
+        <input id="id" type="text" placeholder="输入口令,解锁隐藏功能">
+        <button class="button" id="button">进入</button>
+    </div>
+    <script>
+        function open() {
+            var input = document.querySelector("#id").value;
+            var div1 = document.querySelector(".div1");
+            var div2 = document.querySelector(".div2");
+            if (input == "0501") {
+                div1.style.display = "none";
+                div2.style.display = "block";
+            } else {
+                div1.style.display = "block";
+                div2.style.display = "none";
+            }
+        }
+        button.addEventListener('click', function (event) {
+            // 处理逻辑 console.log('按钮被点击了');
+            open();
+        }); 
+    </script>
+    <div class="container div1" style="display: none;">
+        <h2 class="title1" style="text-align: center;">快输入暗号，解锁新姿势</h2>
+
+        <ul class="nav-box">
+            <li class="nav-item active">首页</li>
+            <li class="nav-item">前端开发</li>
+            <li class="nav-item">数据库</li>
+            <li class="nav-item">大数据</li>
+            <div class="slider"></div>
+        </ul>
+        <ul class="list-view">
+            <li class="content active">
+                <h2>首页</h2>
+                <p>展示关于网站经常关注的内容</p>
+            </li>
+            <li class="content">
+                <h2>前端开发---</h2>
+                <p>HTML、JavaScript、CSS、Vue全家桶和React全家桶</p>
+            </li>
+            <li class="content">
+                <h2>数据库@@@@</h2>
+                <p>关系型数据库MySQL，非关系型数据库MongoDB</p>
+            </li>
+            <li class="content">
+                <h2>大数据&&&&&&</h2>
+                <p>Hadoop，spark，python</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 加密 -->
+    <div class="container div2" style="display: none;">
+        <h2 class="title1" style="text-align: center;">我们的私密生活区</h2>
+
+        <ul class="nav-box">
+            <li class="nav-item active">首页</li>
+            <li class="nav-item">学习视频</li>
+            <li class="nav-item">色色网站</li>
+            <li class="nav-item">我们日常</li>
+            <div class="slider"></div>
+        </ul>
+        <ul class="list-view">
+            <li class="content active">
+                <h2>首页</h2>
+                <p style="color: yellow;">这里是色色专区~~</p>
+                <p>这是我们的专属网站哦～</p>
+                <p>在这里随心所欲快活吧～</p>
+            </li>
+            <li class="content">
+                <h2>学习视频---</h2>
+                <p>后续更新</p>
+            </li>
+            <li class="content" style="">
+                <h2>嘿嘿</h2>
+                <a class="a" href="http://www.by2279.com" target="_blank">我们之前看的网站</a>
+                <a class="a" href="https://x95hwokcyqrym0e.com:58007/" target="_blank">你懂的</a>
+                <a href="https://www.uaa.com/video">色色网</a>
+                <a class="a" href="https://dubnitskiy.com/en/" target="_blank">艺术欣赏</a>
+                <a class="a" href="https://www.yuacg.cc/" target="_blank">成人写真</a>
+                <a href="https://www.69avhbook.com/erotic-novel.html" target="_blank">色色小说</a>
+                <a href="https://www.tatajk.net/sex/gushi/index2-1.html" target="_blank">性爱故事</a>
+                <a href="https://www.tatajk.net/lx/" target="_blank">两性网</a>
+                <a href="https://baichunlink.xyz/" target="_blank">色站导航</a>
+                <a href="https://chigua.one/" target="_blank">吃瓜网</a>
+
+            </li>
+            <li class="content">
+                <h2>日常</h2>
+                <p>我们的生活日常要等到以后更新哦！</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        const tabs = document.querySelectorAll('.nav-item')
+        const all_content = document.querySelectorAll('.content')
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', e => {
+                tabs.forEach(tab => tab.classList.remove('active'))
+                tab.classList.add('active')
+                const slider = document.querySelector('.slider')
+                slider.style.width = e.target.offsetWidth + 'px'
+                slider.style.left = e.target.offsetLeft + 'px'
+                all_content.forEach(el => el.classList.remove('active'))
+                all_content[index].classList.add('active')
+            })
+        })
+        window.onload = () => {
+            const slider = document.querySelector('.slider')
+            const contents = document.getElementsByClassName('nav-item')
+            slider.style.left = contents[0].offsetLeft + 'px'
+            slider.style.width = contents[0].offsetWidth + 'px'
+        }
+    </script>
+</body>
+
+</html>
