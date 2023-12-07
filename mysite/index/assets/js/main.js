@@ -2,10 +2,14 @@
  * @Author: xiaoliu
  * @Date: 2023-12-06 18:35:05
  * @LastEditors: xiaoliu
- * @LastEditTime: 2023-12-06 19:11:56
+ * @LastEditTime: 2023-12-07 01:45:53
  * @Description: file content
- * @FilePath: /code/mysite/assets/js/main.js
+ * @FilePath: /code/mysite/index/assets/js/main.js
  */
+function getRandom() {
+    return Math.round(Math.random() * 8);
+}
+
 var iUp = (function () {
     var t = 0,
         d = 150,
@@ -35,7 +39,7 @@ var iUp = (function () {
     };
 })();
 
-function getBingImages(imgUrls) {
+function getBingImages1(imgUrls) {
     /**
      * 获取Bing壁纸
      * 先使用 GitHub Action 每天获取 Bing 壁纸 URL 并更新 images.json 文件
@@ -48,6 +52,24 @@ function getBingImages(imgUrls) {
     else index++;
     var imgUrl = imgUrls[index];
     var url = "https://www.bing.com" + imgUrl;
+    console.log(`imgUrl=${imgUrl}\nurl=${url}\nindex=${index}`);
+    $panel.css("background", "url('" + url + "') center center no-repeat #666");
+    $panel.css("background-size", "cover");
+    sessionStorage.setItem(indexName, index);
+}
+function getBingImages(imgUrls) {
+    /**
+     * 获取Bing壁纸
+     * 先使用 GitHub Action 每天获取 Bing 壁纸 URL 并更新 images.json 文件
+     * 然后读取 images.json 文件中的数据
+     */
+    var index = getRandom();
+    var indexName = "bing-image-index";
+    // var index = sessionStorage.getItem(indexName);
+    var $panel = $("#panel");
+    var imgUrl = imgUrls[index];
+    var url = "https://www.bing.com" + imgUrl;
+    console.log(`imgUrl=${imgUrl}\nurl=${url}\nindex=${index}`);
     $panel.css("background", "url('" + url + "') center center no-repeat #666");
     $panel.css("background-size", "cover");
     sessionStorage.setItem(indexName, index);
