@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<form action="" method="post">
+    <fieldset>
+        <div>
+            <legend align="center">Register</legend>
+        </div>
+        <div>
+            <label for="username">Account:</label>
+            <input id="username" name="username" type="text" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input id="password" name="password" type="password" required>
+        </div>
+        <div>
+            <label for="passwordConfirm">Password Confirm:</label>
+            <input id="passwordConfirm" name="passwordConfirm" type="password" required>
+        </div>
+        <div>
+            <label>Gender:</label>
+            <input id="male" name="gender" value="male" type="radio" checked>Male
+            <input id="female" name="gender" value="female" type="radio">Female
+        </div>
+        <div>
+            <label for="age">Age:</label>
+            <input name="age" id="age" type="number" max="100" min="0" required>
+        </div>
+        <div>
+            <label for="birthday">Birthday:</label>
+            <input name="birthday" id="birthday" type="date">
+        </div>
+        <div>
+            <label for="nationality">Nationality:</label>
+            <select name="nationality" id="nationality">
+                <option value="china">China</option>
+                <option value="usa">USA</option>
+                <option value="japan">Japan</option>
+            </select>
+        </div>
+        <div>
+            <label>Habits</label>
+            <input name="habits" value="Game" type="checkbox">Game
+            <input name="habits" value="Painting" type="checkbox">Painting
+            <input name="habits" value="Photography" type="checkbox">Photography
+            <input name="habits" value="Film" type="checkbox">Film
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" name="email" type="email" placeholder="please input your email" required>
+        </div>
+        <div>
+            <label for="website">Personal website:</label>
+            <input id="website" name="website" type="url" placeholder="please input your website" required>
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input id="phone" name="phone" type="number" placeholder="please input your phone number:" required>
+        </div>
+        <div>
+            <label for="identifier">Identifier:</label>
+            <input id="identifier" name="identifier" type="text" placeholder="please input your phone identifier:" required>
+        </div>
+        <div>
+            <label for="biography">Biography</label>
+            <textarea name="biography" id="biography" cols="30" rows="10" required></textarea>
+        </div>
+        <div>
+            <label for="avatar">Avatar:</label>
+            <input type="file" name="avatar" id="avatar">
+        </div>
+
+        <div>
+            <input type="reset">
+            <input type="submit">
+        </div>
+    </fieldset>
+</form>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<center>
+    <form action="./UserServlet" method="post">
+        <fieldset>
+            <legend align="center">Login</legend>
+            <label for="username">Account Name:</label>
+            <input id="username1" name="username" type="text">
+            <br>
+
+            <label for="password">Password:</label>
+            <input id="password1" name="password" type="password">
+            <br>
+
+            <input type="button" id="btnLogin" value="登录">
+            <input type="reset">
+        </fieldset>
+    </form>
+</center>
+
+</body>
+</html>
+
+<script>
+	function sendRequest(url,params,handler){
+		fetch(url,{
+			method:'post',
+			headers:{
+				'content-Type':'Application/json'
+			},
+			body:params,
+		}).then(response=>response.json())
+		.then(result=>handler(result));
+	}
+	btnLogin.onclick =()=>{
+		let username = username1.value;
+		let password = password1.value;
+		let params = {
+			username,password
+		}
+		console.log("name：",JSON.stringify(params),"params",params);
+		sendRequest('./UserServlet',JSON.stringify(params),handler);
+	}
+	function handler(result){
+		if(result.code == 200){
+			alert(result.info);
+		}
+	}
+</script>

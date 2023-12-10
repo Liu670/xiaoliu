@@ -1,21 +1,5 @@
 @charset "UTF-8";
 
-/* ----
-
-# My Resume
-# By: Dreamer-Paul
-# Last Update: 2018.2.21
-
-一个简洁的橙色调个人简介。
-
-欢迎你加入缤奇，和我们一起改变世界。
-本代码为奇趣保罗原创，并遵守 MIT 开源协议。欢迎访问我的博客：https://paugram.com
-
----- */
-
-/* 0 - 全局
--------------------------------- */
-
 a{ color: #c40b00; }
 
 .wrap{ max-width: 1000px; }
@@ -117,7 +101,7 @@ main section{
 }
 
 #info{ background: url(img/bg-1.png) fixed; }
-#skills{ background: #f8bd24; }
+#skills{ background: #ddd}
 #works{ background: url(img/bg-2.png) fixed; }
 #team{ background: url(img/bg-3.png) fixed; }
 

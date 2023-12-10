@@ -60,6 +60,11 @@
             margin: 0;
         }
 
+        html {
+            background-color: rgba(0, 0, 0, 1);
+            /* opacity: .5; */
+        }
+
         body {
             height: 100vh;
             /* 弹性盒子 水平+水平居中 */
@@ -68,11 +73,14 @@
             align-items: center;
             /* 背景 */
             /* background: linear-gradient(200deg, #37e2b2, #2fa080); */
-            background: linear-gradient(to right, #9fe1fa, #f4edc9);
+            /* background: linear-gradient(to right, #9fe1fa, #f4edc9); */
+            background: url("https://www.bing.com/th?id=OHR.BabyLemons_EN-US8232804860_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp");
+            /* opacity: .1; */
         }
 
         .container {
             /* border: 1px solid black; */
+            opacity: .8;
         }
 
         /* 画熊猫 */
@@ -85,7 +93,7 @@
         .face {
             width: 200px;
             height: 200px;
-            background-color: white;
+            background-color: rgba(255, 255, 255, .6);
             border-radius: 50%;
             box-shadow: 0 10px 15px rgba(0, 0, 0, .15);
             position: relative;
@@ -97,7 +105,7 @@
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background-color: black;
+            background-color: rgba(0, 0, 0, .6);
             position: absolute;
             top: -10px;
         }
@@ -112,7 +120,7 @@
             width: 50px;
             height: 80px;
             border-radius: 50%;
-            background-color: black;
+            background-color: rgba(0, 0, 0, .6);
             position: absolute;
             top: 30px;
         }
@@ -134,7 +142,7 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            background-color: white;
+            background-color: rgba(255, 255, 255, .6);
             position: absolute;
             top: 20px;
         }
@@ -154,7 +162,7 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, .7);
             position: absolute;
             top: 5px;
             left: 5px;
@@ -164,7 +172,7 @@
         .nose {
             width: 40px;
             height: 20px;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, .5);
             position: absolute;
             left: 80px;
             top: 100px;
@@ -187,7 +195,7 @@
         .body {
             width: 250px;
             height: 280px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, .5);
             position: relative;
             left: -25px;
             border-radius: 80% 80% 50% 50%;
@@ -200,7 +208,7 @@
         .foot::after {
             width: 70px;
             height: 100px;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, .5);
             border-radius: 40% 40% 100% 100%;
             position: absolute;
             bottom: 0px;
@@ -219,7 +227,7 @@
             content: "";
             width: 55px;
             height: 65px;
-            background-color: #222;
+            background-color: rgba(0, 0, 0, .4);
             position: absolute;
             border-radius: 50%;
         }
@@ -227,7 +235,7 @@
         .foot .sole {
             width: 20px;
             height: 30px;
-            background-color: #222;
+            /* background-color: rgba(0, 0, 0, .4); */
             position: absolute;
             border-radius: 50%;
         }
@@ -248,7 +256,7 @@
         .hand::after {
             width: 40px;
             height: 30px;
-            background-color: #000;
+            background-color: rgba(0, 0, 0, .5);
             border-radius: 50px;
             position: absolute;
             top: 70px;
@@ -277,7 +285,7 @@
         .reg-box {
             width: 400px;
             height: 300px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, .6);
             border-radius: 10%;
             position: absolute;
             left: 36%;
@@ -493,12 +501,12 @@
             <div class="hand right"></div>
             <h1>用户登录</h1>
             <div class="ipt-box">
-                <input type="text" required id="loginId">
+                <input type="text" class="username" required id="loginId">
                 <label for="">用户名</label>
                 <div class="reg">没有账号?立即注册</div>
             </div>
             <div class="ipt-box">
-                <input class="pwd" type="password" required id="password" class="on">
+                <input class="pwd password" type="password" required id="password" class="on">
                 <label for="">密码</label>
                 <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
             </div>
@@ -512,16 +520,16 @@
             <div class="hand right"></div>
             <h1>用户注册</h1>
             <div class="ipt-box">
-                <input type="text" required id="regName">
+                <input type="text" required id="regName username" class="username">
                 <label for="">用户名</label>
             </div>
             <div class="ipt-box">
-                <input class="pwd" type="password" required id="password1" class="on">
+                <input class="pwd password" type="password" required id="password1" class="on">
                 <label for="">密码</label>
                 <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
             </div>
             <div class="ipt-box">
-                <input class="pwd" type="password" required id="password2" class="on">
+                <input class="pwd password" type="password" required id="password2" class="on">
                 <label for="">重复密码</label>
                 <button type="button" class="show" value="👀" style="background-color:#fff;">^_^</button>
             </div>
