@@ -11,7 +11,4 @@ public class CaptchaUtil {
 		return String.valueOf(captchaNumber);
 	}
 
-	public static void main(String[] args) {
-		System.out.println(generateCaptcha());
-	}
 }

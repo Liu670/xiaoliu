@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 
 public class CaptchaImageUtil {
 	public static void writeCaptchaImage(OutputStream outputStream, String captcha) throws IOException {
-		int width = 120;
+		int width = 80;
 		int height = 40;
 
 		// 创建图像缓冲区
@@ -27,7 +27,7 @@ public class CaptchaImageUtil {
 		g.setFont(new Font("Arial", Font.BOLD, 20));
 
 		// 画边框
-		g.setColor(Color.BLACK);
+//		g.setColor(Color.BLACK);
 		g.drawRect(0, 0, width - 1, height - 1);
 
 		// 画干扰线
@@ -41,8 +41,8 @@ public class CaptchaImageUtil {
 		}
 
 		// 画验证码
-		g.setColor(Color.BLACK);
-		g.drawString(captcha, 30, 25);
+//		g.setColor(Color.BLACK);
+		g.drawString(captcha, 10, 25);
 
 		// 输出图像
 		ImageIO.write(image, "JPEG", outputStream);

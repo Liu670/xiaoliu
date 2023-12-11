@@ -14,6 +14,8 @@ import com.nuist.test.util.CaptchaUtil;
 
 @WebServlet("/CaptchaServlet")
 public class CaptchaServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String captcha = CaptchaUtil.generateCaptcha();
@@ -28,5 +30,10 @@ public class CaptchaServlet extends HttpServlet {
 		response.setDateHeader("Expires", 0);
 
 		CaptchaImageUtil.writeCaptchaImage(response.getOutputStream(), captcha);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 }

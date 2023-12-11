@@ -22,33 +22,38 @@ public class RegisterServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
-		String enteredCaptcha = request.getParameter("captcha");
-		String actualCaptcha = (String) request.getSession().getAttribute("captcha");
+//		String enteredCaptcha = request.getParameter("captcha");
+//		String actualCaptcha = (String) request.getSession().getAttribute("captcha");
 
-		// 验证验证码
-		if (!enteredCaptcha.equals(actualCaptcha)) {
-			response.sendRedirect("register.jsp?error=captcha");
+		UserDao user = new UserDao();
+		// 验证账号是否存在
+		if (user.query(username)) {
+			response.sendRedirect("login.html#register?error=isExist");
 			return;
 		}
+		// 验证验证码
+//		if (!enteredCaptcha.equals(actualCaptcha)) {
+//			response.sendRedirect("register.jsp?error=captcha");
+//			return;
+//		}
 
 		// 验证密码一致性
 		if (!password.equals(confirmPassword)) {
-			response.sendRedirect("register.jsp?error=password");
+			response.sendRedirect("login.html#register?error=password");
 			return;
 		}
 
 		// 对密码进行MD5加密
 		String encryptedPassword = MD5Util.encrypt(password);
-
-		User newUser = new User();
-		newUser.setUsername(username);
-		newUser.setPassword(encryptedPassword);
+		User newuser = new User();
+		newuser.setUsername(username);
+		newuser.setPassword(encryptedPassword);
 
 		UserDao userDao = new UserDao();
-		if (userDao.registerUser(newUser)) {
-			response.sendRedirect("login.jsp");
+		if (userDao.registerUser(newuser)) {
+			response.sendRedirect("login.html#login?sussces");
 		} else {
-			response.sendRedirect("register.jsp?error=register");
+			response.sendRedirect("login.html#register?error=register");
 		}
 	}
 }
