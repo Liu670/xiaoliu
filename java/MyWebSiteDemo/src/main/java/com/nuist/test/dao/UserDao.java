@@ -12,11 +12,12 @@ public class UserDao implements UserDaoInterface {
 	@Override
 	public boolean registerUser(User user) {
 		try (Connection connection = DbUtil.getConnection()) {
-			String sql = "INSERT INTO user1 (username, password) VALUES (?, ?)";
-			try (PreparedStatement statement = connection.prepareStatement(sql)) {
-				statement.setString(1, user.getUsername());
-				statement.setString(2, user.getPassword());
-				int rowsInserted = statement.executeUpdate();
+			String sql = "INSERT INTO user1 (username, password,createDate) VALUES (?, ?, ?)";
+			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+				stmt.setString(1, user.getUsername());
+				stmt.setString(2, user.getPassword());
+				stmt.setString(3, user.getCreateDate());
+				int rowsInserted = stmt.executeUpdate();
 				return rowsInserted > 0;
 			}
 		} catch (SQLException e) {
@@ -59,6 +60,6 @@ public class UserDao implements UserDaoInterface {
 
 	public static void main(String[] args) {
 		UserDao userDao = new UserDao();
-		System.out.println(userDao.query("2"));
+
 	}
 }

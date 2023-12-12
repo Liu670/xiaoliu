@@ -5,6 +5,8 @@ public class User {
 	private int id;
 	private String username;
 	private String password; // 存储MD5加密后的密码
+//	private Date createDate;
+	private String createDate;
 
 	public int getId() {
 		return id;
@@ -45,6 +47,14 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+	}
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
 	}
 
 }

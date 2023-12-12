@@ -399,11 +399,6 @@
             transition: .3s;
         }
 
-        /* 登录按钮 */
-        .loginButton {
-            padding-top: 10px;
-        }
-
         .login-box>button:hover,
         .reg-box>button:hover {
             letter-spacing: 25px;
@@ -478,8 +473,13 @@
         /* 提示语 */
         .log {
             position: absolute;
-            bottom: 15%;
+            bottom: 12%;
             color: red;
+        }
+
+        .loginButton {
+            position: relative;
+            top: 5%;
         }
 
         /* 验证码 */
@@ -556,7 +556,7 @@
 
                 </div>
                 <button class="loginButton">登录</button>
-                <span class="log">123</span>
+                <span class="log"></span>
             </div>
         </form>
         <!-- 注册框 -->
@@ -631,10 +631,6 @@
             left: e.pageX / dw,
             top: e.pageY / dh,
         })
-
-
-
-
     })
 
 

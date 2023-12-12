@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 
 		// 验证验证码
 		if (!enteredCaptcha.equals(actualCaptcha)) {
-			response.sendRedirect("login.html#login?error=captcha");
+			response.sendRedirect("login.jsp?error=captcha#login");
 //			response.getWriter().write("captcha");
 			return;
 		}
@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 //			request.setAttribute("username", username);
 			response.sendRedirect("http://liu.ihong.love:81");
 		} else {
-			response.sendRedirect("login.html#login?error=login");
+			response.sendRedirect("login.jsp?error=login#login");
 //			response.getWriter().write("login");
 
 		}

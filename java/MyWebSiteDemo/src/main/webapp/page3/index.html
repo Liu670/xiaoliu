@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: 100px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        #sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        #sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        #sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+            margin-left: 100px;
+        }
+
+        #top-carousel {
+            width: 100%;
+        }
+
+        #content {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Responsive Website</title>
+</head>
+
+<body>
+
+    <div id="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <img src="http://liu.ihong.love:81/favicon.ico" alt="">
+        </a>
+        <a href="#">User Center</a>
+        <a href="#">Home</a>
+        <a href="#">Page 1</a>
+        <a href="#">Page 2</a>
+        <a href="#">Page 3</a>
+    </div>
+
+    <div id="main">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">☰</span>
+
+        <div id="top-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://via.placeholder.com/1200x400" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+        </div>
+
+        <div id="content">
+            <h2>Main Content</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et justo ut turpis congue mollis. Integer
+                vel lectus vel est facilisis consectetur ut ut purus. Curabitur vestibulum justo nec metus tincidunt, ut
+                ullamcorper libero cursus. Nunc ac odio sit amet odio tincidunt ullamcorper. Proin ut libero nec lacus
+                rhoncus tincidunt id eget elit. Fusce sit amet ullamcorper metus, vitae cursus ex. Duis vitae tristique
+                nulla, nec fermentum nunc. Ut non justo id velit tincidunt cursus. Duis sagittis, lacus ac scelerisque
+                posuere, sem nibh vulputate justo, nec suscipit quam urna non sem. Etiam venenatis metus ac odio tempus
+                rhoncus. Donec interdum, quam vitae vestibulum pulvinar, sapien velit commodo orci, non volutpat nunc
+                libero a lacus.</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // function openNav() {
+        //     document.getElementById("sidebar").style.width = "250px";
+        //     document.getElementById("main").style.marginLeft = "250px";
+        // }
+
+        // function closeNav() {
+        //     document.getElementById("sidebar").style.width = "100px";
+        //     document.getElementById("main").style.marginLeft = "100px";
+        // }
+
+        function closeNav() {
+            if (document.getElementById("sidebar").offsetWidth <= 100) {
+                document.getElementById("sidebar").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+            } else {
+                document.getElementById("sidebar").style.width = "100px";
+                document.getElementById("main").style.marginLeft = "100px";
+            }
+            console.log();
+        }
+
+        // Simulating content loading on scroll
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    // Append more content here or load from a server
+                    $('#content').append('<p>Additional content loaded...</p>');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
