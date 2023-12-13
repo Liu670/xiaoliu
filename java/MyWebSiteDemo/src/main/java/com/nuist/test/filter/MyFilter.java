@@ -8,10 +8,9 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 
 //在过滤器类上方加上注解@WebFilter ,然后依然通过/* 表示拦截所有请求
-@WebFilter("/*")
+//@WebFilter("/*")
 public class MyFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
