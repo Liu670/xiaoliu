@@ -40,7 +40,13 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
 //			request.setAttribute("username", username);
-			response.sendRedirect("http://liu.ihong.love:81");
+//			response.sendRedirect("http://liu.ihong.love:81");
+			response.sendRedirect("pages/index.html");
+			// RequestDispatcher requestDispatcher =
+			// request.getRequestDispatcher("/pages/index.html");// 得到转发器
+//
+//			requestDispatcher.forward(request, response);// 转发（调度）请求给/sessionLoginDemo/login.jsp
+//															// 并由login.jsp发送response给客户端。
 		} else {
 			response.sendRedirect("login.jsp?error=login#login");
 //			response.getWriter().write("login");

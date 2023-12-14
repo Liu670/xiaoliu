@@ -61,7 +61,11 @@
      <link rel="icon" href="http://liu.ihong.love:81/favicon.ico">
      <!-- <link rel="stylesheet" href="button.css"> -->
      <!-- <link rel="stylesheet" href="static/css/login.css"  charset="utf-8"> -->
-     <link href="<%=request.getContextPath()%>/static/css/login.css?v=1.0" rel="stylesheet" type="text/css" >
+    <%--  <link href="<%=request.getContextPath()%>/static/css/login.css?v=1.0" rel="stylesheet" type="text/css" > --%>
+     <style>
+    	@import url("static/login.css?v=1.0");
+	</style>
+     
  </head>
 
  <body>

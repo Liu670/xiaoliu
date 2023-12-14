@@ -1,3 +1,11 @@
+/*
+ * @Author: xiaoliu
+ * @Date: 2023-12-11 23:14:33
+ * @LastEditors: xiaoliu
+ * @LastEditTime: 2023-12-14 20:17:27
+ * @Description: file content
+ * @FilePath: /code/Java/MyWebSiteDemo/src/main/java/com/nuist/test/filter/MyFilter.java
+ */
 package com.nuist.test.filter;
 
 import java.io.IOException;
@@ -20,11 +28,11 @@ public class MyFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
 			throws IOException, ServletException {
-//		// 统一处理请求和响应的乱码
+		// // 统一处理请求和响应的乱码
 		servletRequest.setCharacterEncoding("utf-8");
 		servletResponse.setCharacterEncoding("utf-8");
 		servletResponse.setContentType("text/html;charset=utf-8");
-//		 处理过后放行
+		// 处理过后放行
 		filterChain.doFilter(servletRequest, servletResponse);
 
 	}
