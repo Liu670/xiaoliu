@@ -1,5 +1,7 @@
 # 个人网站的实现
 
+地址：<a href="http://liu.ihong.love:8081/MyWebSiteDemo/login.jsp">主页</a>
+
 #### 项目介绍
 
 个人网站，主要是记录学习笔记、生活随笔、技术总结、面试经验、个人简历等。
@@ -24,7 +26,7 @@ jar 包：mysql-connector-java-5.1.47-bin.jar、servlet-api-2.5.jar、jsp-api、
 
 项目目录：
 
->  src 目录：java 源代码
+> src 目录：java 源代码
 >
 > web 目录：jsp 页面(login.jsp)
 >
@@ -60,31 +62,31 @@ jar 包：mysql-connector-java-5.1.47-bin.jar、servlet-api-2.5.jar、jsp-api、
 
 5. 语言：
 
-   > Java
-   >
-   > html
+    > Java
+    >
+    > html
 
 6. 环境：jdk8
 
 7. jar 包：
 
-   > mysql-connector-java-5.1.47-bin.jar
-   >
-   > servlet-api-2.5.jar
-   >
-   > jsp-api.jar
-   >
-   > jstl.jar
+    > mysql-connector-java-5.1.47-bin.jar
+    >
+    > servlet-api-2.5.jar
+    >
+    > jsp-api.jar
+    >
+    > jstl.jar
 
 8. 项目结构：
 
-   > src 目录：java 源代码
-   >
-   > web 目录：jsp 页面
-   >
-   > static 目录：静态资源文件
-   >
-   > lib 目录：jar 包
+    > src 目录：java 源代码
+    >
+    > web 目录：jsp 页面
+    >
+    > static 目录：静态资源文件
+    >
+    > lib 目录：jar 包
 
 <!-- more -->
 
@@ -102,11 +104,9 @@ servlet:事件处理层（控制层），
 
 util:工具包，
 
-
-
 ####数据库
 
-user表
+user 表
 
 表字段：id、username、password、createDate
 
