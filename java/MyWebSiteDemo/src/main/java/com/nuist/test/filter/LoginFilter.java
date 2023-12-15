@@ -38,11 +38,6 @@ public class LoginFilter implements Filter {
 		// 如果未登录，则重定向到登录页面
 		if (!isLoggedIn) {
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.jsp");
-			// String message = "请登录后进行访问";
-			// String htmlResponse = "<script>showNotification('" + message +
-			// "');</script>";
-			// response.getWriter().write(htmlResponse);
-
 			return;
 		}
 		// 登录用户正常访问，继续处理请求
