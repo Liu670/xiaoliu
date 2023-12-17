@@ -17,13 +17,17 @@
 // 切换页面
 iframe = document.getElementById("iframe");
 aList = document.querySelectorAll("#sidebar a");
+
 // 根据网址栏判断是否点击哪一个
 for (const i of aList) {
     i.addEventListener("click", function () {
         href = i.getAttribute("href").split("#")[1];
-        if (href != undefined) {
+        console.log(href=="setting");
+        if(href=="setting"){
+			iframe.src = href + ".jsp";
+        }else if (href != undefined && href != setting) {
             iframe.src = href + ".html";
-        } else {
+        }else {
             iframe.src = "home.html";
         }
     });

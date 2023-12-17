@@ -31,7 +31,7 @@ public class MyFilter implements Filter {
 		// // 统一处理请求和响应的乱码
 		servletRequest.setCharacterEncoding("utf-8");
 		servletResponse.setCharacterEncoding("utf-8");
-		servletResponse.setContentType("text/html;charset=utf-8");
+		// servletResponse.setContentType("text/html;charset=utf-8");
 		// 处理过后放行
 		filterChain.doFilter(servletRequest, servletResponse);
 

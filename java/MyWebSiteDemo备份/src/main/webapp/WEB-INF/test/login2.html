@@ -1,0 +1,76 @@
+<!--
+ * @Author: xiaoliu
+ * @Date: 2023-12-11 00:17:25
+ * @LastEditors: xiaoliu
+ * @LastEditTime: 2023-12-11 08:44:11
+ * @Description: file content
+ * @FilePath: /code/Java/MyWebSiteDemo/src/main/webapp/login.html
+-->
+<!-- login.jsp -->
+<!-- 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> -->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <!-- 添加样式链接等 -->
+    <link rel="icon" href="http://liu.ihong.love:81/favicon.ico">
+    <script src="http://liu.ihong.love:81/file/html/js/jquery-3.7.1.js"></script>
+</head>
+
+<body>
+    <h2>Login</h2>
+    <!-- <%-- 显示错误信息 --%> -->
+    <c:if test="${param.error == 'login'}">
+        <p style="color: red;">登录失败. 请检查你的账号或密码.</p>
+    </c:if>
+    <c:if test="${param.error == 'captcha'}">
+        <p style="color: red;">验证码错误. 请重试.</p>
+    </c:if>
+    <form action="LoginServlet" method="post">
+        Username: <input type="text" name="username" required><br>
+        Password: <input type="password" name="password" required><br>
+        Captcha: <input type="text" name="captcha" required>
+        <img src="CaptchaServlet" alt="Captcha Image"><br>
+        <input type="submit" value="Login">
+        <input type="button" value="Register" onclick="demo()">
+    </form>
+</body>
+
+</html>
+<script>
+    // 接收后端传来的数据
+    function demo() {
+        var XMLHttpRequest = createXmlHttpRequest();
+        // 设置回调函数
+        XMLHttpRequest.onreadystatechange = callback;
+        // 初始化请求
+        var url = "LoginServlet";
+        XMLHttpRequest.open("post", url, true);
+        XMLHttpRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        XMLHttpRequest.send("username=1&password=1&captcha=1");
+        console.log(location.URL);
+        // 发送请求
+        // XMLHttpRequest.send(null);
+        function callback() {
+            if (XMLHttpRequest.readyState == 4 && XMLHttpRequest.status == 200) {
+                var result = XMLHttpRequest.responseText;
+            }
+        }
+    }
+
+    function createXmlHttpRequest() {
+        // ie7以上及其他浏览器
+        if (window.XMLHttpRequest) {
+            // 创建XMLHttpRequest对象
+            return new XMLHttpRequest();
+        } else {
+            // ie5  ie6
+            return new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    }
+
+</script>

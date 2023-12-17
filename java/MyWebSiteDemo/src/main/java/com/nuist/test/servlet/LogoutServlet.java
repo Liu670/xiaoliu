@@ -27,6 +27,7 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		HttpSession session = request.getSession();
 		// 设置session和登录后进入首页
 		session.setAttribute("username", null);

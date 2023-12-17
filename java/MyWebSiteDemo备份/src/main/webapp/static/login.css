@@ -1,0 +1,435 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    /* 弹性盒子 水平+水平居中 */
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    /* 背景 */
+    /* background: linear-gradient(200deg, #37e2b2, #2fa080); */
+    background: linear-gradient(to right, #9fe1fa, #f4edc9);
+}
+
+.container {
+    margin: 0 auto;
+    /* border: 1px solid black; */
+    width: 80vw;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+/* 画熊猫 */
+.panda {
+    position: relative;
+    margin: 0 auto;
+    /* border: 1px solid pink; */
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 脸 */
+.face {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, .15);
+    position: absolute;
+    top: 8%;
+    left: 33%;
+    z-index: 1;
+
+}
+
+/* 耳朵 */
+.ear {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    /* top: 0px; */
+}
+
+/* 左耳 */
+.ear.left {
+    left: 30%;
+    top: 10%;
+}
+
+/* 右耳 */
+.ear.right {
+    right: 35%;
+    top: 10%;
+}
+
+/* 眼睛 */
+.eye-shadow {
+    width: 50px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 30px;
+}
+
+/* 左眼睛 */
+.eye-shadow.left {
+    transform: rotate(45deg);
+    left: 30px;
+}
+
+/* 右眼睛 */
+.eye-shadow.right {
+    transform: rotate(-45deg);
+    right: 30px;
+}
+
+/* 眼白 */
+.eye-white {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 20px;
+}
+
+/* 左眼 */
+.eye-white.left {
+    left: 10px;
+}
+
+/* 右眼 */
+.eye-white.right {
+    right: 10px;
+}
+
+/* 眼球 */
+.eye-ball {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #000;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+/* 鼻子 */
+.nose {
+    width: 40px;
+    height: 20px;
+    background-color: #000;
+    position: absolute;
+    left: 80px;
+    top: 100px;
+    border-radius: 60% 60% 90% 90%;
+}
+
+/* 嘴巴 */
+.mouth {
+    width: 60px;
+    height: 30px;
+    /* background-color: #000; */
+    position: absolute;
+    left: 70px;
+    top: 110px;
+    border-radius: 50%;
+    border-bottom: 10px solid black;
+}
+
+/* 身体部分 */
+.body {
+    width: 350px;
+    height: 300px;
+    background-color: #fff;
+    position: relative;
+    left: -25px;
+    top: 5%;
+    border-radius: 80% 80% 50% 50%;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+}
+
+/* 脚 */
+.foot,
+.foot::before,
+.foot::after {
+    width: 70px;
+    height: 100px;
+    background-color: #000;
+    border-radius: 40% 40% 100% 100%;
+    position: absolute;
+    z-index: 3;
+}
+
+.foot.left {
+    top: 75%;
+    left: 25%;
+}
+
+.foot.right {
+    top: 75%;
+    right: 30%;
+}
+
+.foot::after {
+    content: "";
+    width: 55px;
+    height: 65px;
+    background-color: #222;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.foot .sole {
+    width: 20px;
+    height: 30px;
+    background-color: #222;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.foot .sole::before {
+    content: "";
+    left: -50px;
+}
+
+.foot .sole::after {
+    content: "";
+    left: 25px;
+}
+
+/* 手 */
+.hand,
+.hand::before,
+.hand::after {
+    width: 40px;
+    height: 30px;
+    background-color: #000;
+    border-radius: 50px;
+    position: absolute;
+    top: 70px;
+}
+
+.hand::before {
+    content: "";
+    top: 16px;
+}
+
+.hand::after {
+    content: "";
+    top: 32px;
+}
+
+.hand.left {
+    left: -20px;
+}
+
+.hand.right {
+    right: -20px;
+}
+
+/* 登录框,注册框 */
+.login-box,
+.reg-box {
+    /* visibility: hidden; */
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10%;
+    position: absolute;
+    left: 35%;
+    top: 28%;
+    z-index: 2;
+    /* 弹性布局 使登录框内部居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* 翻转动画 */
+    animation: action 1s both;
+}
+
+/* 登录注册切换 反转效果 */
+@keyframes action {
+    from {
+        /* transform: rotateY(0deg); */
+        transform: scaleX(-1);
+    }
+
+    to {
+        /* transform: rotateY(180deg); */
+        transform: scaleX(1);
+    }
+}
+
+
+h1 {
+    color: #1dc797;
+}
+
+.ipt-box {
+    width: 80%;
+    margin-top: 25px;
+    /* border: 1px solid red; */
+    position: relative;
+}
+
+.ipt-box input {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-bottom: 1px solid #bbb;
+    text-indent: 5px;
+    outline: none;
+    transition: 0, 3s;
+}
+
+.ipt-box label {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    font-size: 14px;
+    color: #888;
+    transition: .3s;
+    pointer-events: none;
+
+}
+
+/* 输入框获得焦点 有值输入的时候输入框样式 */
+.ipt-box input:focus,
+.ipt-box input:valid {
+    border-color: #1dc797;
+    box-shadow: 0 2px #1dc797;
+}
+
+/* 选中有值输入时label样式 */
+.ipt-box input:focus~label,
+.ipt-box input:valid~label {
+    color: #1dc797;
+    transform: translateY(-20px);
+}
+
+/* 登录框 */
+.login-box,
+.reg-box {
+    height: 40vh;
+}
+
+
+.login-box>button,
+.reg-box>button {
+    width: 150px;
+    height: 40px;
+    background-color: #1dc797;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    margin-top: 30px;
+    letter-spacing: 10px;
+    text-indent: 10px;
+    transition: .3s;
+}
+
+.login-box>button:hover,
+.reg-box>button:hover {
+    letter-spacing: 25px;
+    text-indent: 25px;
+    cursor: pointer;
+    background-color: #2fa080;
+}
+
+/* 登录框向上举 */
+.up {
+    transform: translate(-50%, -110px);
+}
+
+/* 查看密码 */
+.show {
+    position: absolute;
+    top: 10px;
+    left: 290px;
+    border: none;
+    outline: none;
+}
+
+.show:hover {
+    cursor: pointer;
+    background-color: #2fa080;
+
+}
+
+/* 没有账号，立即注册 */
+.reg {
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    color: #bbb;
+
+}
+
+/* 已有账号，去登录 */
+.loginBtn {
+    font-size: 12px;
+    color: #bbb;
+}
+
+.reg:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #1dc797;
+
+}
+
+.loginBtn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #1dc797;
+
+}
+
+.reg-box>input {}
+
+/* 登录框注册框隐藏 */
+.none {
+    display: none;
+}
+
+/* 闭眼 */
+.offeye {
+    width: 40px;
+    height: 1px;
+}
+
+/* 提示语 */
+.log {
+    position: absolute;
+    bottom: 12%;
+    color: red;
+}
+
+.reg-box .log {
+    bottom: 15%;
+}
+
+.loginButton {
+    position: relative;
+    top: 5%;
+}
+
+/* 验证码 */
+#CodeImg:hover {
+    cursor: pointer;
+}

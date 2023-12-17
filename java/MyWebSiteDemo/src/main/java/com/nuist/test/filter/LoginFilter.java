@@ -30,7 +30,10 @@ public class LoginFilter implements Filter {
 		// // 统一处理请求和响应的乱码
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
+		// response.setContentType("text/html;charset=utf-8");
+		// response.setContentType("text/javascript"); // 对于 JS 文件
+		// response.setContentType("text/css"); // 对于 CSS 文件
+
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 

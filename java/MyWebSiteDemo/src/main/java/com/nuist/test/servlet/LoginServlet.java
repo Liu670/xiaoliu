@@ -39,7 +39,6 @@ public class LoginServlet extends HttpServlet {
 		if (userDao.loginUser(username, encryptedPassword)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
-//			request.setAttribute("username", username);
 //			response.sendRedirect("http://liu.ihong.love:81");
 			response.sendRedirect("pages/index.html");
 			// RequestDispatcher requestDispatcher =

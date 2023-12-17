@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.nuist.test.dao.User;
 import com.nuist.test.dao.UserDao;
+import com.nuist.test.dao.UserDaoInterface;
 import com.nuist.test.util.MD5Util;
 
 @WebServlet("/RegisterServlet")
@@ -21,13 +22,16 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/javascript"); // 对于 JS 文件
+		response.setContentType("text/css"); // 对于 CSS 文件
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
 //		String enteredCaptcha = request.getParameter("captcha");
 //		String actualCaptcha = (String) request.getSession().getAttribute("captcha");
 
-		UserDao user = new UserDao();
+		UserDaoInterface user = new UserDao();
 		// 验证账号是否存在
 		if (user.query(username)) {
 			response.sendRedirect("login.jsp?error=isExist#register");
@@ -56,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
 		newuser.setPassword(encryptedPassword);
 		newuser.setCreateDate(createDate);
 
-		UserDao userDao = new UserDao();
+		UserDaoInterface userDao = new UserDao();
 		if (userDao.registerUser(newuser)) {
 			response.sendRedirect("login.jsp?sussces#login");
 		} else {
