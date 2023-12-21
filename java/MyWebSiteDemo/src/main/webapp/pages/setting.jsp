@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>设置中心</title>
     <style>
-        @import url("css/user.css");
+        @import url("css/user.css?v=1.0");
     </style>
 </head>
 
