@@ -1,0 +1,101 @@
+<!--
+2） 使用CSS修饰页面内容，使得：
+（1） 标题为三级，颜色红色，居中，字号24px；
+（2） 分割线颜色为蓝色，宽度80%，大小为2；
+（3） 计算区背景颜色为#ecf5ff，字体楷体，字号20px，所有内容居中；
+（4） 按钮宽度100px，背景色#00beff，字号20px，圆框边角10px；
+（5） 文本框宽150px，高30px；边框宽2px，实线，颜色#1c6ca1；
+3）使用JavaScript，完成：
+用户打开页面后，随机生成一个0-100的价格（整数），用户猜一个价格，点击按钮后告诉用户猜高了还是猜低了，显示在结果标签后。猜中时需要告诉用户信息“恭喜！猜对了，您一共猜了*次'”。此时按钮变成“再猜一次”，重新生成一个价格并进行猜测。
+
+-->
+<html>
+
+<head>
+    <style>
+        h3 {
+            color: red;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        hr {
+            color: blue;
+            width: 80%;
+            size: 2px;
+        }
+
+        .main {
+            background-color: #ecf5ff;
+            font: 20px "楷体";
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            background-color: #00beff;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 150px;
+            height: 30px;
+            border: 2px solid #1c6ca1;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>猜价格</h3>
+    <hr>
+    <div class="main">
+        <div>
+            <label for="priceText">请输入价格：</label>
+            <input type="text" id="priceText">
+        </div>
+        <div>
+            <button id="btn" onclick="cai()">猜一下</button>
+        </div>
+        <div id="resultDiv">
+            结果是：<span id="result"></span>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    // 生成随机数
+    var realPrice = Math.round(Math.random() * 100);
+    // 初始化猜的次数
+    var time = 1;
+    function cai() {
+        // 获取用户输入的价格并转为整数
+        var price = parseInt(priceText.value);
+        // 判断输入的价格是否合法
+        if (isNaN(price)) {
+            alert("价格格式不对");
+            return;
+        }
+        // 判断当前按钮是否为 猜一下还是 再猜一次
+        if (btn.innerText == "猜一下") {
+            // 判断用户猜的价格
+            if (price > realPrice) {
+                result.innerText = "猜高了";
+                time++;
+            } else if (price < realPrice) {
+                result.innerText = "猜低了";
+                time++;
+            } else {
+                result.innerText = `恭喜！猜对了,您一共猜了 ${time}次`;
+                // 重置猜测次数1
+                time = 1;
+                btn.innerText = "再猜一次";
+                // 重置随机数
+                realPrice = Math.round(Math.random() * 100);
+            }
+        } else {
+            btn.innerText = "猜一下"
+        }
+    }
+</script>

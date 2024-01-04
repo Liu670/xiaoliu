@@ -1,0 +1,71 @@
+<!-- 
+    （1） 标题是三级标题，分隔线下面的控件放在表单中。
+    （2） 点击标签日期控件获得焦点，刷新页面时也自动获取焦点，并必须输入。
+2） 使用CSS根据下面的要求修饰元素，符合上图效果。
+（1） 所有内容居中
+（2） 分隔线宽度80%，高度1px；
+（3） 表单上外边距20px，表单内所有字体楷体，颜色蓝色；
+（4） 日期控件边框宽2px，实线，颜色#00a65a；
+（5） 按钮字号18px，字体颜色#1c6ca1；宽度120px，背景色#fff3e0；边框宽1px，实线，颜色#0000ff；
+3） 使用JavaScript实现下面的要求：
+  输入生日后，计算生日的年份是闰年，还是平年，在控制台输出结果。
+ -->
+<html>
+
+<head>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        hr {
+            width: 80%;
+            margin: 0 auto;
+            height: 1px;
+        }
+
+        form {
+            margin-top: 20px;
+            font-family: KaiTi;
+            color: blue;
+        }
+
+        input[id="birthday"] {
+            font-family: inherit;
+            color: inherit;
+            border: 2px solid #0000ff;
+        }
+
+        input[type="button"] {
+            font-size: 18px;
+            color: #1c6ca1;
+            width: 120px;
+            background-color: #fff3e0;
+            border: 1px solid #0000ff;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>生日计算</h3>
+    <hr>
+    <form action="">
+        <label for="birthday">选择你的生日：</label>
+        <input id="birthday" type="date" autofocus required>
+        <input id="jisuan" type="button" value="计算">
+    </form>
+</body>
+
+</html>
+<script>
+    //  输入生日后，计算生日的年份是闰年，还是平年，在控制台输出结果。
+    jisuan.onclick = function () {
+        var date = new Date(birthday.value);
+        console.log(date);
+        isLeapYear(date.getFullYear()) ? console.log("闰年") : console.log("平年");
+    }
+    // 判断
+    function isLeapYear(year) {
+        return year % 4 == 0 || year % 100 == 0 && year % 400 != 0;
+    }
+</script>

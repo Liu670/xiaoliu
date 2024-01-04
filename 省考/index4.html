@@ -1,0 +1,112 @@
+<!--
+ * @Author: xiaoliu
+ * @Date: 2024-01-04 00:04:46
+ * @LastEditors: xiaoliu
+ * @LastEditTime: 2024-01-04 16:46:57
+ * @Description: file content   
+ * @FilePath: /code/省考/index4.html
+-->
+<!-- 
+2） 使用CSS修饰页面内容，使得：
+（1） 标题为三级，颜色红色，居中，字号24px；
+（2） 分割线颜色为蓝色，宽度80%，大小为2；
+（3） 计算区背景颜色为#ecf5ff，字体楷体，字号20px，所有内容居中；
+（4） 按钮宽度100px，背景色#00beff，字号20px，圆框边角10px；
+（5） 文本框宽150px，高30px；边框宽2px，实线，颜色#1c6ca1；
+3） 使用JavaScript编程，实现：
+用户输入一个0-100范围内的整数，如果输入非法数值需要给出提示。点击添加后，该整数添加到下面的列表最后。但点击排序按钮时，将这些数进行排序，排序后更新此列表。
+ -->
+<html>
+
+<head>
+    <style>
+        /* h3标题 */
+        h3 {
+            color: red;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        /* 分割线 */
+        hr {
+            color: blue;
+            width: 80%;
+            size: 2;
+        }
+
+        /* 计算区 */
+        .main {
+            background-color: #ecf5ff;
+            font: 20px "KaiTi";
+            text-align: center;
+        }
+
+        /* 按钮 */
+        button {
+            width: 100px;
+            background-color: #00beff;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        /* 文本框 */
+        input {
+            width: 150px;
+            height: 30px;
+            border: 2px solid #1c6ca1;
+        }
+
+        ol {
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h3>排序</h3>
+        <hr>
+        <div>
+            <label for="numTxt">请输入0-100的整数：</label>
+            <input type="text" id="numTxt">
+        </div>
+        <div>
+            <button onclick="add()">添加</button>
+        </div>
+        <div>
+            <label for="numList">待排序列表：</label>
+            <ol type="1" id="numList"></ol>
+        </div>
+        <div>
+            <button onclick="sort()">排序</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    // 添加
+    var numArray = [];
+    function add() {
+        var num = parseInt(numTxt.value);
+        // 判断是否满足条件
+        if (isNaN(num) || num > 100 || num < 0) {
+            alert("输入的必须是0-100范围内的整数,请重新输入");
+        } else {
+            numList.innerHTML += "<li>" + num + "</li>";
+            numArray.push(num);
+        }
+    }
+
+    // 排序
+    function sort() {
+        numList.innerHTML = "";
+        numArray.sort(function (a, b) {
+            return a - b;
+        });
+        for (var num of numArray) {
+            numList.innerHTML = numList.innerHTML + '<li>' + num + '</li>';
+        }
+    }
+</script>
